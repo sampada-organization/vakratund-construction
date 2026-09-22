@@ -1,14 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import Rise from '../components/Rise.astro';
-import Steps from '../components/Steps.astro';
-import MachineTiles from '../components/MachineTiles.astro';
-import WorkGrid from '../components/WorkGrid.astro';
+import Slideshow from '../components/Slideshow.astro';
+import Trade from '../components/Trade.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import ClientStrip from '../components/ClientStrip.astro';
-import { links, plants, services, site, url } from '../lib/content';
-import { serviceIcon } from '../lib/marks';
+import { site, url } from '../lib/content';
 
 const description =
   'Vakratund Construction, Chakan. Civil works, roads, RCC, and government contracts since 2007. One proprietor and an owned plant.';
@@ -52,99 +50,16 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <h2>One office, since {site.established}</h2>
-      <p>
-        {site.name} is a {site.legalForm.toLowerCase()}. Proprietor {site.proprietor}. We carry out civil work
-        for residential clients and industrial clients, and we have worked as government contractors since {site.governmentWorkSince}.
-        The promise is plain: quality work, inside the given time, inside the agreed budget.
-      </p>
-      <ul class="facts">
-        <li><div><Icon name="calendar" /><strong>{site.established}</strong><span>Established</span></div></li>
-        <li><div><Icon name="column" /><strong>{site.governmentWorkSince}</strong><span>Government work begins</span></div></li>
-        <li><div><Icon name="person" /><strong>1</strong><span>Proprietor, one point of contact</span></div></li>
-      </ul>
-      <h3>What we set out to do</h3>
-      <ol class="mission">
-        {site.mission.map((line) => <li>{line}</li>)}
-      </ol>
-      <p class="action-row">
-        <a class="visit" href={url('/profile')}><Icon name="sheet" />Business profile</a>
-        <a class="btn-call" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
-        <a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>
-        <a class="btn-gmail" href={links.email}><Icon name="mail" />Gmail</a>
-      </p>
-    </div>
-  </section>
-
   <section class="section alt">
     <div class="wrap">
-      <header>
-        <h2>Services</h2>
-        <p>Buildings, roads, and civil work. Masonry, concrete, government work, and plotting sit with them.</p>
-      </header>
-      <ul class="pictiles pictiles-lead">
-        <li>
-          <a href={url('/projects/machine-foundations')}>
-            <img src={url('/media/work/foundation.jpg')} width="455" height="569" alt="" />
-            <span>Building construction</span>
-          </a>
-        </li>
-        <li>
-          <a href={url('/projects/bitumen-roads')}>
-            <img src={url('/media/work/bitumen.jpg')} width="434" height="542" alt="" />
-            <span>Road construction</span>
-          </a>
-        </li>
-        <li>
-          <a href={url('/projects/concrete-roads')}>
-            <img src={url('/media/work/concrete-road.jpg')} width="481" height="601" alt="" />
-            <span>Civil works</span>
-          </a>
-        </li>
-      </ul>
-      <div class="cards">
-        {services.filter((service) => !['Building construction', 'Road construction', 'Civil works'].includes(service.title)).map((service) => (
-          <article>
-            <Icon name={serviceIcon(service.title)} />
-            <h3>{service.title}</h3>
-            <p>{service.summary}</p>
-          </article>
-        ))}
-      </div>
+      <h2>Work</h2>
+      <Slideshow />
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <header>
-        <h2>How a job runs</h2>
-        <p>From the first call to the last report. One person stays on the job.</p>
-      </header>
-      <Steps />
-      <p><a href={url('/process')}>Read the process with the plant beside it</a></p>
-    </div>
-  </section>
-
-  <section class="section alt">
-    <div class="wrap">
-      <header>
-        <h2>Work</h2>
-        <p>Gabion walls, foundations, floors, roads, parking marks, and mass concrete. There is more work than these frames.</p>
-      </header>
-      <WorkGrid />
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <header>
-        <h2>Plant</h2>
-        <p>{plants.intro}</p>
-      </header>
-      <MachineTiles linked />
-      <p><a href={url('/plant')}>All machines</a></p>
+      <Trade />
     </div>
   </section>
 

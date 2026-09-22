@@ -25,11 +25,14 @@ const items = [
         <small>Chakan · since {site.established}</small>
       </span>
     </a>
+    <Channels />
     <button class="menu" type="button" aria-expanded="false" aria-controls="primary">
       <Icon name="menu" />
       <Icon name="close" />
       <span class="menu-label">Menu</span>
     </button>
+  </div>
+  <div class="navrow">
     <nav class="primary" id="primary" aria-label="Primary">
       {
         items.map((item) => (
@@ -42,7 +45,6 @@ const items = [
       <a class="visit" href={url('/meet')}><Icon name="calendar" />Book a visit</a>
     </nav>
   </div>
-  <Channels />
 </header>
 
 <script>
@@ -57,4 +59,13 @@ const items = [
     if (label) label.textContent = open ? 'Close' : 'Menu';
   });
   root.classList.add('js');
+  const header = document.querySelector('.site-header');
+  window.addEventListener(
+    'scroll',
+    () => {
+      const compact = window.scrollY > 40 && !nav?.classList.contains('is-open');
+      header?.classList.toggle('is-compact', compact);
+    },
+    { passive: true },
+  );
 </script>

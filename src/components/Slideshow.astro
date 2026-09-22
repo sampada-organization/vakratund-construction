@@ -1,0 +1,71 @@
+---
+import { plants, projects, url } from '../lib/content';
+
+const frames = [
+  ...projects.flatMap((project) =>
+    project.gallery.map((frame) => ({
+      src: frame.src,
+      width: frame.width,
+      height: frame.height,
+      title: project.title,
+      href: `/projects/${project.slug}`,
+    })),
+  ),
+  ...plants.register
+    .filter((item) => item.image)
+    .map((item) => ({
+      src: item.image,
+      width: item.width,
+      height: item.height,
+      title: item.name,
+      href: '/plant',
+    })),
+];
+---
+
+<div class="reel" data-reel>
+  <div class="reel-view">
+    <ul class="reel-track">
+      {
+        frames.map((frame) => (
+          <li>
+            <a href={url(frame.href)}>
+              <img src={url(frame.src)} width={frame.width} height={frame.height} alt={frame.title} loading="lazy" decoding="async" />
+              <span>{frame.title}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="reel-controls">
+    <button type="button" data-prev aria-label="Previous pictures">Previous</button>
+    <button type="button" data-next aria-label="Next pictures">Next</button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-reel]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('.reel-track');
+    const items = [...root.querySelectorAll('.reel-track li')];
+    if (!track || items.length === 0) return;
+    let index = 0;
+    const per = () => (window.matchMedia('(min-width: 1100px)').matches ? 3 : window.matchMedia('(min-width: 720px)').matches ? 2 : 1);
+    const max = () => Math.max(0, items.length - per());
+    const go = (next: number) => {
+      index = Math.min(max(), Math.max(0, next));
+      track.style.transform = `translateX(-${(index * 100) / per()}%)`;
+    };
+    root.querySelector('[data-prev]')?.addEventListener('click', () => go(index - 1));
+    root.querySelector('[data-next]')?.addEventListener('click', () => go(index + 1));
+    let startX = 0;
+    root.addEventListener('pointerdown', (event) => {
+      startX = event.clientX;
+    });
+    root.addEventListener('pointerup', (event) => {
+      const delta = event.clientX - startX;
+      if (Math.abs(delta) > 40) go(index + (delta < 0 ? 1 : -1));
+    });
+    window.addEventListener('resize', () => go(index));
+  });
+</script>

@@ -1,0 +1,31 @@
+---
+const marks = [
+  {
+    name: 'Building',
+    draw: 'M28 150h144M44 150V62h112v88M70 62V40h60v22M62 92h20v22H62zM118 92h20v22h-20zM86 150v-28h28v28',
+  },
+  {
+    name: 'Road',
+    draw: 'M36 132c40-28 48 18 88-8s52 10 96-16M70 78v18M110 70v18M150 64v18M40 146h140',
+  },
+  {
+    name: 'Civil',
+    draw: 'M32 40h136v112H32zM32 78h136M32 116h136M78 40v112M124 40v112M48 58h14M94 58h14M140 58h14',
+  },
+];
+---
+
+<ul class="trade">
+  {
+    marks.map((mark) => (
+      <li>
+        <svg viewBox="0 0 200 180" aria-hidden="true">
+          <rect width="200" height="180" fill="#1a1a1a" />
+          <path d={mark.draw} fill="none" stroke="#fff" stroke-width="3" />
+          <path d={mark.draw} fill="none" stroke="#1a46c8" stroke-width="1.2" transform="translate(3 3)" opacity="0.85" />
+        </svg>
+        <strong>{mark.name}</strong>
+      </li>
+    ))
+  }
+</ul>
