@@ -13,9 +13,10 @@ import { links, site, url } from '../lib/content';
       </p>
       <p class="foot-links">
         <a href={links.maps}><Icon name="pin" />Map</a>
-        <a href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
-        <a href={links.email}><Icon name="mail" />{site.email}</a>
-        <a href={links.proprietorEmail}><Icon name="person" />{site.proprietorEmail}</a>
+        <a class="btn-call" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
+        <a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>
+        <a class="btn-gmail" href={links.email}><Icon name="mail" />Gmail</a>
+        <a href={links.proprietorEmail}>{site.proprietorEmail}</a>
       </p>
       
     </div>

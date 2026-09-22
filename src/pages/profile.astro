@@ -18,9 +18,9 @@ const description = `${site.name}, ${site.legalForm.toLowerCase()} in Chakan sin
         {site.promise}
       </p>
       <p class="action-row">
-        <a class="visit" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
-        <a class="visit" href={links.email}><Icon name="mail" />{site.email}</a>
-        <a class="ghost" href={links.whatsapp} style="color: var(--text); border-color: var(--blue)"><Icon name="chat" />WhatsApp</a>
+        <a class="btn-call" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
+        <a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>
+        <a class="btn-gmail" href={links.email}><Icon name="mail" />Gmail</a>
       </p>
       <ul class="facts">
         <li><div><Icon name="calendar" /><strong>{site.established}</strong><span>Established</span></div></li>

@@ -13,13 +13,13 @@ const description = `Office of Vakratund Construction at The Grand Centre, Chaka
       <h1>The office</h1>
       <p class="intro">{site.office.lines.join(', ')}. {site.hours}.</p>
       <p class="action-row">
-        <a class="visit" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
-        <a class="visit" href={links.email}><Icon name="mail" />{site.email}</a>
-        <a class="visit" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>
+        <a class="btn-call" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
+        <a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>
+        <a class="btn-gmail" href={links.email}><Icon name="mail" />Gmail</a>
         <a class="visit" href={links.maps}><Icon name="pin" />Map</a>
         <a class="visit" href={url('/profile')}><Icon name="sheet" />Business profile</a>
       </p>
-      <p>{site.proprietor}: <a class="visit" href={links.proprietorEmail}><Icon name="person" />{site.proprietorEmail}</a></p>
+      <p>{site.proprietor}: <a href={links.proprietorEmail}>{site.proprietorEmail}</a></p>
       
       <h2>Write</h2>
       <LeadForm kind="enquiry" />

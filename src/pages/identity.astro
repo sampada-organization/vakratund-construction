@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { links, site, url } from '../lib/content';
 
 const description = 'Name, mark, colours, and contact channels for Vakratund Construction.';
@@ -28,9 +29,9 @@ const description = 'Name, mark, colours, and contact channels for Vakratund Con
       </div>
       <h2>How to reach the office</h2>
       <ul>
-        <li><a href={links.tel}>Call {site.phoneDisplay}</a></li>
-        <li><a href={links.whatsapp}>WhatsApp</a> — opens a message to the office</li>
-        <li><a href={links.email}>{site.email}</a></li>
+        <li><a class="btn-call" href={links.tel}><Icon name="phone" />Call {site.phoneDisplay}</a></li>
+        <li><a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a></li>
+        <li><a class="btn-gmail" href={links.email}><Icon name="mail" />Gmail</a></li>
         <li><a href={links.proprietorEmail}>{site.proprietorEmail}</a> — {site.proprietor}</li>
       </ul>
       <p>There is no login for clients. A client identity is a name, a phone, a site, and the work, filed from the on-board page.</p>

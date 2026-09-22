@@ -203,36 +203,52 @@ p { margin: 0 0 0.9rem; }
   margin-inline: auto;
 }
 
-.channels a {
-  color: var(--ink);
-  background: var(--white);
+.channels a,
+.btn-call,
+.btn-wa,
+.btn-gmail {
   text-decoration: none;
-  min-height: 48px;
-  padding: 0.45rem 0.95rem;
+  min-height: 34px;
+  padding: 0.2rem 0.55rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  font-size: 1rem;
-  font-weight: 800;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
   white-space: nowrap;
+  width: auto;
   border-radius: 0;
-  box-shadow: 0 3px 0 #c5ccd4;
+  box-shadow: none;
+  background-image: none;
 }
 
-.channels a[href^='tel:'],
-.channels a[href^='mailto:'],
-.action-row a[href^='tel:'],
-.action-row a[href^='mailto:'],
-.foot-links a[href^='tel:'],
-.foot-links a[href^='mailto:'] {
-  background: var(--blue);
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.05rem;
-  box-shadow: 0 3px 0 var(--blue-deep);
-  text-decoration: none;
+.btn-call { background: #34a853; color: #fff; }
+
+.btn-wa { background: #25d366; color: #fff; }
+
+.btn-gmail {
+  background: #fff;
+  color: #ea4335;
+  border: 1px solid #dadce0;
 }
+
+.foot-links a.btn-call,
+.action-row a.btn-call { background: #34a853; color: #fff; }
+
+.foot-links a.btn-wa,
+.action-row a.btn-wa { background: #25d366; color: #fff; }
+
+.foot-links a.btn-gmail,
+.action-row a.btn-gmail {
+  background: #fff;
+  color: #ea4335;
+  border: 1px solid #dadce0;
+}
+
+.btn-call .ico,
+.btn-wa .ico,
+.btn-gmail .ico { width: 0.95rem; height: 0.95rem; }
 
 .action-row {
   display: flex;
@@ -644,17 +660,17 @@ button, .visit, .ghost { cursor: pointer; }
 
 .rise-svg .ground { stroke: var(--silver); stroke-width: 2; }
 
-.spin { transform-box: fill-box; transform-origin: center; animation: spin 18s linear infinite; }
+.spin { transform-box: fill-box; transform-origin: center; animation: spin 1.1s ease-out 1 both; }
 
-.gear-b .spin { animation-duration: 11s; animation-direction: reverse; }
+.gear-b .spin { animation-duration: 0.9s; animation-direction: reverse; }
 
 .jib {
   transform-box: view-box;
   transform-origin: 470px 132px;
-  animation: sway 7.5s ease-in-out infinite;
+  animation: sway 1.2s ease-out 1 both;
 }
 
-.cable { stroke-dasharray: 3 7; animation: creep 1.1s linear infinite; }
+.cable { stroke-dasharray: none; }
 
 .floor, .roof {
   transform-box: fill-box;
@@ -713,8 +729,8 @@ button, .visit, .ghost { cursor: pointer; }
 .toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
 
 @media (max-width: 1099px) {
-  .channels { display: grid; grid-template-columns: 1fr; }
-  .channels a { width: 100%; }
+  .channels { display: flex; flex-wrap: wrap; }
+  .channels a { width: auto; }
   .js .menu { display: inline-flex; }
   .js .primary:not(.is-open) { display: none; }
   .primary.is-open {
@@ -875,21 +891,9 @@ button, .visit, .ghost { cursor: pointer; }
   background-image: linear-gradient(115deg, rgba(28, 36, 51, 0.96), rgba(18, 21, 28, 0.9) 40%, rgba(120, 140, 170, 0.5) 50%, rgba(18, 21, 28, 0.94) 62%);
 }
 
-.channels a {
-  background-image: linear-gradient(115deg, rgba(255, 255, 255, 0.96), rgba(210, 216, 224, 0.7) 46%, rgba(255, 255, 255, 0.92) 56%);
-  backdrop-filter: blur(8px);
-}
-
-.channels a[href^='tel:'],
-.channels a[href^='mailto:'],
-.action-row a[href^='tel:'],
-.action-row a[href^='mailto:'],
-.foot-links a[href^='tel:'],
-.foot-links a[href^='mailto:'],
 .visit {
-  background-image: linear-gradient(115deg, rgba(255, 255, 255, 0.28), transparent 38%, rgba(255, 255, 255, 0.2) 50%, transparent 64%);
-  background-size: 240% 100%;
   background-color: var(--blue);
+  background-image: none;
 }
 
 .sheen {
@@ -902,7 +906,7 @@ button, .visit, .ghost { cursor: pointer; }
 
 .sheen svg { display: block; width: 100%; height: auto; }
 
-.slick { animation: slick 3.6s linear infinite; }
+.slick { animation: slick 1.15s ease-out 1 both; }
 
 .split {
   display: grid;
@@ -915,15 +919,6 @@ button, .visit, .ghost { cursor: pointer; }
 @keyframes slick { to { transform: translateX(400px); } }
 
 @media (prefers-reduced-motion: no-preference) {
-  .cards article,
-  .count,
-  .channels a,
-  .commission .wrap,
-  .logo-row li,
-  .visit {
-    animation: grease 8s linear infinite;
-  }
-
   .cards article,
   .work-grid a,
   .count,
