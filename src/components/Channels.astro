@@ -3,8 +3,12 @@ import Icon from './Icon.astro';
 import { links, site } from '../lib/content';
 ---
 
-<ul class="channels">
-  <li><a class="btn-call" href={links.tel}><Icon name="phone" />Call {site.phoneDisplay}</a></li>
-  <li><a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a></li>
-  <li><a class="btn-gmail" href={links.email}><Icon name="mail" />Gmail</a></li>
-</ul>
+<div class="reach-slot">
+<div class="reach">
+  <div class="reach-top">
+    <a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>
+    <a class="btn-gmail" href={links.email}><Icon name="mail" />Gmail</a>
+  </div>
+  <a class="btn-call" href={links.tel}><Icon name="phone" />Call {site.phoneDisplay}</a>
+</div>
+</div>

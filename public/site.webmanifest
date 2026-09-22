@@ -3,8 +3,8 @@
   "short_name": "Vakratund",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#12151c",
-  "theme_color": "#12151c",
+  "background_color": "#1a1a1a",
+  "theme_color": "#1a1a1a",
   "icons": [
     {
       "src": "brand/mark.jpg",

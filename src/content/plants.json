@@ -1,14 +1,70 @@
 {
-  "intro": "These are the machines we keep for the work. A count is what is on the register, not which machine is on which site today.",
+  "intro": "The machines we keep for the work.",
   "register": [
-    { "name": "Ready-mix concrete plant", "count": 1, "note": "" },
-    { "name": "Transit mixer", "count": 5, "note": "" },
-    { "name": "Vibratory roller, 8 ton", "count": 2, "note": "" },
-    { "name": "Hyva tipper", "count": 3, "note": "" },
-    { "name": "Grader", "count": 1, "note": "" },
-    { "name": "Backhoe loader (JCB)", "count": 3, "note": "" },
-    { "name": "Poclain 210", "count": 2, "note": "" },
-    { "name": "Tractors and trolleys", "count": 2, "note": "" }
+    {
+      "name": "Ready-mix concrete plant",
+      "count": 1,
+      "note": "",
+      "image": "/media/plant/halfConcrete.jpg",
+      "width": 1200,
+      "height": 800
+    },
+    {
+      "name": "Transit mixer",
+      "count": 5,
+      "note": "",
+      "image": "/media/plant/concreteMixer.jpg",
+      "width": 1233,
+      "height": 626
+    },
+    {
+      "name": "Vibratory roller, 8 ton",
+      "count": 2,
+      "note": "",
+      "image": "/media/plant/roller.jpg",
+      "width": 950,
+      "height": 650
+    },
+    {
+      "name": "Hyva tipper",
+      "count": 3,
+      "note": "",
+      "image": "/media/plant/dumper.jpg",
+      "width": 700,
+      "height": 400
+    },
+    {
+      "name": "Grader",
+      "count": 1,
+      "note": "",
+      "image": "",
+      "width": 0,
+      "height": 0
+    },
+    {
+      "name": "Backhoe loader (JCB)",
+      "count": 3,
+      "note": "",
+      "image": "/media/plant/jcb.jpg",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "name": "Poclain 210",
+      "count": 2,
+      "note": "",
+      "image": "/media/plant/poclain.jpg",
+      "width": 1470,
+      "height": 1100
+    },
+    {
+      "name": "Tractors and trolleys",
+      "count": 2,
+      "note": "",
+      "image": "/media/plant/tractor.jpg",
+      "width": 1280,
+      "height": 720
+    }
   ],
   "earlier": []
 }

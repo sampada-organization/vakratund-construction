@@ -2,13 +2,13 @@
 import Base from '../layouts/Base.astro';
 import Rise from '../components/Rise.astro';
 import Steps from '../components/Steps.astro';
-import Sheen from '../components/Sheen.astro';
+import MachineTiles from '../components/MachineTiles.astro';
 import WorkGrid from '../components/WorkGrid.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import ClientStrip from '../components/ClientStrip.astro';
 import { links, plants, services, site, url } from '../lib/content';
-import { plantIcon, serviceIcon } from '../lib/marks';
+import { serviceIcon } from '../lib/marks';
 
 const description =
   'Vakratund Construction, Chakan. Civil works, roads, RCC, and government contracts since 2007. One proprietor and an owned plant.';
@@ -80,15 +80,32 @@ const jsonLd = {
 
   <section class="section alt">
     <div class="wrap">
-      <div class="split">
-        <header>
-          <h2>Services</h2>
-          <p>Buildings, roads, concrete, masonry, government work, and plotting.</p>
-        </header>
-        <Sheen kind="yard" />
-      </div>
+      <header>
+        <h2>Services</h2>
+        <p>Buildings, roads, and civil work. Masonry, concrete, government work, and plotting sit with them.</p>
+      </header>
+      <ul class="pictiles pictiles-lead">
+        <li>
+          <a href={url('/projects/machine-foundations')}>
+            <img src={url('/media/work/foundation.jpg')} width="455" height="569" alt="" />
+            <span>Building construction</span>
+          </a>
+        </li>
+        <li>
+          <a href={url('/projects/bitumen-roads')}>
+            <img src={url('/media/work/bitumen.jpg')} width="434" height="542" alt="" />
+            <span>Road construction</span>
+          </a>
+        </li>
+        <li>
+          <a href={url('/projects/concrete-roads')}>
+            <img src={url('/media/work/concrete-road.jpg')} width="481" height="601" alt="" />
+            <span>Civil works</span>
+          </a>
+        </li>
+      </ul>
       <div class="cards">
-        {services.map((service) => (
+        {services.filter((service) => !['Building construction', 'Road construction', 'Civil works'].includes(service.title)).map((service) => (
           <article>
             <Icon name={serviceIcon(service.title)} />
             <h3>{service.title}</h3>
@@ -123,19 +140,11 @@ const jsonLd = {
   <section class="section">
     <div class="wrap">
       <header>
-        <h2>Plant on the register</h2>
+        <h2>Plant</h2>
         <p>{plants.intro}</p>
       </header>
-      <div class="counts">
-        {plants.register.map((item) => (
-          <article class="count">
-            <Icon name={plantIcon(item.name)} />
-            <b>{item.count}</b>
-            <h3>{item.name}</h3>
-          </article>
-        ))}
-      </div>
-      <p><a href={url('/plant')}>See every machine and its count</a></p>
+      <MachineTiles linked />
+      <p><a href={url('/plant')}>All machines</a></p>
     </div>
   </section>
 

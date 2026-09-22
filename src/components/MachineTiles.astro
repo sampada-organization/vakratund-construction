@@ -1,0 +1,36 @@
+---
+import { plants, url } from '../lib/content';
+
+interface Props {
+  linked?: boolean;
+}
+const { linked = false } = Astro.props;
+---
+
+<ul class="pictiles">
+  {
+    plants.register.map((item) => {
+      const body = (
+        <>
+          {item.image ? (
+            <img
+              src={url(item.image)}
+              width={item.width}
+              height={item.height}
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+          ) : (
+            <svg class="tile-draw" viewBox="0 0 320 180" aria-hidden="true">
+              <rect width="320" height="180" fill="#1a1a1a" />
+              <path d="M24 132h272M40 132 150 70h130M70 132v-28h36" fill="none" stroke="#fff" stroke-width="3" />
+            </svg>
+          )}
+          <span>{item.name}</span>
+        </>
+      );
+      return <li>{linked ? <a href={url('/plant')}>{body}</a> : <div>{body}</div>}</li>;
+    })
+  }
+</ul>
