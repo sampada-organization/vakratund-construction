@@ -1,59 +1,14 @@
 {
-  "intro": "Counts below are copied from the company profile. They are the office register, not a live view of which machine is on which site today.",
+  "intro": "These are the machines we keep for the work. A count is what is on the register, not which machine is on which site today.",
   "register": [
-    {
-      "name": "Ready-mix concrete plant",
-      "count": 1,
-      "note": "Company profile."
-    },
-    {
-      "name": "Transit mixer",
-      "count": 5,
-      "note": "Company profile."
-    },
-    {
-      "name": "Vibratory roller, 8 ton",
-      "count": 2,
-      "note": "Company profile. The previous website named a Dynapac roller."
-    },
-    {
-      "name": "Hyva tipper",
-      "count": 3,
-      "note": "Company profile spells this Hywa. The previous website named Tata tippers."
-    },
-    {
-      "name": "Grader",
-      "count": 1,
-      "note": "Company profile."
-    },
-    {
-      "name": "Backhoe loader (JCB)",
-      "count": 3,
-      "note": "Company profile. The previous website listed two."
-    },
-    {
-      "name": "Poclain 210",
-      "count": 2,
-      "note": "Company profile. The previous website also named an L&T Komatsu Poclain 70."
-    },
-    {
-      "name": "Tractors and trolleys",
-      "count": 2,
-      "note": "Company profile and the previous website agree on two."
-    }
+    { "name": "Ready-mix concrete plant", "count": 1, "note": "" },
+    { "name": "Transit mixer", "count": 5, "note": "" },
+    { "name": "Vibratory roller, 8 ton", "count": 2, "note": "" },
+    { "name": "Hyva tipper", "count": 3, "note": "" },
+    { "name": "Grader", "count": 1, "note": "" },
+    { "name": "Backhoe loader (JCB)", "count": 3, "note": "" },
+    { "name": "Poclain 210", "count": 2, "note": "" },
+    { "name": "Tractors and trolleys", "count": 2, "note": "" }
   ],
-  "earlier": [
-    {
-      "name": "Rock hammer and breaker",
-      "note": "Named on the previous website. No count in the company profile."
-    },
-    {
-      "name": "Concrete mixer",
-      "note": "Named on the previous website. No count in the company profile."
-    },
-    {
-      "name": "Half-bag concrete mixer",
-      "note": "Named on the previous website. No count in the company profile."
-    }
-  ]
+  "earlier": []
 }

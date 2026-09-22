@@ -54,16 +54,16 @@ const jsonLd = {
     <div class="wrap">
       <h2>One office, since {site.established}</h2>
       <p>
-        {site.name} is a {site.legalForm.toLowerCase()}. Proprietor {site.proprietor}. The firm carries out civil work
-        for residential clients and industrial clients, and has worked as a government contractor since {site.governmentWorkSince}.
-        The profile states the promise without decoration: quality work, inside the given time, inside the prescribed budget.
+        {site.name} is a {site.legalForm.toLowerCase()}. Proprietor {site.proprietor}. We carry out civil work
+        for residential clients and industrial clients, and we have worked as government contractors since {site.governmentWorkSince}.
+        The promise is plain: quality work, inside the given time, inside the agreed budget.
       </p>
       <ul class="facts">
         <li><div><Icon name="calendar" /><strong>{site.established}</strong><span>Established</span></div></li>
         <li><div><Icon name="column" /><strong>{site.governmentWorkSince}</strong><span>Government work begins</span></div></li>
         <li><div><Icon name="person" /><strong>1</strong><span>Proprietor, one point of contact</span></div></li>
       </ul>
-      <h3>What the profile sets out to do</h3>
+      <h3>What we set out to do</h3>
       <ol class="mission">
         {site.mission.map((line) => <li>{line}</li>)}
       </ol>
@@ -74,10 +74,7 @@ const jsonLd = {
     <div class="wrap">
       <header>
         <h2>Services</h2>
-        <p>
-          The September 2026 note from the office lists these lines. The older profile already shows roads, foundations,
-          concrete, epoxy floors, gabion walls, and parking marks.
-        </p>
+        <p>Buildings, roads, concrete, masonry, government work, and plotting.</p>
       </header>
       <div class="cards">
         {services.map((service) => (
@@ -95,7 +92,7 @@ const jsonLd = {
     <div class="wrap">
       <header>
         <h2>How a job runs</h2>
-        <p>Six steps taken from the profile and the previous site. Nothing here is a certificate number.</p>
+        <p>From the first call to the last report. One person stays on the job.</p>
       </header>
       <Steps />
       <p><a href={url('/process')}>Read the process with the plant beside it</a></p>
@@ -106,10 +103,7 @@ const jsonLd = {
     <div class="wrap">
       <header>
         <h2>Work</h2>
-        <p>
-          These are the work types in the company profile. The profile says the photographs were executed in 2021, and that
-          there were many more jobs than the frames shown.
-        </p>
+        <p>Gabion walls, foundations, floors, roads, parking marks, and mass concrete. There is more work than these frames.</p>
       </header>
       <WorkGrid />
     </div>
@@ -130,15 +124,15 @@ const jsonLd = {
           </article>
         ))}
       </div>
-      <p><a href={url('/plant')}>Names, counts, and what the old site called the same tools</a></p>
+      <p><a href={url('/plant')}>See every machine and its count</a></p>
     </div>
   </section>
 
   <section class="section alt">
     <div class="wrap">
       <header>
-        <h2>Clients named in the profile</h2>
-        <p>All five are in Chakan. Logos are not redrawn here.</p>
+        <h2>Clients</h2>
+        <p>Industrial clients in Chakan.</p>
       </header>
       <ul class="client-list">
         {clients.map((client) => (
@@ -154,9 +148,9 @@ const jsonLd = {
 
   <section class="section commission" id="catch">
     <div class="wrap">
-      <h2><Icon name="desk" />Put the work on the desk</h2>
+      <h2><Icon name="sheet" />Start a job</h2>
       <p>
-        Name, phone, and the kind of work. That is enough to start. If you would rather talk, call {site.phoneDisplay}, or use WhatsApp or email in the header.
+        Name, phone, and the kind of work. That is enough to start. Or call {site.phoneDisplay}, or use WhatsApp or email above.
       </p>
       <LeadForm kind="enquiry" compact />
     </div>

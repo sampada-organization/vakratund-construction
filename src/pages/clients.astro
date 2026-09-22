@@ -3,19 +3,14 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { clients, url } from '../lib/content';
 
-const description = 'Clients named in the Vakratund Construction company profile, all in Chakan.';
+const description = 'Industrial clients of Vakratund Construction in Chakan.';
 ---
 
 <Base title="Clients" description={description}>
   <section class="section">
     <div class="wrap">
       <h1>Clients</h1>
-      <p class="intro">
-        The company profile lists these names under “Our esteemed clients”. The previous website showed marks for several
-        of the same firms. This page sets the names in type and does not redraw their logos. A new client is not added
-        here by the public form — that form files a lead. A name joins this list only when the office edits the desk and
-        rebuilds.
-      </p>
+      <p class="intro">Industrial clients in Chakan. A new enquiry does not add a name here. It reaches the office first.</p>
       <ul class="client-list">
         {
           clients.map((client) => (

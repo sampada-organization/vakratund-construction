@@ -6,7 +6,7 @@ const lists = [
   ['services', 'Services'],
   ['projects', 'Projects'],
   ['register', 'Plant register'],
-  ['earlier', 'Earlier tool names'],
+  ['earlier', 'Other machines'],
   ['clients', 'Clients on the public list'],
   ['resources', 'Resources'],
   ['process', 'Process steps'],
@@ -16,24 +16,20 @@ const lists = [
 <Base title="Desk" description={description}>
   <section class="section admin">
     <div class="wrap">
-      <h1>Desk</h1>
+      <h1>Edit the site</h1>
       <p class="intro">
-        This desk edits the public pages: the words, phone and email, plant counts, client names, project list, and
-        downloadable files. It does not take a booking. A booking is the form on Contact, Client identity, or Book a visit.
-      </p>
-      <p>
-        The password works on the computer running the project. Save writes the files there. Visitors see the change only
-        after those files are built and published. On GitHub Pages this page cannot save, because Pages has no desk.
+        Change the words, the phone, the plant counts, the client names, the projects, and the files. A booking still
+        comes from the forms, not from this page.
       </p>
       <form id="gate" class="desk-form">
-        <label>Desk password <input name="password" type="password" autocomplete="current-password" required /></label>
-        <button type="submit">Open desk</button>
+        <label>Password <input name="password" type="password" autocomplete="current-password" required /></label>
+        <button type="submit">Open</button>
       </form>
       <p data-desk-msg role="status"></p>
       <div id="editor" hidden>
         <div class="toolbar">
-          <button class="save" id="save" type="button">Save content files</button>
-          <button class="tool" id="inbox-load" type="button">Load local inbox</button>
+          <button class="save" id="save" type="button">Save</button>
+          <button class="tool" id="inbox-load" type="button">Messages</button>
         </div>
         <h2>Office lines</h2>
         <div class="desk-form">
@@ -64,8 +60,8 @@ const lists = [
             ))
           }
         </div>
-        <h2>Inbox</h2>
-        <p class="note">Local notes from the forms on this computer. On the live site, read the private GitHub issues instead.</p>
+        <h2>Messages</h2>
+        <p class="note">Notes sent from the forms.</p>
         <div data-inbox></div>
       </div>
     </div>

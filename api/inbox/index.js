@@ -13,7 +13,7 @@ module.exports = async function (context, req) {
     context.res = json(req, 403, {
       ok: false,
       reason: 'production-inbox',
-      hint: 'On the live site these records are private GitHub issues, not a file on the server.',
+      hint: 'Messages sent from the published site are kept by the office.',
     });
     return;
   }

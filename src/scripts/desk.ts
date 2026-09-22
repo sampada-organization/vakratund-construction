@@ -218,12 +218,12 @@ async function openDesk(event: Event) {
   const response = await fetch('/api/cms', { headers: headers() });
   const payload = (await response.json().catch(() => ({}))) as Bundle & { hint?: string };
   if (!response.ok) {
-    say(response.status === 401 ? 'That password does not open the desk.' : 'The desk did not open.');
+    say(response.status === 401 ? 'That password is not right.' : 'Could not open.');
     return;
   }
   paint(payload);
   document.querySelector<HTMLElement>('#editor')?.removeAttribute('hidden');
-  say('Desk open. Saving writes the content files on this computer. The live free host does not write files.');
+  say('Open. Save when the words are right.');
 }
 
 async function save() {
@@ -240,7 +240,7 @@ async function save() {
   });
   const payload = (await response.json().catch(() => ({}))) as { hint?: string; reason?: string };
   if (response.status === 403) {
-    say(payload.hint || 'The live site is edited in git, then rebuilt.');
+    say(payload.hint || 'This published copy cannot be changed here.');
     return;
   }
   if (!response.ok) {
@@ -248,7 +248,7 @@ async function save() {
     return;
   }
   bundle = next;
-  say('Saved on this computer. Rebuild or refresh the dev site to see it.');
+  say('Saved.');
 }
 
 async function loadInbox() {

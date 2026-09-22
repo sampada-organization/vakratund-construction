@@ -4,18 +4,14 @@ import Icon from '../components/Icon.astro';
 import { resources, url } from '../lib/content';
 import { resourceIcon } from '../lib/marks';
 
-const description = 'Company profile and other files Vakratund Construction keeps on the site.';
+const description = 'Company profile and roads poster from Vakratund Construction, Chakan.';
 ---
 
 <Base title="Resources" description={description}>
   <section class="section">
     <div class="wrap">
       <h1>Resources</h1>
-      <p class="intro">
-        Files live in the site, not in a paid store. To add one: put the file in the project, add a line on this list
-        from the desk or in <code>src/content/resources.json</code>, and rebuild. The next bundle of drawings, rates, or
-        notes can land the same way.
-      </p>
+      <p class="intro">The company profile, and the roads poster. Open either one.</p>
       <div class="resource-list">
         {
           resources.map((item) => (

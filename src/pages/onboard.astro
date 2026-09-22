@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import LeadForm from '../components/LeadForm.astro';
 
-const description = 'Put a client on the Vakratund desk: firm, person, phone, site, and the work.';
+const description = 'Tell Vakratund Construction who you are, where the site is, and the work.';
 ---
 
 <Base title="Client identity" description={description}>
@@ -10,9 +10,8 @@ const description = 'Put a client on the Vakratund desk: firm, person, phone, si
     <div class="wrap">
       <h1>Client identity</h1>
       <p class="intro">
-        A client comes on board with a firm or a house name, a person, a phone, a site, and the work. This is the record
-        the office keeps. It is not a password, and it does not open a private portal. On this computer the note is stored
-        for the desk. On the live free host it is filed as a private GitHub issue, the same pattern as the other office forms.
+        A firm or a house name, a person, a phone, a site, and the work. The office keeps that and calls you back.
+        This is not a password and it does not open a private page.
       </p>
       <LeadForm kind="onboard" />
     </div>

@@ -85,10 +85,10 @@ test('a client can come on board', async ({ page }) => {
   await expect(page.locator('[data-result]')).toContainText('Received');
 });
 
-test('the desk opens with the password and lists services', async ({ page }) => {
+test('the office editor opens with the password and lists services', async ({ page }) => {
   await page.goto('/admin');
-  await page.getByLabel('Desk password').fill('vakratund-dev');
-  await page.getByRole('button', { name: 'Open desk' }).click();
+  await page.getByLabel('Password').fill('vakratund-dev');
+  await page.getByRole('button', { name: 'Open', exact: true }).click();
   await expect(page.locator('[data-list="services"] input').first()).toHaveValue('Building construction');
-  await expect(page.getByRole('button', { name: 'Save content files' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Save', exact: true })).toBeVisible();
 });

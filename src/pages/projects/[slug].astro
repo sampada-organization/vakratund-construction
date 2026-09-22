@@ -15,7 +15,7 @@ const description = `${project.title} by Vakratund Construction. ${project.summa
 <Base title={project.title} description={description}>
   <article class="section">
     <div class="wrap">
-      <p class="kicker" style="color: var(--blue)">Work · 2021 photograph</p>
+      <p class="kicker" style="color: var(--blue)">Work</p>
       <h1>{project.title}</h1>
       <p class="intro">{project.summary}</p>
       <figure class="figure">
@@ -23,19 +23,17 @@ const description = `${project.title} by Vakratund Construction. ${project.summa
           src={url(project.image)}
           width={project.width}
           height={project.height}
-          alt={`${project.title}, work photographed in 2021`}
+          alt={project.title}
           fetchpriority="high"
           decoding="async"
         />
-        <figcaption>The company profile says the work pictures were executed in 2021. It does not name the site of each frame.</figcaption>
+        <figcaption>{project.summary}</figcaption>
       </figure>
       {
         project.slug === 'bitumen-roads' && (
           <figure class="figure">
             <img src={url('/media/roads-poster.jpg')} width="900" height="1352" alt="Roads poster with a survey tripod, roller, and backhoe" loading="lazy" decoding="async" />
-            <figcaption>
-              Roads poster supplied with the 2026 brief. The poster prints a misspelt name. The company name is Vakratund.
-            </figcaption>
+            <figcaption>Precise planning. A strong foundation. A better road.</figcaption>
           </figure>
         )
       }

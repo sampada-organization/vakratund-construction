@@ -5,7 +5,7 @@
     "image": "/media/work/gabion.jpg",
     "width": 494,
     "height": 618,
-    "summary": "Gabion wall construction, one of the work types in the company profile."
+    "summary": "Stone-filled gabion walls for slopes and channels."
   },
   {
     "slug": "machine-foundations",
@@ -13,7 +13,7 @@
     "image": "/media/work/foundation.jpg",
     "width": 455,
     "height": 569,
-    "summary": "Machine foundations and fabrication, shown in the company profile."
+    "summary": "Foundations and fabrication for plant and machinery."
   },
   {
     "slug": "floor-epoxy",
@@ -21,7 +21,7 @@
     "image": "/media/work/epoxy.jpg",
     "width": 526,
     "height": 657,
-    "summary": "Floor maintenance and epoxy, shown in the company profile."
+    "summary": "Floor repairs and epoxy finishes."
   },
   {
     "slug": "special-foundations",
@@ -29,7 +29,7 @@
     "image": "/media/work/special-foundation.jpg",
     "width": 429,
     "height": 537,
-    "summary": "Special foundations, shown in the company profile."
+    "summary": "Foundations that the ground or the machine asks for."
   },
   {
     "slug": "bitumen-roads",
@@ -37,7 +37,7 @@
     "image": "/media/work/bitumen.jpg",
     "width": 434,
     "height": 542,
-    "summary": "Bitumen road construction, shown in the company profile."
+    "summary": "Bitumen roads, measured and laid for a smoother run."
   },
   {
     "slug": "concrete-roads",
@@ -45,7 +45,7 @@
     "image": "/media/work/concrete-road.jpg",
     "width": 481,
     "height": 601,
-    "summary": "Concrete roads, shown in the company profile."
+    "summary": "Concrete roads for yards, plants, and public work."
   },
   {
     "slug": "parking",
@@ -53,7 +53,7 @@
     "image": "/media/work/parking.jpg",
     "width": 553,
     "height": 691,
-    "summary": "Parking construction with thermoplastic paint and signs, shown in the company profile."
+    "summary": "Parking bays with thermoplastic paint and signs."
   },
   {
     "slug": "mass-concrete",
@@ -61,6 +61,6 @@
     "image": "/media/work/mass-concrete.jpg",
     "width": 330,
     "height": 412,
-    "summary": "Mass concrete, shown in the company profile. The profile adds: and many more."
+    "summary": "Mass concrete, and other civil work besides the frames shown here."
   }
 ]

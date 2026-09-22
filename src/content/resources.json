@@ -3,12 +3,12 @@
     "title": "Company profile",
     "kind": "Presentation",
     "href": "/resources/vakratund-company-profile.pptx",
-    "note": "Seventeen slides: office, mission, safety line, plant counts, work types, and clients. The profile address is Laxmi Narayan Building, Dhadge Mala. The September 2026 office note says The Grand Centre."
+    "note": "Who we are, the plant, the work, and the clients."
   },
   {
-    "title": "Roads poster",
-    "kind": "Image",
+    "title": "Roads",
+    "kind": "Poster",
     "href": "/media/roads-poster.jpg",
-    "note": "Artwork supplied with the brief. It prints the name as VAKARTUND. The profile and the company email use Vakratund."
+    "note": "Precise planning, a strong foundation, and a better road."
   }
 ]

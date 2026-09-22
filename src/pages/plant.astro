@@ -11,7 +11,7 @@ const description = 'Plant and tools on the Vakratund Construction register: mix
   <section class="section">
     <div class="wrap">
       <h1>Plant and tools</h1>
-      <p class="intro">{plants.intro} Change a count from the desk, then rebuild the site. The previous public website called this page Tools.</p>
+      <p class="intro">{plants.intro}</p>
       <div class="counts">
         {
           plants.register.map((item) => (
@@ -19,22 +19,24 @@ const description = 'Plant and tools on the Vakratund Construction register: mix
               <Icon name={plantIcon(item.name)} />
               <b>{item.count}</b>
               <h2>{item.name}</h2>
-              <p>{item.note}</p>
+              {item.note && <p>{item.note}</p>}
             </article>
           ))
         }
       </div>
-      <h2 class="earlier">Also named on the previous website</h2>
-      <p>These lines had no count in the profile. Treat them as names to confirm, not as extra machines on top of the register.</p>
-      <div class="cards">
-        {plants.earlier.map((item) => (
-          <article>
-            <Icon name={plantIcon(item.name)} />
-            <h3>{item.name}</h3>
-            <p>{item.note}</p>
-          </article>
-        ))}
-      </div>
+      {
+        plants.earlier.length > 0 && (
+          <div class="cards">
+            {plants.earlier.map((item) => (
+              <article>
+                <Icon name={plantIcon(item.name)} />
+                <h3>{item.name}</h3>
+                <p>{item.note}</p>
+              </article>
+            ))}
+          </div>
+        )
+      }
     </div>
   </section>
 </Base>

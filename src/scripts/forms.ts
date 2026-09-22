@@ -3,8 +3,8 @@ const REASONS: Record<string, string> = {
   format: 'Check the phone, and the email if you typed one.',
   fast: 'Wait a moment, then send again.',
   rate: 'Too many notes from this network. Use call or WhatsApp.',
-  store: 'The office copy is not connected yet. Use call, WhatsApp, or email.',
-  github: 'The note did not reach the office inbox. Use call or WhatsApp.',
+  store: 'The office cannot take the note just now. Please call or use WhatsApp.',
+  github: 'The note did not reach the office. Please call or use WhatsApp.',
 };
 
 function stamp(form: HTMLFormElement) {
@@ -165,7 +165,7 @@ export function bindForms() {
         const slot = form.querySelector<HTMLElement>('[data-result]');
         if (!response.ok || payload.ok === false) {
           if (slot) {
-            slot.textContent = REASONS[String(payload.reason || '')] || 'The desk did not take that note.';
+            slot.textContent = REASONS[String(payload.reason || '')] || 'That note was not received. Please call or use WhatsApp.';
           }
           return;
         }
@@ -174,7 +174,7 @@ export function bindForms() {
         stamp(form);
       } catch {
         const slot = form.querySelector<HTMLElement>('[data-result]');
-        if (slot) slot.textContent = 'The desk did not answer. Use call or WhatsApp.';
+        if (slot) slot.textContent = 'The office did not receive that. Please call or use WhatsApp.';
       } finally {
         if (button) button.disabled = false;
       }

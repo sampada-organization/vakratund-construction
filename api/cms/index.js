@@ -65,7 +65,7 @@ module.exports = async function (context, req) {
     context.res = json(req, 403, {
       ok: false,
       reason: 'production-immutable',
-      hint: 'Edit src/content in git. The free Azure host does not write files.',
+      hint: 'This published copy cannot be changed here.',
     });
     return;
   }
