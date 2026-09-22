@@ -30,10 +30,7 @@ const related = projects.filter((project) =>
                 <li>
                   <a href={url(`/projects/${project.slug}`)}>
                     <img src={url(project.image)} width={project.width} height={project.height} alt="" loading="lazy" decoding="async" />
-                    <span>
-                      <small>{project.use}</small>
-                      {project.title}
-                    </span>
+                    <span>{project.title}</span>
                   </a>
                 </li>
               ))}

@@ -1,14 +1,12 @@
 ---
-import { url } from '../lib/content';
+import { services, url } from '../lib/content';
 
-const frames = [
-  { src: '/media/made/road.jpg', title: 'Roads' },
-  { src: '/media/made/foundation.jpg', title: 'Foundations' },
-  { src: '/media/made/wall.jpg', title: 'Walls' },
-  { src: '/media/made/floor.jpg', title: 'Floors' },
-  { src: '/media/made/yard.jpg', title: 'Yards' },
-  { src: '/media/made/building.jpg', title: 'Buildings' },
-];
+const order = ['roads', 'foundations', 'walls', 'floors', 'yards', 'buildings'];
+const frames = order.flatMap((slug) => {
+  const service = services.find((item) => item.slug === slug);
+  if (!service) return [];
+  return [{ ...service, src: service.image }];
+});
 ---
 
 <div class="stage" data-stage>
@@ -26,6 +24,19 @@ const frames = [
       />
     ))
   }
+  <div class="stage-copy">
+    {
+      frames.map((frame, index) => (
+        <article class={index === 0 ? 'is-on' : ''} aria-hidden={index === 0 ? undefined : 'true'}>
+          <h2>{frame.title}</h2>
+          <p>{frame.summary}</p>
+          <a href={url(`/services/${frame.slug}`)} tabindex={index === 0 ? 0 : -1} aria-label={`Further: ${frame.title}`}>
+            Further
+          </a>
+        </article>
+      ))
+    }
+  </div>
   <div class="stage-controls">
     <button type="button" data-prev aria-label="Previous pictures">Previous</button>
     <button type="button" data-next aria-label="Next pictures">Next</button>
@@ -44,6 +55,7 @@ const frames = [
 <script>
   document.querySelectorAll<HTMLElement>('[data-stage]').forEach((root) => {
     const shots = [...root.querySelectorAll<HTMLImageElement>(':scope > img')];
+    const lines = [...root.querySelectorAll<HTMLElement>('.stage-copy article')];
     const dialog = root.querySelector('dialog');
     const view = dialog?.querySelector('img');
     if (shots.length === 0 || !dialog || !view) return;
@@ -53,12 +65,18 @@ const frames = [
     const show = (next: number) => {
       index = (next + shots.length) % shots.length;
       shots.forEach((shot, i) => shot.classList.toggle('is-on', i === index));
+      lines.forEach((line, i) => {
+        const on = i === index;
+        line.classList.toggle('is-on', on);
+        line.toggleAttribute('aria-hidden', !on);
+        line.querySelector('a')?.setAttribute('tabindex', on ? '0' : '-1');
+      });
     };
     const stop = () => window.clearInterval(timer);
     const start = () => {
       stop();
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      timer = window.setInterval(() => show(index + 1), 4800);
+      timer = window.setInterval(() => show(index + 1), 5200);
     };
     const open = (at: number) => {
       stop();

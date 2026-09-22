@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import HeroSlides from '../components/HeroSlides.astro';
+import StatsBar from '../components/StatsBar.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import WorkGrid from '../components/WorkGrid.astro';
 import Icon from '../components/Icon.astro';
@@ -42,6 +43,8 @@ const jsonLd = {
     </div>
   </section>
 
+  <StatsBar />
+
   <section class="section" id="services">
     <div class="wrap">
       <h2>Services</h2>
@@ -49,10 +52,13 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section alt" id="work">
     <div class="wrap">
-      <h2>Work</h2>
-      <WorkGrid />
+      <header class="row-head">
+        <h2>Work</h2>
+        <a href={url('/projects')} aria-label="Further: Work">Further</a>
+      </header>
+      <WorkGrid minimal />
     </div>
   </section>
 
