@@ -5,7 +5,8 @@ const pages = ['/', '/projects', '/plant', '/process', '/clients', '/resources',
 test('home states the work and the real phone', async ({ page }, testInfo) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/Vakratund Construction/);
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('We build structures you desire.');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Vakratund Construction');
+  await expect(page.locator('.tagline')).toHaveText('We build structures you desire.');
   await expect(page.getByRole('link', { name: /Call 99605 32729/i }).first()).toHaveAttribute('href', 'tel:+919960532729');
   await expect(page.getByRole('link', { name: 'WhatsApp' }).first()).toHaveAttribute('href', /wa\.me\/919960532729/);
   await expect(page.getByRole('link', { name: /missed call/i })).toHaveCount(0);

@@ -34,9 +34,10 @@ const jsonLd = {
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="kicker">Chakan · civil contractor</p>
-        <h1>{site.tagline}</h1>
-        <p class="lede">{site.promise}</p>
+        <p class="kicker">Chakan · civil contractor · since {site.established}</p>
+        <h1>{site.name}</h1>
+        <p class="tagline">{site.tagline}</p>
+        <p class="lede">{site.promise} Proprietor {site.proprietor}. One office, one answer.</p>
         <div class="hero-actions">
           <a class="visit" href={url('/meet')}>Book a site visit</a>
           <a class="ghost" href={url('/plant')}>See the plant</a>
@@ -146,7 +147,7 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section" id="catch">
+  <section class="section commission" id="catch">
     <div class="wrap">
       <h2>Put the work on the desk</h2>
       <p>
