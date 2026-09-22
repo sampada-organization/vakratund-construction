@@ -26,7 +26,7 @@ describe('published facts', () => {
     expect(site.proprietor).toBe('Prajot Vikas Dhadge');
     expect(site.office.lines.join(' ')).toContain('Grand Centre');
     expect(JSON.stringify(site)).not.toContain('9970099700');
-    expect(services).toHaveLength(7);
+    expect(services).toHaveLength(6);
     expect(clients.map((client) => client.name)).toContain('SANY');
     expect(clients.every((client) => client.logo.startsWith('/media/clients/'))).toBe(true);
     expect(plants.register.find((item) => item.name === 'Transit mixer')?.count).toBe(5);
@@ -124,7 +124,8 @@ describe('cms API', () => {
       body: {},
     });
     expect(opened.status).toBe(200);
-    expect(JSON.parse(opened.body).services.length).toBe(7);
+    expect(JSON.parse(opened.body).services.length).toBe(6);
+    expect(JSON.parse(opened.body).pages.length).toBeGreaterThan(0);
     process.env.WEBSITE_HOSTNAME = 'vakratund.azurestaticapps.net';
     try {
       const frozen = await invoke(handler, {

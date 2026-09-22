@@ -1,30 +1,50 @@
 [
   {
-    "title": "Building construction",
-    "summary": "Residential and industrial buildings."
-  },
-  {
+    "slug": "roads",
     "title": "Road construction",
-    "summary": "Bitumen roads and concrete roads."
+    "summary": "Bitumen roads and concrete roads for yards, plants, and public work.",
+    "detail": "The road is measured, laid, and finished so the next run is smoother. Bitumen and concrete are both done by the same crew.",
+    "image": "/media/made/road.jpg",
+    "tag": "road"
   },
   {
-    "title": "Civil works",
-    "summary": "Civil work for private sites and for public bodies."
+    "slug": "foundations",
+    "title": "Foundations",
+    "summary": "Machine foundations, special foundations, and mass concrete.",
+    "detail": "Foundations for plant and machinery, including the ones the ground or the machine asks for, and mass concrete besides the frames.",
+    "image": "/media/made/foundation.jpg",
+    "tag": "foundation"
   },
   {
-    "title": "RCC and concrete",
-    "summary": "Reinforced concrete, mass concrete, and machine foundations."
+    "slug": "floors",
+    "title": "Floors",
+    "summary": "Floor repairs and epoxy finishes for working sheds.",
+    "detail": "Worn floors are repaired and finished in epoxy where the shed needs a surface that can take the work.",
+    "image": "/media/made/floor.jpg",
+    "tag": "floor"
   },
   {
-    "title": "Brick and masonry",
-    "summary": "Brickwork and masonry."
+    "slug": "walls",
+    "title": "Walls and gabions",
+    "summary": "Stone-filled gabion walls for slopes and channels.",
+    "detail": "Gabion walls hold a slope or a channel. The stone stays in the mesh, and the line follows the ground.",
+    "image": "/media/made/wall.jpg",
+    "tag": "wall"
   },
   {
-    "title": "Government and infrastructure",
-    "summary": "Government contracts since 2016."
+    "slug": "yards",
+    "title": "Yards and plotting",
+    "summary": "Parking bays, lines, signs, and plotting for a new site.",
+    "detail": "A yard needs bays, lines, and signs before the machines move in. Plotting sets out a new site the same way.",
+    "image": "/media/made/yard.jpg",
+    "tag": "yard"
   },
   {
-    "title": "Plotting development",
-    "summary": "Layout and plotting for a new site."
+    "slug": "buildings",
+    "title": "Buildings",
+    "summary": "Building frames, brickwork, and masonry.",
+    "detail": "Frames, brick, and masonry for a building. Reinforced concrete sits inside this work, not beside it as a separate trade.",
+    "image": "/media/made/building.jpg",
+    "tag": "building"
   }
 ]

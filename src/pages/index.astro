@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import Slideshow from '../components/Slideshow.astro';
-import Trade from '../components/Trade.astro';
+import HeroSlides from '../components/HeroSlides.astro';
+import ServiceCards from '../components/ServiceCards.astro';
 import WorkGrid from '../components/WorkGrid.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
@@ -38,14 +38,14 @@ const jsonLd = {
       <p class="kicker">Chakan · since {site.established}</p>
       <h1>{site.name}</h1>
       <p class="tagline">{site.tagline}</p>
-      <Slideshow />
+      <HeroSlides />
     </div>
   </section>
 
   <section class="section" id="services">
     <div class="wrap">
       <h2>Services</h2>
-      <Trade />
+      <ServiceCards />
     </div>
   </section>
 

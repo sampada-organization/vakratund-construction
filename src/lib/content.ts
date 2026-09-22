@@ -5,8 +5,9 @@ import plants from '../content/plants.json';
 import clients from '../content/clients.json';
 import resources from '../content/resources.json';
 import processSteps from '../content/process.json';
+import pages from '../content/pages.json';
 
-export { site, services, projects, plants, clients, resources, processSteps as process };
+export { site, services, projects, plants, clients, resources, pages, processSteps as process };
 
 const waText = 'Hello Vakratund Construction. I have a site to discuss.';
 
@@ -20,6 +21,10 @@ export const links = {
 
 export function projectBySlug(slug: string) {
   return projects.find((item) => item.slug === slug);
+}
+
+export function serviceBySlug(slug: string) {
+  return services.find((item) => item.slug === slug);
 }
 
 /** Prefix a site path so GitHub Pages project URLs and the custom domain both work. */

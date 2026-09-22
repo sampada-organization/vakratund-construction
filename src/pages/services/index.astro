@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+
+const description = 'Roads, foundations, floors, walls, yards, and buildings by Vakratund Construction, Chakan.';
+---
+
+<Base title="Services" description={description}>
+  <section class="section">
+    <div class="wrap">
+      <h1>Services</h1>
+      <p class="intro">The trades are grouped by the job, not by a material that shows up in every job.</p>
+      <ServiceCards />
+    </div>
+  </section>
+</Base>

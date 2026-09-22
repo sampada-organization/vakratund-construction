@@ -1,11 +1,30 @@
 ---
 import { projects, url } from '../lib/content';
+
+const tags = [...new Set(projects.flatMap((project) => String(project.tags || '').split(',').map((tag) => tag.trim()).filter(Boolean)))];
+const uses = [...new Set(projects.map((project) => String(project.use || '')).filter(Boolean))];
 ---
 
+<div class="filters" data-filters>
+  <div>
+    <p>Tags</p>
+    <button type="button" data-kind="tag" data-value="" aria-pressed="true">All</button>
+    {tags.map((tag) => (
+      <button type="button" data-kind="tag" data-value={tag} aria-pressed="false">
+        {tag.charAt(0).toUpperCase() + tag.slice(1)}
+      </button>
+    ))}
+  </div>
+  <div>
+    <p>Use</p>
+    <button type="button" data-kind="use" data-value="" aria-pressed="true">All</button>
+    {uses.map((use) => <button type="button" data-kind="use" data-value={use} aria-pressed="false">{use}</button>)}
+  </div>
+</div>
 <ul class="work-grid">
   {
     projects.map((project) => (
-      <li>
+      <li data-tags={project.tags} data-use={project.use}>
         <a href={url(`/projects/${project.slug}`)}>
           <img
             src={url(project.image)}
@@ -16,7 +35,7 @@ import { projects, url } from '../lib/content';
             decoding="async"
           />
           <span>
-            <small>Work</small>
+            <small>{project.use}</small>
             {project.title}
           </span>
         </a>
@@ -24,3 +43,31 @@ import { projects, url } from '../lib/content';
     ))
   }
 </ul>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-filters]').forEach((bar) => {
+    const grid = bar.nextElementSibling;
+    if (!grid) return;
+    const cards = [...grid.querySelectorAll<HTMLElement>('li')];
+    const chosen = { tag: '', use: '' };
+    const apply = () => {
+      cards.forEach((card) => {
+        const tags = (card.dataset.tags || '').split(',').map((tag) => tag.trim());
+        const use = card.dataset.use || '';
+        const tagOk = !chosen.tag || tags.includes(chosen.tag);
+        const useOk = !chosen.use || use === chosen.use;
+        card.hidden = !(tagOk && useOk);
+      });
+    };
+    bar.querySelectorAll<HTMLButtonElement>('button').forEach((button) => {
+      button.addEventListener('click', () => {
+        const kind = button.dataset.kind === 'use' ? 'use' : 'tag';
+        chosen[kind] = button.dataset.value || '';
+        bar.querySelectorAll(`button[data-kind="${kind}"]`).forEach((peer) => {
+          peer.setAttribute('aria-pressed', String(peer === button));
+        });
+        apply();
+      });
+    });
+  });
+</script>

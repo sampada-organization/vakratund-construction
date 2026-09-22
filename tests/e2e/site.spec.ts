@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const pages = ['/', '/projects', '/plant', '/process', '/clients', '/profile', '/resources', '/identity', '/contact', '/onboard', '/meet', '/admin', '/legal/privacy'];
+const pages = ['/', '/projects', '/services', '/services/roads', '/plant', '/process', '/clients', '/profile', '/resources', '/identity', '/contact', '/onboard', '/meet', '/admin', '/legal/privacy'];
 
 test('home states the work and the real phone', async ({ page }, testInfo) => {
   await page.goto('/');
@@ -12,9 +12,13 @@ test('home states the work and the real phone', async ({ page }, testInfo) => {
   await expect(page.getByRole('link', { name: /missed call/i })).toHaveCount(0);
   await expect(page.locator('body')).not.toContainText('9970099700');
   await expect(page.locator('body')).not.toContainText('VAKARTUND');
-  await expect(page.locator('[data-reel] img').first()).toBeVisible();
-  await expect(page.locator('#services .trade svg').first()).toBeVisible();
+  await expect(page.locator('[data-stage] img').first()).toBeVisible();
+  await expect(page.locator('.service-grid a').first()).toBeVisible();
   await expect(page.locator('.work-grid img').first()).toBeVisible();
+  await expect(page.locator('.yard-bits')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Road', exact: true }).click();
+  await expect(page.locator('.work-grid').getByRole('link', { name: /Bitumen roads/ })).toBeVisible();
+  await expect(page.locator('.work-grid').getByRole('link', { name: /Gabion wall/ })).toBeHidden();
   await page.getByRole('button', { name: 'Next pictures' }).click();
   await page.getByRole('button', { name: 'View full', exact: true }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
@@ -86,7 +90,7 @@ test('a client can come on board', async ({ page }) => {
   await page.getByLabel('Your name').fill('A. Patil');
   await page.getByLabel('Phone').fill('9845012345');
   await page.getByLabel('Site location').fill('Chakan');
-  await page.getByLabel('Work').selectOption('Civil works');
+  await page.getByLabel('Work').selectOption('Foundations');
   await page.getByRole('button', { name: 'Come on board' }).click();
   await expect(page.locator('[data-result]')).toContainText('Received');
 });
@@ -95,6 +99,7 @@ test('the office editor opens with the password and lists services', async ({ pa
   await page.goto('/admin');
   await page.getByLabel('Password').fill('vakratund-dev');
   await page.getByRole('button', { name: 'Open', exact: true }).click();
-  await expect(page.locator('[data-list="services"] input').first()).toHaveValue('Building construction');
+  await expect(page.locator('[data-list="services"] input').first()).toHaveValue('roads');
+  await expect(page.locator('[data-list="pages"] input').first()).toHaveValue('Work');
   await expect(page.getByRole('button', { name: 'Save', exact: true })).toBeVisible();
 });

@@ -19,6 +19,7 @@ interface Bundle {
   };
   services: Row[];
   projects: Row[];
+  pages: Row[];
   plants: { intro: string; register: Row[]; earlier: Row[] };
   clients: Row[];
   resources: Row[];
@@ -33,14 +34,24 @@ interface Field {
 }
 
 const FIELDS: Record<string, Field[]> = {
+  pages: [
+    { key: 'label', label: 'Menu name' },
+    { key: 'href', label: 'Path' },
+  ],
   services: [
+    { key: 'slug', label: 'Slug' },
     { key: 'title', label: 'Title' },
     { key: 'summary', label: 'Summary', area: true },
+    { key: 'detail', label: 'Detail', area: true },
+    { key: 'image', label: 'Image path' },
+    { key: 'tag', label: 'Tag' },
   ],
   projects: [
     { key: 'slug', label: 'Slug' },
     { key: 'title', label: 'Title' },
     { key: 'summary', label: 'Summary', area: true },
+    { key: 'tags', label: 'Tags, comma separated' },
+    { key: 'use', label: 'Use case' },
     { key: 'image', label: 'Image path' },
     { key: 'width', label: 'Width', number: true },
     { key: 'height', label: 'Height', number: true },
@@ -151,6 +162,7 @@ function paint(next: Bundle) {
   writeValue('maps', next.site.office?.maps || '');
   writeValue('mission', (next.site.mission || []).join('\n'));
   writeValue('plants-intro', next.plants.intro);
+  paintList('pages', next.pages || []);
   paintList('services', next.services);
   paintList('projects', next.projects);
   paintList('register', next.plants.register);
@@ -191,6 +203,7 @@ function collect(): Bundle | null {
   next.site.office.maps = readValue('maps');
   next.site.mission = readValue('mission').split('\n').map((line) => line.trim()).filter(Boolean);
   next.plants.intro = readValue('plants-intro');
+  next.pages = collectList('pages');
   next.services = collectList('services');
   next.projects = collectList('projects').map((item) => {
     const previous = bundle.projects.find((project) => project.slug === item.slug);

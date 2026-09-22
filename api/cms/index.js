@@ -6,6 +6,7 @@ const FILES = {
   site: 'site.json',
   services: 'services.json',
   projects: 'projects.json',
+  pages: 'pages.json',
   plants: 'plants.json',
   clients: 'clients.json',
   resources: 'resources.json',
@@ -30,7 +31,8 @@ function bundleOk(body) {
   for (const key of Object.keys(FILES)) {
     if (body[key] == null) return false;
   }
-  if (!Array.isArray(body.services) || !Array.isArray(body.projects)) return false;
+  if (!Array.isArray(body.services) || !Array.isArray(body.projects) || !Array.isArray(body.pages)) return false;
+  if (!body.pages.every((item) => item && item.href && item.label)) return false;
   if (!Array.isArray(body.clients) || !Array.isArray(body.resources) || !Array.isArray(body.process)) return false;
   if (!body.plants || !Array.isArray(body.plants.register) || !Array.isArray(body.plants.earlier)) return false;
   if (!body.site || typeof body.site !== 'object' || Array.isArray(body.site)) return false;

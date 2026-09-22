@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import { projects, services, url } from '../../lib/content';
+
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+const { service } = Astro.props;
+const related = projects.filter((project) =>
+  String(project.tags || '')
+    .split(',')
+    .map((tag) => tag.trim())
+    .includes(service.tag),
+);
+---
+
+<Base title={service.title} description={service.summary}>
+  <section class="section">
+    <div class="wrap service-detail">
+      <img src={url(service.image)} width="1162" height="674" alt="" fetchpriority="high" decoding="async" />
+      <h1>{service.title}</h1>
+      <p class="intro">{service.detail}</p>
+      {
+        related.length > 0 && (
+          <>
+            <h2>Work in this trade</h2>
+            <ul class="work-grid">
+              {related.map((project) => (
+                <li>
+                  <a href={url(`/projects/${project.slug}`)}>
+                    <img src={url(project.image)} width={project.width} height={project.height} alt="" loading="lazy" decoding="async" />
+                    <span>
+                      <small>{project.use}</small>
+                      {project.title}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+      <p><a class="visit" href={url(`/meet?topic=${encodeURIComponent(service.title)}`)}>Book a visit</a></p>
+    </div>
+  </section>
+</Base>

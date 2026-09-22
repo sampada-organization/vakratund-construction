@@ -39,7 +39,7 @@ const description = `${site.name}, ${site.legalForm.toLowerCase()} in Chakan sin
       <div class="cards">
         {services.map((service) => (
           <article>
-            <h3>{service.title}</h3>
+            <h3><a href={url(`/services/${service.slug}`)}>{service.title}</a></h3>
             <p>{service.summary}</p>
           </article>
         ))}

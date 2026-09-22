@@ -1,0 +1,9 @@
+[
+  { "href": "/projects", "label": "Work" },
+  { "href": "/services", "label": "Services" },
+  { "href": "/plant", "label": "Plant" },
+  { "href": "/process", "label": "Process" },
+  { "href": "/clients", "label": "Clients" },
+  { "href": "/profile", "label": "Profile" },
+  { "href": "/contact", "label": "Contact" }
+]

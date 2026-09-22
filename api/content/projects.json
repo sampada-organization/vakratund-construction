@@ -7,10 +7,24 @@
     "height": 618,
     "summary": "Stone-filled gabion walls for slopes and channels.",
     "gallery": [
-      { "src": "/media/work/gabion.jpg", "width": 494, "height": 618 },
-      { "src": "/media/gallery/gabion-2.jpg", "width": 417, "height": 620 },
-      { "src": "/media/gallery/gabion-3.jpg", "width": 511, "height": 618 }
-    ]
+      {
+        "src": "/media/work/gabion.jpg",
+        "width": 494,
+        "height": 618
+      },
+      {
+        "src": "/media/gallery/gabion-2.jpg",
+        "width": 417,
+        "height": 620
+      },
+      {
+        "src": "/media/gallery/gabion-3.jpg",
+        "width": 511,
+        "height": 618
+      }
+    ],
+    "tags": "wall",
+    "use": "Slopes and channels"
   },
   {
     "slug": "machine-foundations",
@@ -20,10 +34,24 @@
     "height": 569,
     "summary": "Foundations and fabrication for plant and machinery.",
     "gallery": [
-      { "src": "/media/work/foundation.jpg", "width": 455, "height": 569 },
-      { "src": "/media/gallery/found-2.jpg", "width": 470, "height": 620 },
-      { "src": "/media/gallery/found-3.jpg", "width": 468, "height": 620 }
-    ]
+      {
+        "src": "/media/work/foundation.jpg",
+        "width": 455,
+        "height": 569
+      },
+      {
+        "src": "/media/gallery/found-2.jpg",
+        "width": 470,
+        "height": 620
+      },
+      {
+        "src": "/media/gallery/found-3.jpg",
+        "width": 468,
+        "height": 620
+      }
+    ],
+    "tags": "foundation",
+    "use": "Plant and machinery"
   },
   {
     "slug": "floor-epoxy",
@@ -33,10 +61,24 @@
     "height": 657,
     "summary": "Floor repairs and epoxy finishes.",
     "gallery": [
-      { "src": "/media/work/epoxy.jpg", "width": 526, "height": 657 },
-      { "src": "/media/gallery/epoxy-2.jpg", "width": 746, "height": 657 },
-      { "src": "/media/gallery/epoxy-3.jpg", "width": 361, "height": 421 }
-    ]
+      {
+        "src": "/media/work/epoxy.jpg",
+        "width": 526,
+        "height": 657
+      },
+      {
+        "src": "/media/gallery/epoxy-2.jpg",
+        "width": 746,
+        "height": 657
+      },
+      {
+        "src": "/media/gallery/epoxy-3.jpg",
+        "width": 361,
+        "height": 421
+      }
+    ],
+    "tags": "floor",
+    "use": "Factory floors"
   },
   {
     "slug": "special-foundations",
@@ -46,10 +88,24 @@
     "height": 537,
     "summary": "Foundations that the ground or the machine asks for.",
     "gallery": [
-      { "src": "/media/work/special-foundation.jpg", "width": 429, "height": 537 },
-      { "src": "/media/gallery/special-2.jpg", "width": 558, "height": 398 },
-      { "src": "/media/gallery/special-3.jpg", "width": 605, "height": 384 }
-    ]
+      {
+        "src": "/media/work/special-foundation.jpg",
+        "width": 429,
+        "height": 537
+      },
+      {
+        "src": "/media/gallery/special-2.jpg",
+        "width": 558,
+        "height": 398
+      },
+      {
+        "src": "/media/gallery/special-3.jpg",
+        "width": 605,
+        "height": 384
+      }
+    ],
+    "tags": "foundation",
+    "use": "Difficult ground"
   },
   {
     "slug": "bitumen-roads",
@@ -59,10 +115,24 @@
     "height": 542,
     "summary": "Bitumen roads, measured and laid for a smoother run.",
     "gallery": [
-      { "src": "/media/work/bitumen.jpg", "width": 434, "height": 542 },
-      { "src": "/media/gallery/bitumen-2.jpg", "width": 482, "height": 542 },
-      { "src": "/media/gallery/bitumen-3.jpg", "width": 440, "height": 542 }
-    ]
+      {
+        "src": "/media/work/bitumen.jpg",
+        "width": 434,
+        "height": 542
+      },
+      {
+        "src": "/media/gallery/bitumen-2.jpg",
+        "width": 482,
+        "height": 542
+      },
+      {
+        "src": "/media/gallery/bitumen-3.jpg",
+        "width": 440,
+        "height": 542
+      }
+    ],
+    "tags": "road",
+    "use": "Plant yards and public roads"
   },
   {
     "slug": "concrete-roads",
@@ -72,10 +142,24 @@
     "height": 601,
     "summary": "Concrete roads for yards, plants, and public work.",
     "gallery": [
-      { "src": "/media/work/concrete-road.jpg", "width": 481, "height": 601 },
-      { "src": "/media/gallery/concrete-2.jpg", "width": 481, "height": 701 },
-      { "src": "/media/gallery/concrete-3.jpg", "width": 539, "height": 682 }
-    ]
+      {
+        "src": "/media/work/concrete-road.jpg",
+        "width": 481,
+        "height": 601
+      },
+      {
+        "src": "/media/gallery/concrete-2.jpg",
+        "width": 481,
+        "height": 701
+      },
+      {
+        "src": "/media/gallery/concrete-3.jpg",
+        "width": 539,
+        "height": 682
+      }
+    ],
+    "tags": "road",
+    "use": "Yards and public work"
   },
   {
     "slug": "parking",
@@ -85,10 +169,24 @@
     "height": 691,
     "summary": "Parking bays with thermoplastic paint and signs.",
     "gallery": [
-      { "src": "/media/work/parking.jpg", "width": 553, "height": 691 },
-      { "src": "/media/gallery/park-2.jpg", "width": 553, "height": 693 },
-      { "src": "/media/gallery/park-3.jpg", "width": 379, "height": 443 }
-    ]
+      {
+        "src": "/media/work/parking.jpg",
+        "width": 553,
+        "height": 691
+      },
+      {
+        "src": "/media/gallery/park-2.jpg",
+        "width": 553,
+        "height": 693
+      },
+      {
+        "src": "/media/gallery/park-3.jpg",
+        "width": 379,
+        "height": 443
+      }
+    ],
+    "tags": "yard",
+    "use": "Parking and circulation"
   },
   {
     "slug": "mass-concrete",
@@ -98,9 +196,23 @@
     "height": 412,
     "summary": "Mass concrete, and other civil work besides the frames shown here.",
     "gallery": [
-      { "src": "/media/work/mass-concrete.jpg", "width": 330, "height": 412 },
-      { "src": "/media/gallery/mass-2.jpg", "width": 391, "height": 412 },
-      { "src": "/media/gallery/mass-3.jpg", "width": 482, "height": 407 }
-    ]
+      {
+        "src": "/media/work/mass-concrete.jpg",
+        "width": 330,
+        "height": 412
+      },
+      {
+        "src": "/media/gallery/mass-2.jpg",
+        "width": 391,
+        "height": 412
+      },
+      {
+        "src": "/media/gallery/mass-3.jpg",
+        "width": 482,
+        "height": 407
+      }
+    ],
+    "tags": "foundation",
+    "use": "Mass concrete"
   }
 ]

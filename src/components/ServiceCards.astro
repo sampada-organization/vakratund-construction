@@ -1,0 +1,19 @@
+---
+import { services, url } from '../lib/content';
+---
+
+<ul class="service-grid">
+  {
+    services.map((service) => (
+      <li>
+        <a href={url(`/services/${service.slug}`)}>
+          <img src={url(service.image)} width="1162" height="674" alt="" loading="lazy" decoding="async" />
+          <span>
+            <strong>{service.title}</strong>
+            {service.summary}
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

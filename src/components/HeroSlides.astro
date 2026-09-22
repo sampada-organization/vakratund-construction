@@ -1,0 +1,85 @@
+---
+import { url } from '../lib/content';
+
+const frames = [
+  { src: '/media/made/road.jpg', title: 'Roads' },
+  { src: '/media/made/foundation.jpg', title: 'Foundations' },
+  { src: '/media/made/wall.jpg', title: 'Walls' },
+  { src: '/media/made/floor.jpg', title: 'Floors' },
+  { src: '/media/made/yard.jpg', title: 'Yards' },
+  { src: '/media/made/building.jpg', title: 'Buildings' },
+];
+---
+
+<div class="stage" data-stage>
+  {
+    frames.map((frame, index) => (
+      <img
+        src={url(frame.src)}
+        width="1162"
+        height="674"
+        alt=""
+        class={index === 0 ? 'is-on' : ''}
+        loading={index === 0 ? 'eager' : 'lazy'}
+        fetchpriority={index === 0 ? 'high' : undefined}
+        decoding="async"
+      />
+    ))
+  }
+  <div class="stage-controls">
+    <button type="button" data-prev aria-label="Previous pictures">Previous</button>
+    <button type="button" data-next aria-label="Next pictures">Next</button>
+    <button type="button" data-open aria-label="View full">View full</button>
+  </div>
+  <dialog class="lightbox">
+    <img alt="" />
+    <div class="lightbox-bar">
+      <button type="button" class="lightbox-close" aria-label="Close">Close</button>
+      <button type="button" class="lightbox-prev" aria-label="Previous picture">Previous</button>
+      <button type="button" class="lightbox-next" aria-label="Next picture">Next</button>
+    </div>
+  </dialog>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-stage]').forEach((root) => {
+    const shots = [...root.querySelectorAll<HTMLImageElement>(':scope > img')];
+    const dialog = root.querySelector('dialog');
+    const view = dialog?.querySelector('img');
+    if (shots.length === 0 || !dialog || !view) return;
+    let index = 0;
+    let cursor = 0;
+    let timer = 0;
+    const show = (next: number) => {
+      index = (next + shots.length) % shots.length;
+      shots.forEach((shot, i) => shot.classList.toggle('is-on', i === index));
+    };
+    const stop = () => window.clearInterval(timer);
+    const start = () => {
+      stop();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      timer = window.setInterval(() => show(index + 1), 4800);
+    };
+    const open = (at: number) => {
+      stop();
+      cursor = (at + shots.length) % shots.length;
+      view.src = shots[cursor].currentSrc || shots[cursor].src;
+      if (!dialog.open) dialog.showModal();
+    };
+    root.querySelector('[data-prev]')?.addEventListener('click', () => show(index - 1));
+    root.querySelector('[data-next]')?.addEventListener('click', () => show(index + 1));
+    root.querySelector('[data-open]')?.addEventListener('click', () => open(index));
+    dialog.querySelector('.lightbox-close')?.addEventListener('click', () => dialog.close());
+    dialog.querySelector('.lightbox-prev')?.addEventListener('click', () => open(cursor - 1));
+    dialog.querySelector('.lightbox-next')?.addEventListener('click', () => open(cursor + 1));
+    dialog.addEventListener('close', () => start());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', () => {
+      if (!dialog.open) start();
+    });
+    start();
+  });
+</script>
