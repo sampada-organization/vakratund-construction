@@ -11,7 +11,7 @@ bash scripts/azure-bootstrap.sh
 
 `ENQUIRY_REPO` must be private. The public site repository only receives the deploy token.
 
-Custom domain `vakrtundconstruction.in` can attach on the Free SKU at no charge. DNS for that name is in `docs/wix.md`. There is no `CNAME` file until those records answer.
+The public domain is `vakrtundconstruction.com`. DNS notes are in `docs/wix.md`. `public/CNAME` carries that name for GitHub Pages.
 
 Visit alerts stay on the visitor’s phone: a browser notification in the open tab, a WhatsApp draft, an email draft, and a calendar file. Nothing is sent by a paid gateway.
 

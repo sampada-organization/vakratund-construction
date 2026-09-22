@@ -12,6 +12,7 @@ export default defineConfig({
     baseURL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    reducedMotion: 'reduce',
   },
   webServer: {
     command: 'node scripts/dev.mjs',

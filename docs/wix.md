@@ -1,20 +1,16 @@
 # Domain at Wix, site on GitHub Pages
 
-Wix cannot host this Astro site. Do not rebuild it in the Wix editor, and do not connect the domain to a Wix site. If `vakrtundconstruction.in` was bought at Wix, Wix stays the registrar. You only change DNS records. Wix does not let you change nameservers on a domain it sold.
+Wix cannot host this site, and no Wix plugin is required. Wix only holds the domain `vakrtundconstruction.com`. The site itself is GitHub Pages. DNS for that name already points at GitHub. Do not install a GitHub or Pages plugin inside Wix.
 
-Until those records answer, the site is:
-
-https://sampada-organization.github.io/vakratund-construction/
-
-There is no `CNAME` file in the project yet. Adding one before DNS answers would make that GitHub address jump to a domain that does not point here.
+The live address is https://vakrtundconstruction.com. `public/CNAME` contains that name. GitHub Pages was returning “There isn't a GitHub Pages site here” until this file was published.
 
 ## Records in Wix
 
 1. Log in at [wix.com](https://www.wix.com) → **Settings** → **Domains**.
-2. Next to `vakrtundconstruction.in`, **Domain Actions** → **Manage DNS Records**.
+2. Next to `vakrtundconstruction.com`, **Domain Actions** → **Manage DNS Records**.
 3. Leave the Wix nameservers as they are.
 
-### Apex (`vakrtundconstruction.in`)
+### Apex (`vakrtundconstruction.com`)
 
 Delete A records that point at Wix (`185.230.63.*` or similar). Add:
 
@@ -47,11 +43,6 @@ TTL 300 seconds is enough while this is launching.
 From this repo:
 
 ```bash
-gh variable set PRODUCTION_DOMAIN --repo sampada-organization/vakratund-construction --body vakrtundconstruction.in
-printf 'vakrtundconstruction.in\n' > public/CNAME
-git add public/CNAME && git commit -m "Attach vakrtundconstruction.in" && git push
-```
-
-GitHub then issues a free certificate. HTTPS can take up to an hour. The public address becomes `https://vakrtundconstruction.in`. The GitHub Pages address keeps working as well.
+The domain variable is `PRODUCTION_DOMAIN=vakrtundconstruction.com`. GitHub issues the certificate after the CNAME file is published. HTTPS can take up to an hour.
 
 Call, WhatsApp, and email links work on Pages. The contact forms and the desk do not: Pages has no API. Those run on the computer with `npm run dev:full`, and later on the free Azure host if you turn that on.

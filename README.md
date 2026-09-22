@@ -2,7 +2,7 @@
 
 First version of the Chakan site. Static Astro pages, a small desk for the copy, and three intake forms. The host is the same shape as the Dinymeo site: Azure Static Web Apps, Free SKU only, GitHub Actions.
 
-The public name is **Vakratund**. The domain is `vakrtundconstruction.in`.
+The public name is **Vakratund**. The domain is `vakrtundconstruction.com`.
 
 ## Run
 
@@ -41,9 +41,9 @@ Call, WhatsApp, and email are links. The visit form also raises a browser notifi
 
 GitHub Pages, until the domain DNS is pointed:
 
-https://sampada-organization.github.io/vakratund-construction/
+https://vakrtundconstruction.com
 
-Wix cannot host this build. If the domain was bought there, Wix only keeps the registration. The records that point `vakrtundconstruction.in` at Pages are in [docs/wix.md](docs/wix.md).
+Wix only keeps the domain registration. It does not host the site, and it does not need a plugin. DNS notes are in [docs/wix.md](docs/wix.md).
 
 The desk (`/admin`) edits words, plant counts, clients, projects, and files. It does not receive bookings. Bookings are the public forms. Save works only on a computer running `npm run dev:full`. GitHub Pages shows the last published build and cannot save from the browser.
 
