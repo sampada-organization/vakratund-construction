@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "gabion-wall",
+    "title": "Gabion wall",
+    "image": "/media/work/gabion.jpg",
+    "width": 494,
+    "height": 618,
+    "summary": "Gabion wall construction, one of the work types in the company profile."
+  },
+  {
+    "slug": "machine-foundations",
+    "title": "Machine foundations",
+    "image": "/media/work/foundation.jpg",
+    "width": 455,
+    "height": 569,
+    "summary": "Machine foundations and fabrication, shown in the company profile."
+  },
+  {
+    "slug": "floor-epoxy",
+    "title": "Floor maintenance and epoxy",
+    "image": "/media/work/epoxy.jpg",
+    "width": 526,
+    "height": 657,
+    "summary": "Floor maintenance and epoxy, shown in the company profile."
+  },
+  {
+    "slug": "special-foundations",
+    "title": "Special foundations",
+    "image": "/media/work/special-foundation.jpg",
+    "width": 429,
+    "height": 537,
+    "summary": "Special foundations, shown in the company profile."
+  },
+  {
+    "slug": "bitumen-roads",
+    "title": "Bitumen roads",
+    "image": "/media/work/bitumen.jpg",
+    "width": 434,
+    "height": 542,
+    "summary": "Bitumen road construction, shown in the company profile."
+  },
+  {
+    "slug": "concrete-roads",
+    "title": "Concrete roads",
+    "image": "/media/work/concrete-road.jpg",
+    "width": 481,
+    "height": 601,
+    "summary": "Concrete roads, shown in the company profile."
+  },
+  {
+    "slug": "parking",
+    "title": "Parking lines and signs",
+    "image": "/media/work/parking.jpg",
+    "width": 553,
+    "height": 691,
+    "summary": "Parking construction with thermoplastic paint and signs, shown in the company profile."
+  },
+  {
+    "slug": "mass-concrete",
+    "title": "Mass concrete",
+    "image": "/media/work/mass-concrete.jpg",
+    "width": 330,
+    "height": 412,
+    "summary": "Mass concrete, shown in the company profile. The profile adds: and many more."
+  }
+]

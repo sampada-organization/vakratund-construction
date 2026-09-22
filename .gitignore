@@ -1,0 +1,15 @@
+dist/
+.astro/
+node_modules/
+.env
+.env.production
+.env.local
+.DS_Store
+.idea/
+*.log
+.data/
+test-results/
+playwright-report/
+blob-report/
+.azure/
+coverage/

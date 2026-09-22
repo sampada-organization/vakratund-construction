@@ -1,0 +1,22 @@
+---
+import { process as steps } from '../lib/content';
+
+interface Props {
+  heading?: 'h2' | 'h3';
+}
+const { heading: Heading = 'h3' } = Astro.props;
+---
+
+<ol class="steps">
+  {
+    steps.map((step, index) => (
+      <li class="step">
+        <span>{String(index + 1).padStart(2, '0')}</span>
+        <div>
+          <Heading>{step.title}</Heading>
+          <p>{step.text}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>

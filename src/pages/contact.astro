@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { links, site } from '../lib/content';
+
+const description = `Office of Vakratund Construction at The Grand Centre, Chakan. Call ${site.phoneDisplay}.`;
+---
+
+<Base title="Contact" description={description}>
+  <section class="section">
+    <div class="wrap">
+      <h1>The office</h1>
+      <p class="intro">{site.office.lines.join(', ')}. {site.hours}.</p>
+      <p>
+        <a href={links.maps}>Open the map</a><br />
+        Phone <a href={links.tel}>{site.phoneDisplay}</a><br />
+        <a href={links.email}>{site.email}</a><br />
+        {site.proprietor}: <a href={links.proprietorEmail}>{site.proprietorEmail}</a>
+      </p>
+      <p class="note">
+        The company profile prints an earlier office at {site.profileOffice}. Use The Grand Centre unless the office says otherwise.
+      </p>
+      <h2>Write</h2>
+      <LeadForm kind="enquiry" />
+    </div>
+  </section>
+</Base>

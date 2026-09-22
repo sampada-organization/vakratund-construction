@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../lib/content';
+
+const description = 'What Vakratund Construction stores when you send a note from this site.';
+---
+
+<Base title="Privacy" description={description}>
+  <section class="section">
+    <div class="wrap">
+      <h1>Privacy</h1>
+      <p class="intro">
+        The forms ask for a name, a phone, and sometimes an email, a site, a time, and a note. That text is the enquiry.
+        It is not sold, and it is not used to build an advertising profile.
+      </p>
+      <p>
+        On the live site the note is filed as a private GitHub issue for the office. On a developer machine it is written
+        to a local file that is not part of the website. The free host does not add a separate database.
+      </p>
+      <p>
+        To ask for a note to be deleted, write to <a href={`mailto:${site.email}`}>{site.email}</a> or call
+        {site.phoneDisplay}. Say the phone number you used.
+      </p>
+      <p>Call, WhatsApp, and email leave a record on your phone as well as with the office.</p>
+    </div>
+  </section>
+</Base>

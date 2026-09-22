@@ -1,0 +1,33 @@
+{
+  "name": "vakratund-construction",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vakratund Construction — JAMstack site, CMS, and office desk",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4322",
+    "dev:full": "node scripts/dev.mjs",
+    "prebuild": "node scripts/sync-content.mjs",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1 --port 4322",
+    "astro": "astro",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/sitemap": "^3.6.0",
+    "@fontsource-variable/manrope": "^5.2.8",
+    "@fontsource-variable/newsreader": "^5.2.8",
+    "astro": "^5.14.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

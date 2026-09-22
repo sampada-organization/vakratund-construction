@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import { projectBySlug, projects, url } from '../../lib/content';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug } }));
+}
+
+const { slug } = Astro.params;
+const project = projectBySlug(slug || '');
+if (!project) throw new Error('Missing project');
+const description = `${project.title} by Vakratund Construction. ${project.summary}`;
+---
+
+<Base title={project.title} description={description}>
+  <article class="section">
+    <div class="wrap">
+      <p class="kicker" style="color: var(--blue)">Work · 2021 photograph</p>
+      <h1>{project.title}</h1>
+      <p class="intro">{project.summary}</p>
+      <figure class="figure">
+        <img
+          src={url(project.image)}
+          width={project.width}
+          height={project.height}
+          alt={`${project.title}, work photographed in 2021`}
+          fetchpriority="high"
+          decoding="async"
+        />
+        <figcaption>The company profile says the work pictures were executed in 2021. It does not name the site of each frame.</figcaption>
+      </figure>
+      {
+        project.slug === 'bitumen-roads' && (
+          <figure class="figure">
+            <img src={url('/media/roads-poster.jpg')} width="900" height="1352" alt="Roads poster with a survey tripod, roller, and backhoe" loading="lazy" decoding="async" />
+            <figcaption>
+              Roads poster supplied with the 2026 brief. The poster prints a misspelt name. The company name is Vakratund.
+            </figcaption>
+          </figure>
+        )
+      }
+      <p><a class="visit" href={`${url('/meet')}?topic=${encodeURIComponent(project.title)}`}>Book a visit about this work</a></p>
+    </div>
+  </article>
+</Base>

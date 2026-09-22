@@ -1,0 +1,158 @@
+---
+import Base from '../layouts/Base.astro';
+import Rise from '../components/Rise.astro';
+import Steps from '../components/Steps.astro';
+import WorkGrid from '../components/WorkGrid.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { clients, plants, services, site, url } from '../lib/content';
+
+const description =
+  'Vakratund Construction, Chakan. Civil works, roads, RCC, and government contracts since 2007. One proprietor and an owned plant.';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'GeneralContractor',
+  name: site.name,
+  url: new URL(import.meta.env.BASE_URL, Astro.site ?? 'https://vakrtundconstruction.in').href,
+  telephone: site.phoneTel,
+  email: site.email,
+  foundingDate: String(site.established),
+  founder: { '@type': 'Person', name: site.proprietor },
+  image: new URL(url('/brand/mark.jpg'), Astro.site ?? 'https://vakrtundconstruction.in').href,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Shop No. 113, 1st floor, The Grand Centre, Gat No. 1638',
+    addressLocality: 'Chakan',
+    postalCode: '410501',
+    addressRegion: 'Maharashtra',
+    addressCountry: 'IN',
+  },
+  areaServed: 'Chakan, Pune',
+};
+---
+
+<Base title={site.name} description={description} jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Chakan · civil contractor</p>
+        <h1>{site.tagline}</h1>
+        <p class="lede">{site.promise}</p>
+        <div class="hero-actions">
+          <a class="visit" href={url('/meet')}>Book a site visit</a>
+          <a class="ghost" href={url('/plant')}>See the plant</a>
+        </div>
+        <p class="measure">{site.measure}</p>
+      </div>
+      <Rise />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>One office, since {site.established}</h2>
+      <p>
+        {site.name} is a {site.legalForm.toLowerCase()}. Proprietor {site.proprietor}. The firm carries out civil work
+        for residential clients and industrial clients, and has worked as a government contractor since {site.governmentWorkSince}.
+        The profile states the promise without decoration: quality work, inside the given time, inside the prescribed budget.
+      </p>
+      <ul class="facts">
+        <li><div><strong>{site.established}</strong><span>Established</span></div></li>
+        <li><div><strong>{site.governmentWorkSince}</strong><span>Government work begins</span></div></li>
+        <li><div><strong>1</strong><span>Proprietor, one point of contact</span></div></li>
+      </ul>
+      <h3>What the profile sets out to do</h3>
+      <ol class="mission">
+        {site.mission.map((line) => <li>{line}</li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <header>
+        <h2>Services</h2>
+        <p>
+          The September 2026 note from the office lists these lines. The older profile already shows roads, foundations,
+          concrete, epoxy floors, gabion walls, and parking marks.
+        </p>
+      </header>
+      <div class="cards">
+        {services.map((service) => (
+          <article>
+            <h3>{service.title}</h3>
+            <p>{service.summary}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <header>
+        <h2>How a job runs</h2>
+        <p>Six steps taken from the profile and the previous site. Nothing here is a certificate number.</p>
+      </header>
+      <Steps />
+      <p><a href={url('/process')}>Read the process with the plant beside it</a></p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <header>
+        <h2>Work</h2>
+        <p>
+          These are the work types in the company profile. The profile says the photographs were executed in 2021, and that
+          there were many more jobs than the frames shown.
+        </p>
+      </header>
+      <WorkGrid />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <header>
+        <h2>Plant on the register</h2>
+        <p>{plants.intro}</p>
+      </header>
+      <div class="counts">
+        {plants.register.map((item) => (
+          <article class="count">
+            <b>{item.count}</b>
+            <h3>{item.name}</h3>
+          </article>
+        ))}
+      </div>
+      <p><a href={url('/plant')}>Names, counts, and what the old site called the same tools</a></p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <header>
+        <h2>Clients named in the profile</h2>
+        <p>All five are in Chakan. Logos are not redrawn here.</p>
+      </header>
+      <ul class="client-list">
+        {clients.map((client) => (
+          <li>
+            <strong>{client.name}</strong><br />
+            <small>{client.place}</small>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="catch">
+    <div class="wrap">
+      <h2>Put the work on the desk</h2>
+      <p>
+        Name, phone, and the kind of work. That is enough to start. If you would rather talk, call {site.phoneDisplay}, or use WhatsApp or email in the header.
+      </p>
+      <LeadForm kind="enquiry" compact />
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,78 @@
+---
+const teeth = [0, 45, 90, 135, 180, 225, 270, 315];
+const small = [0, 60, 120, 180, 240, 300];
+---
+
+<div class="rise" aria-hidden="true">
+  <svg class="rise-svg" viewBox="0 0 640 480">
+    <g class="gear gear-a" transform="translate(58 70)">
+      <g class="spin">
+        {teeth.map((deg) => <line x1="0" y1="-32" x2="0" y2="-46" transform={`rotate(${deg})`} />)}
+        <circle r="32" />
+        <circle r="8" />
+      </g>
+    </g>
+    <g class="gear gear-b" transform="translate(108 122)">
+      <g class="spin">
+        {small.map((deg) => <line x1="0" y1="-20" x2="0" y2="-30" transform={`rotate(${deg})`} />)}
+        <circle r="20" />
+        <circle r="5" />
+      </g>
+    </g>
+
+    <g class="structure">
+      <rect class="datum" x="156" y="404" width="250" height="4" />
+      <rect class="found" x="168" y="364" width="226" height="40" />
+      <g class="floor f1">
+        <rect class="col" x="184" y="312" width="14" height="52" />
+        <rect class="col" x="364" y="312" width="14" height="52" />
+        <rect class="slab" x="172" y="300" width="218" height="16" />
+        <rect class="win" x="214" y="324" width="22" height="28" />
+        <rect class="win" x="262" y="324" width="22" height="28" />
+        <rect class="win" x="310" y="324" width="22" height="28" />
+      </g>
+      <g class="floor f2">
+        <rect class="col" x="184" y="252" width="14" height="48" />
+        <rect class="col" x="364" y="252" width="14" height="48" />
+        <rect class="slab" x="172" y="240" width="218" height="16" />
+        <rect class="win" x="214" y="260" width="22" height="26" />
+        <rect class="win" x="262" y="260" width="22" height="26" />
+        <rect class="win" x="310" y="260" width="22" height="26" />
+      </g>
+      <g class="floor f3">
+        <rect class="col" x="184" y="196" width="14" height="44" />
+        <rect class="col" x="364" y="196" width="14" height="44" />
+        <rect class="slab" x="172" y="184" width="218" height="16" />
+        <rect class="win" x="214" y="204" width="22" height="24" />
+        <rect class="win" x="262" y="204" width="22" height="24" />
+        <rect class="win" x="310" y="204" width="22" height="24" />
+      </g>
+      <g class="floor f4">
+        <rect class="col" x="184" y="144" width="14" height="40" />
+        <rect class="col" x="364" y="144" width="14" height="40" />
+        <rect class="slab" x="172" y="132" width="218" height="16" />
+        <rect class="win" x="214" y="150" width="22" height="22" />
+        <rect class="win" x="262" y="150" width="22" height="22" />
+        <rect class="win" x="310" y="150" width="22" height="22" />
+      </g>
+      <g class="roof">
+        <rect class="slab" x="160" y="112" width="242" height="20" />
+      </g>
+    </g>
+
+    <g class="crane line">
+      <line x1="470" y1="156" x2="470" y2="400" />
+      <g class="jib">
+        <line x1="470" y1="132" x2="300" y2="118" />
+        <line class="cable" x1="312" y1="120" x2="312" y2="214" />
+        <path d="M304 214 h16 v12 h-10" />
+      </g>
+    </g>
+
+    <g class="tripod">
+      <path d="M560 300 L534 400 M560 300 L586 400 M560 300 L560 400" />
+      <circle cx="560" cy="292" r="8" />
+    </g>
+    <line class="ground" x1="28" y1="420" x2="616" y2="420" />
+  </svg>
+</div>

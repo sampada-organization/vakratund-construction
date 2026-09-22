@@ -1,0 +1,104 @@
+---
+import { services } from '../lib/content';
+
+interface Props {
+  kind: 'enquiry' | 'onboard' | 'meeting';
+  compact?: boolean;
+}
+const { kind, compact = false } = Astro.props;
+const endpoint = kind === 'enquiry' ? '/api/enquiry' : kind === 'meeting' ? '/api/meeting' : '/api/onboard';
+const preset = Astro.url.searchParams.get('topic') || '';
+const known = services.map((service) => service.title);
+const extra = preset && !known.includes(preset) ? preset : '';
+const label =
+  kind === 'meeting' ? 'Book the visit' : kind === 'onboard' ? 'Come on board' : compact ? 'Send the work' : 'Send to the office';
+---
+
+<form class="desk-form" data-endpoint={endpoint} data-kind={kind} method="post" action={endpoint}>
+  <p class="hp" aria-hidden="true">
+    <label>Company website <input name="company_website" tabindex="-1" autocomplete="off" /></label>
+  </p>
+  <input type="hidden" name="started_at" value="" />
+
+  {
+    kind === 'onboard' ? (
+      <>
+        <label>Firm or house name <input name="firm" required maxlength="120" autocomplete="organization" /></label>
+        <label>Your name <input name="person" required maxlength="80" autocomplete="name" /></label>
+      </>
+    ) : (
+      <label>Your name <input name="name" required maxlength="80" autocomplete="name" /></label>
+    )
+  }
+
+  <label>Phone <input name="phone" type="tel" required maxlength="20" autocomplete="tel" inputmode="tel" /></label>
+  <label>Email <input name="email" type="email" maxlength="120" autocomplete="email" /></label>
+  <p class="note">Email is optional. A phone number is enough.</p>
+
+  {
+    kind === 'enquiry' && (
+      <label>
+        Work
+        <select name="work" required={compact}>
+          <option value="">Choose</option>
+          {services.map((service) => (
+            <option value={service.title}>{service.title}</option>
+          ))}
+        </select>
+      </label>
+    )
+  }
+
+  {
+    kind === 'enquiry' && !compact && (
+      <label>Message <textarea name="message" required maxlength="2000" /></label>
+    )
+  }
+
+  {
+    kind === 'onboard' && (
+      <>
+        <label>Site location <input name="location" required maxlength="160" /></label>
+        <label>
+          Work
+          <select name="work" required>
+            <option value="">Choose</option>
+            {services.map((service) => (
+              <option value={service.title}>{service.title}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Rough measure <input name="measure" maxlength="120" placeholder="Plot area, road length, floors" />
+        </label>
+        <label>Note <textarea name="note" maxlength="1000" /></label>
+      </>
+    )
+  }
+
+  {
+    kind === 'meeting' && (
+      <>
+        <label>When <input name="when" type="datetime-local" required /></label>
+        <label>
+          Work
+          <select name="topic" required>
+            <option value="">Choose</option>
+            {extra && <option value={extra} selected>{extra}</option>}
+            {services.map((service) => (
+              <option value={service.title} selected={service.title === preset}>{service.title}</option>
+            ))}
+          </select>
+        </label>
+        <label>Place <input name="place" maxlength="160" placeholder="Site address, or the Chakan office" /></label>
+        <label>Note <textarea name="note" maxlength="1000" /></label>
+      </>
+    )
+  }
+
+  <button type="submit">{label}</button>
+  <div class="result" data-result role="status"></div>
+  <noscript>
+    <p>This form needs the script. Call, WhatsApp, or email — the links are in the header.</p>
+  </noscript>
+</form>

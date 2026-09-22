@@ -1,0 +1,53 @@
+---
+import Channels from './Channels.astro';
+import { site, url } from '../lib/content';
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const raw = Astro.url.pathname.replace(/\/$/, '');
+const here = raw === base || raw === '' ? '/' : raw.slice(base.length) || '/';
+const items = [
+  ['/projects', 'Work'],
+  ['/plant', 'Plant'],
+  ['/process', 'Process'],
+  ['/clients', 'Clients'],
+  ['/resources', 'Resources'],
+  ['/contact', 'Contact'],
+];
+---
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href={url('/')}>
+      <img src={url('/brand/mark.jpg')} width="319" height="262" alt="" fetchpriority="high" />
+      <span>
+        <strong>{site.name}</strong>
+        <small>Chakan · since {site.established}</small>
+      </span>
+    </a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="primary">Menu</button>
+    <nav class="primary" id="primary" aria-label="Primary">
+      {
+        items.map(([href, label]) => (
+          <a href={url(href)} aria-current={here === href ? 'page' : undefined}>
+            {label}
+          </a>
+        ))
+      }
+      <a class="visit" href={url('/meet')}>Book a visit</a>
+    </nav>
+  </div>
+  <Channels />
+</header>
+
+<script>
+  const root = document.documentElement;
+  const button = document.querySelector<HTMLButtonElement>('.menu');
+  const nav = document.querySelector<HTMLElement>('#primary');
+  button?.addEventListener('click', () => {
+    const open = !nav?.classList.contains('is-open');
+    nav?.classList.toggle('is-open', open);
+    button.setAttribute('aria-expanded', String(open));
+    button.textContent = open ? 'Close' : 'Menu';
+  });
+  root.classList.add('js');
+</script>

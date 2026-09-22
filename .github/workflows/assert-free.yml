@@ -1,0 +1,22 @@
+name: Assert free SKU
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  no-paid-sku:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refuse paid Azure SKUs in this repo
+        run: |
+          set -e
+          if grep -RniE 'sku["'\'']?\s*[:=]\s*["'\'']?(Standard|Standard2|Dedicated|Premium|Basic|Isolated)' \
+            --include='*.bicep' --include='*.yml' --include='*.yaml' --include='*.json' --include='*.sh' .; then
+            echo "Paid SKU mentioned. This site is locked to Azure Static Web Apps Free."
+            exit 1
+          fi
+          grep -n "name: 'Free'" infra/main.bicep
+          grep -n 'SKU="Free"' scripts/azure-bootstrap.sh

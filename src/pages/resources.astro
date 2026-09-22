@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import { resources, url } from '../lib/content';
+
+const description = 'Company profile and other files Vakratund Construction keeps on the site.';
+---
+
+<Base title="Resources" description={description}>
+  <section class="section">
+    <div class="wrap">
+      <h1>Resources</h1>
+      <p class="intro">
+        Files live in the site, not in a paid store. To add one: put the file in the project, add a line on this list
+        from the desk or in <code>src/content/resources.json</code>, and rebuild. The next bundle of drawings, rates, or
+        notes can land the same way.
+      </p>
+      <div class="resource-list">
+        {
+          resources.map((item) => (
+            <article>
+              <p class="kicker" style="color: var(--blue)">{item.kind}</p>
+              <h2><a href={url(item.href)}>{item.title}</a></h2>
+              <p>{item.note}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

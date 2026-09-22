@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+
+const description = 'Edit Vakratund Construction copy, plant, clients, projects, and resources.';
+const lists = [
+  ['services', 'Services'],
+  ['projects', 'Projects'],
+  ['register', 'Plant register'],
+  ['earlier', 'Earlier tool names'],
+  ['clients', 'Clients on the public list'],
+  ['resources', 'Resources'],
+  ['process', 'Process steps'],
+];
+---
+
+<Base title="Desk" description={description}>
+  <section class="section admin">
+    <div class="wrap">
+      <h1>Desk</h1>
+      <p class="intro">
+        This desk edits the public pages: the words, phone and email, plant counts, client names, project list, and
+        downloadable files. It does not take a booking. A booking is the form on Contact, Client identity, or Book a visit.
+      </p>
+      <p>
+        The password works on the computer running the project. Save writes the files there. Visitors see the change only
+        after those files are built and published. On GitHub Pages this page cannot save, because Pages has no desk.
+      </p>
+      <form id="gate" class="desk-form">
+        <label>Desk password <input name="password" type="password" autocomplete="current-password" required /></label>
+        <button type="submit">Open desk</button>
+      </form>
+      <p data-desk-msg role="status"></p>
+      <div id="editor" hidden>
+        <div class="toolbar">
+          <button class="save" id="save" type="button">Save content files</button>
+          <button class="tool" id="inbox-load" type="button">Load local inbox</button>
+        </div>
+        <h2>Office lines</h2>
+        <div class="desk-form">
+          <label>Tagline <input data-site="tagline" /></label>
+          <label>Promise <input data-site="promise" /></label>
+          <label>Measure <textarea data-site="measure"></textarea></label>
+          <label>Safety line <textarea data-site="safety"></textarea></label>
+          <label>Mission, one line each <textarea data-site="mission"></textarea></label>
+          <label>Proprietor <input data-site="proprietor" /></label>
+          <label>Phone as printed <input data-site="phoneDisplay" /></label>
+          <label>Phone link <input data-site="phoneTel" /></label>
+          <label>WhatsApp digits <input data-site="phoneWa" /></label>
+          <label>Office email <input data-site="email" /></label>
+          <label>Proprietor email <input data-site="proprietorEmail" /></label>
+          <label>Hours <input data-site="hours" /></label>
+          <label>Office lines, one line each <textarea data-site="lines"></textarea></label>
+          <label>Map link <input data-site="maps" /></label>
+          <label>Plant introduction <textarea data-site="plants-intro"></textarea></label>
+        </div>
+        <div class="lists">
+          {
+            lists.map(([id, label]) => (
+              <section>
+                <h2>{label}</h2>
+                <div data-list={id}></div>
+                <button class="tool" type="button" data-add={id}>Add</button>
+              </section>
+            ))
+          }
+        </div>
+        <h2>Inbox</h2>
+        <p class="note">Local notes from the forms on this computer. On the live site, read the private GitHub issues instead.</p>
+        <div data-inbox></div>
+      </div>
+    </div>
+  </section>
+  <script>
+    import { bootDesk } from '../scripts/desk';
+    bootDesk();
+  </script>
+</Base>

@@ -1,0 +1,45 @@
+---
+import { links, site, url } from '../lib/content';
+---
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <div>
+      <h2>{site.name}</h2>
+      <p>
+        {site.legalForm}. Proprietor {site.proprietor}.<br />
+        {site.office.lines.join(', ')}
+      </p>
+      <p>
+        <a href={links.maps}>Map</a><br />
+        <a href={links.tel}>{site.phoneDisplay}</a><br />
+        <a href={links.email}>{site.email}</a><br />
+        <a href={links.proprietorEmail}>{site.proprietorEmail}</a>
+      </p>
+      <p class="note">
+        The company profile also records an earlier office at {site.profileOffice}. The address above is the
+        September 2026 office note.
+      </p>
+    </div>
+    <div>
+      <h2>On this site</h2>
+      <ul>
+        <li><a href={url('/projects')}>Work</a></li>
+        <li><a href={url('/plant')}>Plant and tools</a></li>
+        <li><a href={url('/process')}>Process</a></li>
+        <li><a href={url('/clients')}>Clients</a></li>
+        <li><a href={url('/onboard')}>Client identity</a></li>
+        <li><a href={url('/identity')}>Digital identity</a></li>
+        <li><a href={url('/meet')}>Book a visit</a></li>
+        <li><a href={url('/resources')}>Resources</a></li>
+        <li><a href={url('/legal/privacy')}>Privacy</a></li>
+        <li><a href={url('/admin')}>Desk</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Photographs</h2>
+      <p>The company profile says the work pictures were executed in 2021. They are compressed copies of those frames.</p>
+      <p>{site.hours}.</p>
+    </div>
+  </div>
+</footer>

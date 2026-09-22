@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import WorkGrid from '../../components/WorkGrid.astro';
+
+const description = 'Work types Vakratund Construction shows in its company profile, with 2021 photographs.';
+---
+
+<Base title="Work" description={description}>
+  <section class="section">
+    <div class="wrap">
+      <h1>Work</h1>
+      <p class="intro">
+        Gabion walls, machine foundations, epoxy floors, special foundations, bitumen roads, concrete roads, parking
+        marks, and mass concrete. The company profile groups the photographs this way and notes that the frames are from
+        2021. Open a type to see the picture larger, then book a visit if the next job is the same kind of work.
+      </p>
+      <WorkGrid />
+    </div>
+  </section>
+</Base>

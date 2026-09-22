@@ -1,0 +1,23 @@
+---
+import { projects, url } from '../lib/content';
+---
+
+<ul class="work-grid">
+  {
+    projects.map((project) => (
+      <li>
+        <a href={url(`/projects/${project.slug}`)}>
+          <img
+            src={url(project.image)}
+            width={project.width}
+            height={project.height}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+          <span>{project.title}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

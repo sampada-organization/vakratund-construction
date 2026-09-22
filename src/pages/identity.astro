@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import { links, site, url } from '../lib/content';
+
+const description = 'Name, mark, colours, and contact channels for Vakratund Construction.';
+---
+
+<Base title="Digital identity" description={description}>
+  <section class="section">
+    <div class="wrap">
+      <h1>Digital identity</h1>
+      <p class="intro">
+        The public name is {site.name}. The domain is {site.domain}. The company email uses Vakratund. A roads poster
+        supplied in 2026 prints a misspelt word; that poster is filed under resources and is not the wordmark.
+      </p>
+      <figure class="figure">
+        <img src={url('/brand/mark.jpg')} width="319" height="262" alt="Supplied VC mark, blue lettering with a skyline cut into the C" />
+        <figcaption>The header uses this supplied artwork. It is not redrawn as a vector.</figcaption>
+      </figure>
+      <h2>Colour roles</h2>
+      <p>Night steel carries the structure. Signal blue is the action, taken from the mark. Concrete paper is for reading. Survey amber is a single chalk line, not a second brand.</p>
+      <div class="swatches">
+        <div class="swatch" style="background:#12151c;color:#fff"><span>Night steel</span>#12151c</div>
+        <div class="swatch" style="background:#1a46c8;color:#fff"><span>Signal blue</span>#1a46c8</div>
+        <div class="swatch" style="background:#0e1c4a;color:#fff"><span>Deep blue</span>#0e1c4a</div>
+        <div class="swatch" style="background:#f3f1eb;color:#17191e"><span>Concrete paper</span>#f3f1eb</div>
+        <div class="swatch" style="background:#c9d0d8;color:#17191e"><span>Silver</span>#c9d0d8</div>
+        <div class="swatch" style="background:#f3c15a;color:#17191e"><span>Survey amber</span>#f3c15a</div>
+      </div>
+      <h2>How to reach the office</h2>
+      <ul>
+        <li><a href={links.tel}>Call {site.phoneDisplay}</a></li>
+        <li><a href={links.whatsapp}>WhatsApp</a> — opens a message to the office</li>
+        <li><a href={links.email}>{site.email}</a></li>
+        <li><a href={links.proprietorEmail}>{site.proprietorEmail}</a> — proprietor, from the company profile</li>
+      </ul>
+      <p>There is no login for clients. A client identity is a name, a phone, a site, and the work, filed from the on-board page.</p>
+    </div>
+  </section>
+</Base>
