@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { resources, url } from '../lib/content';
+import { resourceIcon } from '../lib/marks';
 
 const description = 'Company profile and other files Vakratund Construction keeps on the site.';
 ---
@@ -18,7 +20,7 @@ const description = 'Company profile and other files Vakratund Construction keep
         {
           resources.map((item) => (
             <article>
-              <p class="kicker" style="color: var(--blue)">{item.kind}</p>
+              <p class="kicker" style="color: var(--blue)"><Icon name={resourceIcon(item.kind)} />{item.kind}</p>
               <h2><a href={url(item.href)}>{item.title}</a></h2>
               <p>{item.note}</p>
             </article>

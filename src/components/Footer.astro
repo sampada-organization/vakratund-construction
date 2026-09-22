@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { links, site, url } from '../lib/content';
 ---
 
@@ -10,11 +11,11 @@ import { links, site, url } from '../lib/content';
         {site.legalForm}. Proprietor {site.proprietor}.<br />
         {site.office.lines.join(', ')}
       </p>
-      <p>
-        <a href={links.maps}>Map</a><br />
-        <a href={links.tel}>{site.phoneDisplay}</a><br />
-        <a href={links.email}>{site.email}</a><br />
-        <a href={links.proprietorEmail}>{site.proprietorEmail}</a>
+      <p class="foot-links">
+        <a href={links.maps}><Icon name="pin" />Map</a>
+        <a href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
+        <a href={links.email}><Icon name="mail" />{site.email}</a>
+        <a href={links.proprietorEmail}><Icon name="person" />{site.proprietorEmail}</a>
       </p>
       <p class="note">
         The company profile also records an earlier office at {site.profileOffice}. The address above is the
@@ -24,16 +25,16 @@ import { links, site, url } from '../lib/content';
     <div>
       <h2>On this site</h2>
       <ul>
-        <li><a href={url('/projects')}>Work</a></li>
-        <li><a href={url('/plant')}>Plant and tools</a></li>
-        <li><a href={url('/process')}>Process</a></li>
-        <li><a href={url('/clients')}>Clients</a></li>
-        <li><a href={url('/onboard')}>Client identity</a></li>
-        <li><a href={url('/identity')}>Digital identity</a></li>
-        <li><a href={url('/meet')}>Book a visit</a></li>
-        <li><a href={url('/resources')}>Resources</a></li>
-        <li><a href={url('/legal/privacy')}>Privacy</a></li>
-        <li><a href={url('/admin')}>Desk</a></li>
+        <li><a href={url('/projects')}><Icon name="building" />Work</a></li>
+        <li><a href={url('/plant')}><Icon name="gear" />Plant and tools</a></li>
+        <li><a href={url('/process')}><Icon name="tripod" />Process</a></li>
+        <li><a href={url('/clients')}><Icon name="people" />Clients</a></li>
+        <li><a href={url('/onboard')}><Icon name="person" />Client identity</a></li>
+        <li><a href={url('/identity')}><Icon name="frame" />Digital identity</a></li>
+        <li><a href={url('/meet')}><Icon name="calendar" />Book a visit</a></li>
+        <li><a href={url('/resources')}><Icon name="sheet" />Resources</a></li>
+        <li><a href={url('/legal/privacy')}><Icon name="shield" />Privacy</a></li>
+        <li><a href={url('/admin')}><Icon name="desk" />Desk</a></li>
       </ul>
     </div>
     <div>

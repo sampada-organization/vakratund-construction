@@ -1,9 +1,10 @@
 ---
+import Icon from './Icon.astro';
 import { links, site } from '../lib/content';
 ---
 
 <ul class="channels">
-  <li><a href={links.tel}>Call {site.phoneDisplay}</a></li>
-  <li><a href={links.whatsapp}>WhatsApp</a></li>
-  <li><a href={links.email}>Email</a></li>
+  <li><a href={links.tel}><Icon name="phone" />Call {site.phoneDisplay}</a></li>
+  <li><a href={links.whatsapp}><Icon name="chat" />WhatsApp</a></li>
+  <li><a href={links.email}><Icon name="mail" />Email</a></li>
 </ul>

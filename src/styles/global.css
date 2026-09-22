@@ -142,9 +142,17 @@ p { margin: 0 0 0.9rem; }
   background: transparent;
   color: var(--white);
   font: inherit;
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 0.7rem;
   display: none;
+  align-items: center;
+  gap: 0.35rem;
 }
+
+.menu .ico + .ico { display: none; }
+
+.menu[aria-expanded='true'] .ico:first-child { display: none; }
+
+.menu[aria-expanded='true'] .ico + .ico { display: block; }
 
 .primary {
   display: flex;
@@ -152,7 +160,7 @@ p { margin: 0 0 0.9rem; }
   align-items: center;
 }
 
-.primary a { font-size: 0.95rem; min-height: 44px; display: inline-flex; align-items: center; }
+.primary a { font-size: 0.92rem; min-height: 44px; display: inline-flex; align-items: center; gap: 0.3rem; }
 
 .primary a[aria-current='page'] { color: var(--amber-on-ink); }
 
@@ -188,9 +196,59 @@ p { margin: 0 0 0.9rem; }
   padding: 0.35rem 0.75rem;
   display: inline-flex;
   align-items: center;
+  gap: 0.35rem;
   font-size: 0.92rem;
   font-weight: 700;
   border-radius: 0.9rem 0.9rem 0.15rem 0.15rem;
+}
+
+.ico {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.cards .ico,
+.resource-list .ico,
+.client-list .ico,
+.facts .ico {
+  width: 1.55rem;
+  height: 1.55rem;
+  color: var(--sand-deep);
+  margin-bottom: 0.35rem;
+}
+
+.count .ico {
+  width: 1.85rem;
+  height: 1.85rem;
+  color: var(--sand);
+  margin-bottom: 0.35rem;
+}
+
+.kicker .ico,
+.commission h2 .ico { color: var(--sand-deep); }
+
+.commission h2 { display: flex; align-items: center; gap: 0.45rem; }
+
+.step-mark {
+  display: grid;
+  justify-items: center;
+  gap: 0.1rem;
+  color: var(--sand-deep);
+}
+
+.foot-links { display: grid; gap: 0.35rem; }
+
+.foot-links a,
+.site-footer li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .site-header .channels a { color: var(--ink); }
@@ -236,6 +294,8 @@ p { margin: 0 0 0.9rem; }
 .lede { color: var(--silver); font-size: 1.2rem; max-width: 36rem; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.2rem 0; }
+
+.hero-actions a { gap: 0.4rem; }
 
 .hero-actions .visit { background: var(--blue); }
 
@@ -459,7 +519,7 @@ button, .visit, .ghost { cursor: pointer; }
   margin: 0.4rem 0 0;
 }
 
-.result a { display: inline-flex; min-height: 44px; align-items: center; margin-right: 0.8rem; }
+.result a { display: inline-flex; min-height: 44px; align-items: center; gap: 0.35rem; margin-right: 0.8rem; }
 
 .note { color: var(--muted); font-size: 0.95rem; }
 

@@ -3,8 +3,10 @@ import Base from '../layouts/Base.astro';
 import Rise from '../components/Rise.astro';
 import Steps from '../components/Steps.astro';
 import WorkGrid from '../components/WorkGrid.astro';
+import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import { clients, plants, services, site, url } from '../lib/content';
+import { plantIcon, serviceIcon } from '../lib/marks';
 
 const description =
   'Vakratund Construction, Chakan. Civil works, roads, RCC, and government contracts since 2007. One proprietor and an owned plant.';
@@ -39,8 +41,8 @@ const jsonLd = {
         <p class="tagline">{site.tagline}</p>
         <p class="lede">{site.promise} Proprietor {site.proprietor}. One office, one answer.</p>
         <div class="hero-actions">
-          <a class="visit" href={url('/meet')}>Book a site visit</a>
-          <a class="ghost" href={url('/plant')}>See the plant</a>
+          <a class="visit" href={url('/meet')}><Icon name="calendar" />Book a site visit</a>
+          <a class="ghost" href={url('/plant')}><Icon name="gear" />See the plant</a>
         </div>
         <p class="measure">{site.measure}</p>
       </div>
@@ -57,9 +59,9 @@ const jsonLd = {
         The profile states the promise without decoration: quality work, inside the given time, inside the prescribed budget.
       </p>
       <ul class="facts">
-        <li><div><strong>{site.established}</strong><span>Established</span></div></li>
-        <li><div><strong>{site.governmentWorkSince}</strong><span>Government work begins</span></div></li>
-        <li><div><strong>1</strong><span>Proprietor, one point of contact</span></div></li>
+        <li><div><Icon name="calendar" /><strong>{site.established}</strong><span>Established</span></div></li>
+        <li><div><Icon name="column" /><strong>{site.governmentWorkSince}</strong><span>Government work begins</span></div></li>
+        <li><div><Icon name="person" /><strong>1</strong><span>Proprietor, one point of contact</span></div></li>
       </ul>
       <h3>What the profile sets out to do</h3>
       <ol class="mission">
@@ -80,6 +82,7 @@ const jsonLd = {
       <div class="cards">
         {services.map((service) => (
           <article>
+            <Icon name={serviceIcon(service.title)} />
             <h3>{service.title}</h3>
             <p>{service.summary}</p>
           </article>
@@ -121,6 +124,7 @@ const jsonLd = {
       <div class="counts">
         {plants.register.map((item) => (
           <article class="count">
+            <Icon name={plantIcon(item.name)} />
             <b>{item.count}</b>
             <h3>{item.name}</h3>
           </article>
@@ -139,6 +143,7 @@ const jsonLd = {
       <ul class="client-list">
         {clients.map((client) => (
           <li>
+            <Icon name="pin" />
             <strong>{client.name}</strong><br />
             <small>{client.place}</small>
           </li>
@@ -149,7 +154,7 @@ const jsonLd = {
 
   <section class="section commission" id="catch">
     <div class="wrap">
-      <h2>Put the work on the desk</h2>
+      <h2><Icon name="desk" />Put the work on the desk</h2>
       <p>
         Name, phone, and the kind of work. That is enough to start. If you would rather talk, call {site.phoneDisplay}, or use WhatsApp or email in the header.
       </p>

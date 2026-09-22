@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { clients, url } from '../lib/content';
 
 const description = 'Clients named in the Vakratund Construction company profile, all in Chakan.';
@@ -19,6 +20,7 @@ const description = 'Clients named in the Vakratund Construction company profile
         {
           clients.map((client) => (
             <li>
+              <Icon name="pin" />
               <h2>{client.name}</h2>
               <small>{client.place}</small>
             </li>

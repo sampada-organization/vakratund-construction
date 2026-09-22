@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { plants } from '../lib/content';
+import { plantIcon } from '../lib/marks';
 
 const description = 'Plant and tools on the Vakratund Construction register: mixers, rollers, excavators, tippers, and tractors.';
 ---
@@ -14,6 +16,7 @@ const description = 'Plant and tools on the Vakratund Construction register: mix
         {
           plants.register.map((item) => (
             <article class="count">
+              <Icon name={plantIcon(item.name)} />
               <b>{item.count}</b>
               <h2>{item.name}</h2>
               <p>{item.note}</p>
@@ -26,6 +29,7 @@ const description = 'Plant and tools on the Vakratund Construction register: mix
       <div class="cards">
         {plants.earlier.map((item) => (
           <article>
+            <Icon name={plantIcon(item.name)} />
             <h3>{item.name}</h3>
             <p>{item.note}</p>
           </article>

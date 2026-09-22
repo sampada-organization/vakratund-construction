@@ -24,11 +24,22 @@ function allowedHref(value: unknown, prefix: string) {
   return typeof value === 'string' && value.startsWith(prefix) ? value : '';
 }
 
-function addLink(parent: HTMLElement, href: string, text: string) {
+const linkMarks: Record<string, string> = {
+  chat: '<path d="M5 6h14v9H10l-4 4v-4H5z"/>',
+  mail: '<path d="M4 7h16v10H4zM4 7l8 6 8-6"/>',
+  calendar: '<path d="M6 5h12v14H6zM6 9h12M9 3v4M15 3v4"/>',
+};
+
+function addLink(parent: HTMLElement, href: string, text: string, mark: string) {
   if (!href) return;
   const a = document.createElement('a');
   a.href = href;
-  a.textContent = text;
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('class', 'ico');
+  svg.innerHTML = linkMarks[mark] || '';
+  a.append(svg, document.createTextNode(text));
   parent.append(a);
 }
 
@@ -61,7 +72,12 @@ function downloadIcs(when: string, topic: string, name: string) {
   const a = document.createElement('a');
   a.href = url;
   a.download = 'vakratund-visit.ics';
-  a.textContent = 'Add to calendar';
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('class', 'ico');
+  svg.innerHTML = linkMarks.calendar;
+  a.append(svg, document.createTextNode('Add to calendar'));
   return a;
 }
 
@@ -100,8 +116,8 @@ function paint(form: HTMLFormElement, payload: Record<string, unknown>) {
     p.textContent = 'The visit is noted. Nothing is sent by a paid gateway — open the channel you want:';
     slot.append(p);
     const nav = document.createElement('p');
-    addLink(nav, allowedHref(channels.whatsapp, 'https://wa.me/'), 'Open WhatsApp');
-    addLink(nav, allowedHref(channels.email, 'mailto:'), 'Open email');
+    addLink(nav, allowedHref(channels.whatsapp, 'https://wa.me/'), 'Open WhatsApp', 'chat');
+    addLink(nav, allowedHref(channels.email, 'mailto:'), 'Open email', 'mail');
     const file = downloadIcs(String(payload.when || ''), String(payload.topic || ''), String(payload.name || ''));
     if (file) nav.append(file);
     slot.append(nav);

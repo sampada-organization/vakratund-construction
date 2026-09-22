@@ -1,5 +1,7 @@
 ---
+import Icon from './Icon.astro';
 import { process as steps } from '../lib/content';
+import { stepIcon } from '../lib/marks';
 
 interface Props {
   heading?: 'h2' | 'h3';
@@ -11,7 +13,10 @@ const { heading: Heading = 'h3' } = Astro.props;
   {
     steps.map((step, index) => (
       <li class="step">
-        <span>{String(index + 1).padStart(2, '0')}</span>
+        <span class="step-mark">
+            <Icon name={stepIcon(index)} />
+            {String(index + 1).padStart(2, '0')}
+          </span>
         <div>
           <Heading>{step.title}</Heading>
           <p>{step.text}</p>
