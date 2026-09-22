@@ -1,0 +1,81 @@
+---
+import { url } from '../lib/content';
+
+interface Frame {
+  src: string;
+  width: number;
+  height: number;
+}
+interface Props {
+  title: string;
+  frames: Frame[];
+}
+const { title, frames } = Astro.props;
+---
+
+<div class="shot-gallery" data-gallery>
+  <figure class="shot-main">
+    <button type="button" data-open="0" aria-label={`View ${title}, picture 1`}>
+      <img
+        src={url(frames[0].src)}
+        width={frames[0].width}
+        height={frames[0].height}
+        alt={title}
+        fetchpriority="high"
+        decoding="async"
+      />
+    </button>
+  </figure>
+  {
+    frames.length > 1 && (
+      <ul class="shot-strip">
+        {frames.map((frame, index) => (
+          <li>
+            <button type="button" data-open={index} aria-label={`View ${title}, picture ${index + 1}`}>
+              <img
+                src={url(frame.src)}
+                width={frame.width}
+                height={frame.height}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  <dialog class="lightbox">
+    <button type="button" class="lightbox-close" aria-label="Close">Close</button>
+    <button type="button" class="lightbox-prev" aria-label="Previous picture">Previous</button>
+    <img alt="" />
+    <button type="button" class="lightbox-next" aria-label="Next picture">Next</button>
+  </dialog>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((root) => {
+    const dialog = root.querySelector('dialog');
+    const view = dialog?.querySelector('img');
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-open]')];
+    if (!dialog || !view || buttons.length === 0) return;
+    const sources = buttons.map((button) => button.querySelector('img')?.getAttribute('src') || '');
+    let index = 0;
+    const show = (next: number) => {
+      index = (next + sources.length) % sources.length;
+      view.src = sources[index];
+      view.alt = buttons[index].getAttribute('aria-label') || '';
+      if (!dialog.open) dialog.showModal();
+    };
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => show(Number(button.dataset.open || 0)));
+    });
+    dialog.querySelector('.lightbox-close')?.addEventListener('click', () => dialog.close());
+    dialog.querySelector('.lightbox-prev')?.addEventListener('click', () => show(index - 1));
+    dialog.querySelector('.lightbox-next')?.addEventListener('click', () => show(index + 1));
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>

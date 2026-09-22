@@ -5,7 +5,8 @@ import Steps from '../components/Steps.astro';
 import WorkGrid from '../components/WorkGrid.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
-import { clients, plants, services, site, url } from '../lib/content';
+import ClientStrip from '../components/ClientStrip.astro';
+import { plants, services, site, url } from '../lib/content';
 import { plantIcon, serviceIcon } from '../lib/marks';
 
 const description =
@@ -132,17 +133,9 @@ const jsonLd = {
     <div class="wrap">
       <header>
         <h2>Clients</h2>
-        <p>Industrial clients in Chakan.</p>
+        <p>Manufacturers with plants in Chakan. We build the civil work around their machines.</p>
       </header>
-      <ul class="client-list">
-        {clients.map((client) => (
-          <li>
-            <Icon name="pin" />
-            <strong>{client.name}</strong><br />
-            <small>{client.place}</small>
-          </li>
-        ))}
-      </ul>
+      <ClientStrip />
     </div>
   </section>
 

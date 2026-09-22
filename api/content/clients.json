@@ -1,22 +1,44 @@
 [
   {
-    "name": "GE India Industrial Pvt Ltd",
-    "place": "Chakan"
+    "name": "GE India Industrial",
+    "place": "Chakan",
+    "logo": "/media/clients/ge.png",
+    "width": 427,
+    "height": 200
   },
   {
-    "name": "SANY Heavy Industry India Pvt Ltd",
-    "place": "Chakan"
+    "name": "SANY",
+    "place": "Chakan",
+    "logo": "/media/clients/sany.png",
+    "width": 720,
+    "height": 183
   },
   {
-    "name": "Stanley Black & Decker",
-    "place": "Chakan"
+    "name": "Stanley",
+    "place": "Chakan",
+    "logo": "/media/clients/stanley.png",
+    "width": 322,
+    "height": 157
   },
   {
-    "name": "ARaymond Fasteners India Pvt Ltd",
-    "place": "Chakan"
+    "name": "Black+Decker",
+    "place": "Chakan",
+    "logo": "/media/clients/black-decker.png",
+    "width": 528,
+    "height": 267
+  },
+  {
+    "name": "ARaymond",
+    "place": "Chakan",
+    "logo": "/media/clients/araymond.png",
+    "width": 509,
+    "height": 99
   },
   {
     "name": "Bajaj Electricals",
-    "place": "Chakan plant"
+    "place": "Chakan",
+    "logo": "/media/clients/bajaj.png",
+    "width": 370,
+    "height": 280
   }
 ]

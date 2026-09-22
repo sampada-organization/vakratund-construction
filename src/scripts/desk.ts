@@ -192,10 +192,16 @@ function collect(): Bundle | null {
   next.site.mission = readValue('mission').split('\n').map((line) => line.trim()).filter(Boolean);
   next.plants.intro = readValue('plants-intro');
   next.services = collectList('services');
-  next.projects = collectList('projects');
+  next.projects = collectList('projects').map((item) => {
+    const previous = bundle.projects.find((project) => project.slug === item.slug);
+    return { ...(previous || {}), ...item };
+  });
   next.plants.register = collectList('register');
   next.plants.earlier = collectList('earlier');
-  next.clients = collectList('clients');
+  next.clients = collectList('clients').map((item) => {
+    const previous = bundle.clients.find((client) => client.name === item.name);
+    return { ...(previous || {}), ...item };
+  });
   next.resources = collectList('resources');
   next.process = collectList('process');
   return next;

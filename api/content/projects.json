@@ -5,7 +5,12 @@
     "image": "/media/work/gabion.jpg",
     "width": 494,
     "height": 618,
-    "summary": "Stone-filled gabion walls for slopes and channels."
+    "summary": "Stone-filled gabion walls for slopes and channels.",
+    "gallery": [
+      { "src": "/media/work/gabion.jpg", "width": 494, "height": 618 },
+      { "src": "/media/gallery/gabion-2.jpg", "width": 417, "height": 620 },
+      { "src": "/media/gallery/gabion-3.jpg", "width": 511, "height": 618 }
+    ]
   },
   {
     "slug": "machine-foundations",
@@ -13,7 +18,12 @@
     "image": "/media/work/foundation.jpg",
     "width": 455,
     "height": 569,
-    "summary": "Foundations and fabrication for plant and machinery."
+    "summary": "Foundations and fabrication for plant and machinery.",
+    "gallery": [
+      { "src": "/media/work/foundation.jpg", "width": 455, "height": 569 },
+      { "src": "/media/gallery/found-2.jpg", "width": 470, "height": 620 },
+      { "src": "/media/gallery/found-3.jpg", "width": 468, "height": 620 }
+    ]
   },
   {
     "slug": "floor-epoxy",
@@ -21,7 +31,12 @@
     "image": "/media/work/epoxy.jpg",
     "width": 526,
     "height": 657,
-    "summary": "Floor repairs and epoxy finishes."
+    "summary": "Floor repairs and epoxy finishes.",
+    "gallery": [
+      { "src": "/media/work/epoxy.jpg", "width": 526, "height": 657 },
+      { "src": "/media/gallery/epoxy-2.jpg", "width": 746, "height": 657 },
+      { "src": "/media/gallery/epoxy-3.jpg", "width": 361, "height": 421 }
+    ]
   },
   {
     "slug": "special-foundations",
@@ -29,7 +44,12 @@
     "image": "/media/work/special-foundation.jpg",
     "width": 429,
     "height": 537,
-    "summary": "Foundations that the ground or the machine asks for."
+    "summary": "Foundations that the ground or the machine asks for.",
+    "gallery": [
+      { "src": "/media/work/special-foundation.jpg", "width": 429, "height": 537 },
+      { "src": "/media/gallery/special-2.jpg", "width": 558, "height": 398 },
+      { "src": "/media/gallery/special-3.jpg", "width": 605, "height": 384 }
+    ]
   },
   {
     "slug": "bitumen-roads",
@@ -37,7 +57,12 @@
     "image": "/media/work/bitumen.jpg",
     "width": 434,
     "height": 542,
-    "summary": "Bitumen roads, measured and laid for a smoother run."
+    "summary": "Bitumen roads, measured and laid for a smoother run.",
+    "gallery": [
+      { "src": "/media/work/bitumen.jpg", "width": 434, "height": 542 },
+      { "src": "/media/gallery/bitumen-2.jpg", "width": 482, "height": 542 },
+      { "src": "/media/gallery/bitumen-3.jpg", "width": 440, "height": 542 }
+    ]
   },
   {
     "slug": "concrete-roads",
@@ -45,7 +70,12 @@
     "image": "/media/work/concrete-road.jpg",
     "width": 481,
     "height": 601,
-    "summary": "Concrete roads for yards, plants, and public work."
+    "summary": "Concrete roads for yards, plants, and public work.",
+    "gallery": [
+      { "src": "/media/work/concrete-road.jpg", "width": 481, "height": 601 },
+      { "src": "/media/gallery/concrete-2.jpg", "width": 481, "height": 701 },
+      { "src": "/media/gallery/concrete-3.jpg", "width": 539, "height": 682 }
+    ]
   },
   {
     "slug": "parking",
@@ -53,7 +83,12 @@
     "image": "/media/work/parking.jpg",
     "width": 553,
     "height": 691,
-    "summary": "Parking bays with thermoplastic paint and signs."
+    "summary": "Parking bays with thermoplastic paint and signs.",
+    "gallery": [
+      { "src": "/media/work/parking.jpg", "width": 553, "height": 691 },
+      { "src": "/media/gallery/park-2.jpg", "width": 553, "height": 693 },
+      { "src": "/media/gallery/park-3.jpg", "width": 379, "height": 443 }
+    ]
   },
   {
     "slug": "mass-concrete",
@@ -61,6 +96,11 @@
     "image": "/media/work/mass-concrete.jpg",
     "width": 330,
     "height": 412,
-    "summary": "Mass concrete, and other civil work besides the frames shown here."
+    "summary": "Mass concrete, and other civil work besides the frames shown here.",
+    "gallery": [
+      { "src": "/media/work/mass-concrete.jpg", "width": 330, "height": 412 },
+      { "src": "/media/gallery/mass-2.jpg", "width": 391, "height": 412 },
+      { "src": "/media/gallery/mass-3.jpg", "width": 482, "height": 407 }
+    ]
   }
 ]

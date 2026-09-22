@@ -1,0 +1,21 @@
+---
+import { clients, url } from '../lib/content';
+---
+
+<ul class="logo-row">
+  {
+    clients.map((client) => (
+      <li>
+        <img
+          src={url(client.logo)}
+          width={client.width}
+          height={client.height}
+          alt={client.name}
+          loading="lazy"
+          decoding="async"
+        />
+        <span>{client.place}</span>
+      </li>
+    ))
+  }
+</ul>

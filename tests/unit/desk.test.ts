@@ -27,7 +27,8 @@ describe('published facts', () => {
     expect(site.office.lines.join(' ')).toContain('Grand Centre');
     expect(JSON.stringify(site)).not.toContain('9970099700');
     expect(services).toHaveLength(7);
-    expect(clients.map((client) => client.name)).toContain('SANY Heavy Industry India Pvt Ltd');
+    expect(clients.map((client) => client.name)).toContain('SANY');
+    expect(clients.every((client) => client.logo.startsWith('/media/clients/'))).toBe(true);
     expect(plants.register.find((item) => item.name === 'Transit mixer')?.count).toBe(5);
     expect(projects).toHaveLength(8);
   });
