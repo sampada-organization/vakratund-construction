@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const pages = ['/', '/projects', '/plant', '/process', '/clients', '/resources', '/identity', '/contact', '/onboard', '/meet', '/admin', '/legal/privacy'];
+const pages = ['/', '/projects', '/plant', '/process', '/clients', '/profile', '/resources', '/identity', '/contact', '/onboard', '/meet', '/admin', '/legal/privacy'];
 
 test('home states the work and the real phone', async ({ page }, testInfo) => {
   await page.goto('/');

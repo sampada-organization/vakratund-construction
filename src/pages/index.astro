@@ -6,7 +6,7 @@ import WorkGrid from '../components/WorkGrid.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import ClientStrip from '../components/ClientStrip.astro';
-import { plants, services, site, url } from '../lib/content';
+import { links, plants, services, site, url } from '../lib/content';
 import { plantIcon, serviceIcon } from '../lib/marks';
 
 const description =
@@ -68,6 +68,11 @@ const jsonLd = {
       <ol class="mission">
         {site.mission.map((line) => <li>{line}</li>)}
       </ol>
+      <p class="action-row">
+        <a class="visit" href={url('/profile')}><Icon name="sheet" />Business profile</a>
+        <a class="visit" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
+        <a class="visit" href={links.email}><Icon name="mail" />Email the office</a>
+      </p>
     </div>
   </section>
 

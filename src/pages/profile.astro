@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ClientStrip from '../components/ClientStrip.astro';
+import { links, services, site, url } from '../lib/content';
+
+const description = `${site.name}, ${site.legalForm.toLowerCase()} in Chakan since ${site.established}. Proprietor ${site.proprietor}. Call ${site.phoneDisplay}.`;
+---
+
+<Base title="Business profile" description={description}>
+  <section class="section">
+    <div class="wrap">
+      <p class="kicker" style="color: var(--blue)">Chakan · since {site.established}</p>
+      <h1>Business profile</h1>
+      <p class="intro">
+        {site.name} is a {site.legalForm.toLowerCase()}. Proprietor {site.proprietor}.
+        Civil work for homes, factories, and government bodies since {site.governmentWorkSince}.
+        {site.promise}
+      </p>
+      <p class="action-row">
+        <a class="visit" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
+        <a class="visit" href={links.email}><Icon name="mail" />{site.email}</a>
+        <a class="ghost" href={links.whatsapp} style="color: var(--text); border-color: var(--blue)"><Icon name="chat" />WhatsApp</a>
+      </p>
+      <ul class="facts">
+        <li><div><Icon name="calendar" /><strong>{site.established}</strong><span>Established</span></div></li>
+        <li><div><Icon name="column" /><strong>{site.governmentWorkSince}</strong><span>Government work</span></div></li>
+        <li><div><Icon name="person" /><strong>{site.proprietor.split(' ')[0]}</strong><span>Proprietor</span></div></li>
+      </ul>
+      <h2>Office</h2>
+      <p>{site.office.lines.join(', ')}.</p>
+      <p>{site.hours}.</p>
+      <p class="action-row">
+        <a class="visit" href={links.maps}><Icon name="pin" />Open the map</a>
+        <a class="visit" href={url('/meet')}><Icon name="calendar" />Book a visit</a>
+        <a class="visit" href={url('/resources/vakratund-company-profile.pptx')}><Icon name="sheet" />Download the profile</a>
+      </p>
+      <h2>The work</h2>
+      <div class="cards">
+        {services.map((service) => (
+          <article>
+            <h3>{service.title}</h3>
+            <p>{service.summary}</p>
+          </article>
+        ))}
+      </div>
+      <h2>What we set out to do</h2>
+      <ol class="mission">
+        {site.mission.map((line) => <li>{line}</li>)}
+      </ol>
+      <p>“{site.safety}”</p>
+      <h2>Clients</h2>
+      <ClientStrip />
+    </div>
+  </section>
+</Base>
