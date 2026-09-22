@@ -1,12 +1,32 @@
 ---
-import { services, url } from '../lib/content';
+import { url } from '../lib/content';
 
-const order = ['roads', 'foundations', 'walls', 'floors', 'yards', 'buildings'];
-const frames = order.flatMap((slug) => {
-  const service = services.find((item) => item.slug === slug);
-  if (!service) return [];
-  return [{ ...service, src: service.image }];
-});
+const frames = [
+  {
+    src: '/media/made/road.jpg',
+    width: 1162,
+    height: 674,
+    title: 'Since 2007',
+    line: 'Residential and industrial civil work, and government contracts since 2016.',
+    href: '/profile',
+  },
+  {
+    src: '/media/work/gabion.jpg',
+    width: 494,
+    height: 618,
+    title: 'Work executed',
+    line: 'Gabion walls, foundations, floors, roads, parking, and mass concrete.',
+    href: '/projects',
+  },
+  {
+    src: '/media/plant/concreteMixer.jpg',
+    width: 1233,
+    height: 626,
+    title: 'The plant',
+    line: 'Ready-mix, transit mixers, rollers, tippers, a grader, backhoes, excavators, and tractors.',
+    href: '/plant',
+  },
+];
 ---
 
 <div class="stage" data-stage>
@@ -14,8 +34,8 @@ const frames = order.flatMap((slug) => {
     frames.map((frame, index) => (
       <img
         src={url(frame.src)}
-        width="1162"
-        height="674"
+        width={frame.width}
+        height={frame.height}
         alt=""
         class={index === 0 ? 'is-on' : ''}
         loading={index === 0 ? 'eager' : 'lazy'}
@@ -29,8 +49,8 @@ const frames = order.flatMap((slug) => {
       frames.map((frame, index) => (
         <article class={index === 0 ? 'is-on' : ''} aria-hidden={index === 0 ? undefined : 'true'}>
           <h2>{frame.title}</h2>
-          <p>{frame.summary}</p>
-          <a href={url(`/services/${frame.slug}`)} tabindex={index === 0 ? 0 : -1} aria-label={`Further: ${frame.title}`}>
+          <p>{frame.line}</p>
+          <a href={url(frame.href)} tabindex={index === 0 ? 0 : -1} aria-label={`Further: ${frame.title}`}>
             Further
           </a>
         </article>

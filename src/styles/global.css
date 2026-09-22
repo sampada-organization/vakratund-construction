@@ -560,6 +560,22 @@ p { margin: 0 0 0.9rem; }
   letter-spacing: -0.02em;
 }
 
+.pictiles b {
+  display: block;
+  color: #f0c14b;
+  font-size: 1.55rem;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.work-grid small {
+  display: inline-block;
+  width: fit-content;
+  padding: 0.05rem 0.4rem;
+  background: #e0a82e;
+  color: #1a1408;
+}
+
 .pictiles-lead { grid-template-columns: 1fr; }
 
 .work-grid a {
@@ -594,7 +610,8 @@ p { margin: 0 0 0.9rem; }
 }
 
 .work-grid small {
-  color: var(--silver);
+  color: #1a1408;
+  background: #e0a82e;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;

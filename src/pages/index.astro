@@ -1,9 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import HeroSlides from '../components/HeroSlides.astro';
-import StatsBar from '../components/StatsBar.astro';
-import ServiceCards from '../components/ServiceCards.astro';
 import WorkGrid from '../components/WorkGrid.astro';
+import MachineTiles from '../components/MachineTiles.astro';
+import ServiceCards from '../components/ServiceCards.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import ClientStrip from '../components/ClientStrip.astro';
@@ -43,15 +43,6 @@ const jsonLd = {
     </div>
   </section>
 
-  <StatsBar />
-
-  <section class="section" id="services">
-    <div class="wrap">
-      <h2>Services</h2>
-      <ServiceCards />
-    </div>
-  </section>
-
   <section class="section alt" id="work">
     <div class="wrap">
       <header class="row-head">
@@ -59,6 +50,26 @@ const jsonLd = {
         <a href={url('/projects')} aria-label="Further: Work">Further</a>
       </header>
       <WorkGrid minimal />
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="wrap">
+      <header class="row-head">
+        <h2>Tools</h2>
+        <a href={url('/plant')} aria-label="Further: Plant and tools">Further</a>
+      </header>
+      <MachineTiles linked showCount />
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <header class="row-head">
+        <h2>Services</h2>
+        <a href={url('/services')} aria-label="Further: Services">Further</a>
+      </header>
+      <ServiceCards />
     </div>
   </section>
 
