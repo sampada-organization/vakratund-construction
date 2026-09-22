@@ -12,8 +12,14 @@ test('home states the work and the real phone', async ({ page }, testInfo) => {
   await expect(page.getByRole('link', { name: /missed call/i })).toHaveCount(0);
   await expect(page.locator('body')).not.toContainText('9970099700');
   await expect(page.locator('body')).not.toContainText('VAKARTUND');
-  await expect(page.locator('.rise-svg')).toBeVisible();
-  await page.waitForTimeout(1600);
+  await expect(page.locator('[data-reel] img').first()).toBeVisible();
+  await expect(page.locator('#services .trade svg').first()).toBeVisible();
+  await expect(page.locator('.work-grid img').first()).toBeVisible();
+  await page.getByRole('button', { name: 'Next pictures' }).click();
+  await page.getByRole('button', { name: 'View full', exact: true }).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.getByRole('dialog').getByRole('button', { name: 'Close' }).click();
+  await expect(page.getByRole('dialog')).toBeHidden();
   await page.screenshot({ path: `test-results/home-${testInfo.project.name}.png`, fullPage: false });
 });
 

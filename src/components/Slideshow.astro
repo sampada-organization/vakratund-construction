@@ -27,12 +27,20 @@ const frames = [
   <div class="reel-view">
     <ul class="reel-track">
       {
-        frames.map((frame) => (
+        frames.map((frame, index) => (
           <li>
-            <a href={url(frame.href)}>
-              <img src={url(frame.src)} width={frame.width} height={frame.height} alt={frame.title} loading="lazy" decoding="async" />
+            <button type="button" data-full={index} aria-label={`View full: ${frame.title}`}>
+              <img
+                src={url(frame.src)}
+                width={frame.width}
+                height={frame.height}
+                alt=""
+                loading={index < 3 ? 'eager' : 'lazy'}
+                fetchpriority={index === 0 ? 'high' : undefined}
+                decoding="async"
+              />
               <span>{frame.title}</span>
-            </a>
+            </button>
           </li>
         ))
       }
@@ -41,31 +49,87 @@ const frames = [
   <div class="reel-controls">
     <button type="button" data-prev aria-label="Previous pictures">Previous</button>
     <button type="button" data-next aria-label="Next pictures">Next</button>
+    <button type="button" data-open aria-label="View full">View full</button>
   </div>
+  <dialog class="lightbox">
+    <img alt="" />
+    <div class="lightbox-bar">
+      <button type="button" class="lightbox-close" aria-label="Close">Close</button>
+      <button type="button" class="lightbox-prev" aria-label="Previous picture">Previous</button>
+      <button type="button" class="lightbox-next" aria-label="Next picture">Next</button>
+    </div>
+  </dialog>
 </div>
 
 <script>
   document.querySelectorAll<HTMLElement>('[data-reel]').forEach((root) => {
     const track = root.querySelector<HTMLElement>('.reel-track');
-    const items = [...root.querySelectorAll('.reel-track li')];
-    if (!track || items.length === 0) return;
-    let index = 0;
+    const items = [...root.querySelectorAll<HTMLButtonElement>('[data-full]')];
+    const dialog = root.querySelector('dialog');
+    const view = dialog?.querySelector('img');
+    if (!track || items.length === 0 || !dialog || !view) return;
+    const sources = items.map((button) => button.querySelector('img')?.getAttribute('src') || '');
+    let slide = 0;
+    let cursor = 0;
+    let timer = 0;
+    let startX = 0;
+    let moved = false;
     const per = () => (window.matchMedia('(min-width: 1100px)').matches ? 3 : window.matchMedia('(min-width: 720px)').matches ? 2 : 1);
     const max = () => Math.max(0, items.length - per());
     const go = (next: number) => {
-      index = Math.min(max(), Math.max(0, next));
-      track.style.transform = `translateX(-${(index * 100) / per()}%)`;
+      const limit = max();
+      slide = next > limit ? 0 : next < 0 ? limit : next;
+      track.style.transform = `translateX(-${(slide * 100) / per()}%)`;
     };
-    root.querySelector('[data-prev]')?.addEventListener('click', () => go(index - 1));
-    root.querySelector('[data-next]')?.addEventListener('click', () => go(index + 1));
-    let startX = 0;
-    root.addEventListener('pointerdown', (event) => {
+    const stop = () => window.clearInterval(timer);
+    const start = () => {
+      stop();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      timer = window.setInterval(() => go(slide + 1), 4200);
+    };
+    const open = (at: number) => {
+      stop();
+      cursor = (at + sources.length) % sources.length;
+      view.src = sources[cursor];
+      view.alt = items[cursor].getAttribute('aria-label') || '';
+      if (!dialog.open) dialog.showModal();
+    };
+    root.querySelector('[data-prev]')?.addEventListener('click', () => go(slide - 1));
+    root.querySelector('[data-next]')?.addEventListener('click', () => go(slide + 1));
+    root.querySelector('[data-open]')?.addEventListener('click', () => open(slide));
+    items.forEach((button) =>
+      button.addEventListener('click', () => {
+        if (moved) {
+          moved = false;
+          return;
+        }
+        open(Number(button.dataset.full || 0));
+      }),
+    );
+    dialog.querySelector('.lightbox-close')?.addEventListener('click', () => dialog.close());
+    dialog.querySelector('.lightbox-prev')?.addEventListener('click', () => open(cursor - 1));
+    dialog.querySelector('.lightbox-next')?.addEventListener('click', () => open(cursor + 1));
+    dialog.addEventListener('close', () => start());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    const viewBox = root.querySelector('.reel-view');
+    viewBox?.addEventListener('pointerdown', (event) => {
       startX = event.clientX;
+      moved = false;
     });
-    root.addEventListener('pointerup', (event) => {
+    viewBox?.addEventListener('pointerup', (event) => {
       const delta = event.clientX - startX;
-      if (Math.abs(delta) > 40) go(index + (delta < 0 ? 1 : -1));
+      if (Math.abs(delta) > 48) {
+        moved = true;
+        go(slide + (delta < 0 ? 1 : -1));
+      }
     });
-    window.addEventListener('resize', () => go(index));
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', () => {
+      if (!dialog.open) start();
+    });
+    window.addEventListener('resize', () => go(slide));
+    start();
   });
 </script>

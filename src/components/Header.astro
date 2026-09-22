@@ -1,11 +1,12 @@
 ---
 import Channels from './Channels.astro';
 import Icon from './Icon.astro';
-import { site, url } from '../lib/content';
+import { services, site, url } from '../lib/content';
 
 const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
 const raw = Astro.url.pathname.replace(/\/$/, '');
 const here = raw === base || raw === '' ? '/' : raw.slice(base.length) || '/';
+const serviceIcons = ['building', 'road', 'square', 'rebar', 'brick', 'column', 'plot'];
 const items = [
   { href: '/projects', label: 'Work', icon: 'building' },
   { href: '/plant', label: 'Plant', icon: 'gear' },
@@ -26,46 +27,60 @@ const items = [
       </span>
     </a>
     <Channels />
-    <button class="menu" type="button" aria-expanded="false" aria-controls="primary">
+    <button class="menu" type="button" aria-expanded="false" aria-controls="primary" aria-haspopup="true">
       <Icon name="menu" />
       <Icon name="close" />
       <span class="menu-label">Menu</span>
     </button>
   </div>
-  <div class="navrow">
-    <nav class="primary" id="primary" aria-label="Primary">
-      {
-        items.map((item) => (
-          <a href={url(item.href)} aria-current={here === item.href ? 'page' : undefined}>
-            <Icon name={item.icon} />
-            {item.label}
-          </a>
-        ))
-      }
-      <a class="visit" href={url('/meet')}><Icon name="calendar" />Book a visit</a>
+  <div class="navrow" id="primary">
+    <nav class="primary" aria-label="Primary">
+      <div class="nav-services">
+        <p>Services</p>
+        <ul>
+          {
+            services.map((service, index) => (
+              <li>
+                <a href={url('/#services')}>
+                  <Icon name={serviceIcons[index] || 'square'} />
+                  {service.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="nav-pages">
+        {
+          items.map((item) => (
+            <a href={url(item.href)} aria-current={here === item.href ? 'page' : undefined}>
+              <Icon name={item.icon} />
+              {item.label}
+            </a>
+          ))
+        }
+        <a class="visit" href={url('/meet')}><Icon name="calendar" />Book a visit</a>
+      </div>
     </nav>
   </div>
 </header>
 
 <script>
-  const root = document.documentElement;
-  const button = document.querySelector<HTMLButtonElement>('.menu');
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const button = header?.querySelector<HTMLButtonElement>('.menu');
   const label = button?.querySelector<HTMLElement>('.menu-label');
-  const nav = document.querySelector<HTMLElement>('#primary');
-  button?.addEventListener('click', () => {
-    const open = !nav?.classList.contains('is-open');
-    nav?.classList.toggle('is-open', open);
-    button.setAttribute('aria-expanded', String(open));
+  const panel = header?.querySelector<HTMLElement>('#primary');
+  const setOpen = (open: boolean) => {
+    panel?.classList.toggle('is-open', open);
+    button?.setAttribute('aria-expanded', String(open));
     if (label) label.textContent = open ? 'Close' : 'Menu';
+  };
+  button?.addEventListener('click', () => setOpen(!panel?.classList.contains('is-open')));
+  panel?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('click', (event) => {
+    if (!header?.contains(event.target as Node)) setOpen(false);
   });
-  root.classList.add('js');
-  const header = document.querySelector('.site-header');
-  window.addEventListener(
-    'scroll',
-    () => {
-      const compact = window.scrollY > 40 && !nav?.classList.contains('is-open');
-      header?.classList.toggle('is-compact', compact);
-    },
-    { passive: true },
-  );
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setOpen(false);
+  });
 </script>

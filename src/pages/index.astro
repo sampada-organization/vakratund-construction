@@ -1,8 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import Rise from '../components/Rise.astro';
 import Slideshow from '../components/Slideshow.astro';
 import Trade from '../components/Trade.astro';
+import WorkGrid from '../components/WorkGrid.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import ClientStrip from '../components/ClientStrip.astro';
@@ -33,33 +33,26 @@ const jsonLd = {
 ---
 
 <Base title={site.name} description={description} jsonLd={jsonLd}>
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="kicker">Chakan · civil contractor · since {site.established}</p>
-        <h1>{site.name}</h1>
-        <p class="tagline">{site.tagline}</p>
-        <p class="lede">{site.promise} Proprietor {site.proprietor}. One office, one answer.</p>
-        <div class="hero-actions">
-          <a class="visit" href={url('/meet')}><Icon name="calendar" />Book a site visit</a>
-          <a class="ghost" href={url('/plant')}><Icon name="gear" />See the plant</a>
-        </div>
-        <p class="measure">{site.measure}</p>
-      </div>
-      <Rise />
+  <section class="hero hero-reel">
+    <div class="wrap">
+      <p class="kicker">Chakan · since {site.established}</p>
+      <h1>{site.name}</h1>
+      <p class="tagline">{site.tagline}</p>
+      <Slideshow />
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <h2>Services</h2>
+      <Trade />
     </div>
   </section>
 
   <section class="section alt">
     <div class="wrap">
       <h2>Work</h2>
-      <Slideshow />
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <Trade />
+      <WorkGrid />
     </div>
   </section>
 

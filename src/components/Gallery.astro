@@ -47,10 +47,12 @@ const { title, frames } = Astro.props;
     )
   }
   <dialog class="lightbox">
-    <button type="button" class="lightbox-close" aria-label="Close">Close</button>
-    <button type="button" class="lightbox-prev" aria-label="Previous picture">Previous</button>
     <img alt="" />
-    <button type="button" class="lightbox-next" aria-label="Next picture">Next</button>
+    <div class="lightbox-bar">
+      <button type="button" class="lightbox-close" aria-label="Close">Close</button>
+      <button type="button" class="lightbox-prev" aria-label="Previous picture">Previous</button>
+      <button type="button" class="lightbox-next" aria-label="Next picture">Next</button>
+    </div>
   </dialog>
 </div>
 

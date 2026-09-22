@@ -4,11 +4,9 @@ import { links, site } from '../lib/content';
 ---
 
 <div class="reach-slot">
-<div class="reach">
-  <div class="reach-top">
-    <a class="btn-wa" href={links.whatsapp} aria-label="WhatsApp"><Icon name="chat" /></a>
-    <a class="btn-gmail" href={links.email} aria-label="Gmail"><Icon name="mail" /></a>
+  <div class="reach reach-icons">
+    <a class="btn-wa" href={links.whatsapp} aria-label="WhatsApp" title="WhatsApp"><Icon name="chat" /></a>
+    <a class="btn-gmail" href={links.email} aria-label="Gmail" title="Gmail"><Icon name="mail" /></a>
+    <a class="btn-call" href={links.tel} aria-label={`Call ${site.phoneDisplay}`} title={`Call ${site.phoneDisplay}`}><Icon name="phone" /></a>
   </div>
-  <a class="btn-call" href={links.tel} aria-label={`Call ${site.phoneDisplay}`}><Icon name="phone" />{site.phoneDisplay}</a>
-</div>
 </div>
