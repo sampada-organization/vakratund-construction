@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Sheen from '../components/Sheen.astro';
 import Steps from '../components/Steps.astro';
 import { site, url } from '../lib/content';
 
@@ -9,11 +10,16 @@ const description = 'How a Vakratund job runs: one contact, a measurement, a pre
 <Base title="Process" description={description}>
   <section class="section">
     <div class="wrap">
-      <h1>How a job runs</h1>
-      <p class="intro">
-        {site.promise} One contact, a written budget, and our own machines.
-        “{site.safety}”
-      </p>
+      <div class="split">
+        <div>
+          <h1>How a job runs</h1>
+          <p class="intro">
+            {site.promise} One contact, a written budget, and our own machines.
+            “{site.safety}”
+          </p>
+        </div>
+        <Sheen kind="kit" />
+      </div>
       <Steps heading="h2" />
       <p>When the measure is done, <a href={url('/meet')}>book the visit</a> or <a href={url('/onboard')}>tell us who the client is</a>.</p>
     </div>

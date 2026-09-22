@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Rise from '../components/Rise.astro';
 import Steps from '../components/Steps.astro';
+import Sheen from '../components/Sheen.astro';
 import WorkGrid from '../components/WorkGrid.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
@@ -78,10 +79,13 @@ const jsonLd = {
 
   <section class="section alt">
     <div class="wrap">
-      <header>
-        <h2>Services</h2>
-        <p>Buildings, roads, concrete, masonry, government work, and plotting.</p>
-      </header>
+      <div class="split">
+        <header>
+          <h2>Services</h2>
+          <p>Buildings, roads, concrete, masonry, government work, and plotting.</p>
+        </header>
+        <Sheen kind="yard" />
+      </div>
       <div class="cards">
         {services.map((service) => (
           <article>

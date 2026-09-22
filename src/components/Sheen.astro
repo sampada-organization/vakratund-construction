@@ -1,0 +1,40 @@
+---
+interface Props {
+  kind: 'roller' | 'kit' | 'yard';
+}
+const { kind } = Astro.props;
+---
+
+<div class="sheen" aria-hidden="true">
+  <svg viewBox="0 0 320 180">
+    <rect width="320" height="180" fill="#161b24" />
+    <rect x="1" y="1" width="318" height="178" fill="none" stroke="rgba(201,208,216,.35)" />
+    {
+      kind === 'roller' && (
+        <g fill="none" stroke="#c9d0d8" stroke-width="2">
+          <circle cx="78" cy="118" r="28" />
+          <circle cx="78" cy="118" r="8" />
+          <path d="M106 118h150M230 118l28-46h28" />
+          <path d="M40 150h250" />
+        </g>
+      )
+    }
+    {
+      kind === 'kit' && (
+        <g fill="none" stroke="#c9d0d8" stroke-width="2">
+          <rect x="36" y="48" width="110" height="78" />
+          <path d="M56 48V34h70v14M70 86h42M168 70h112M168 98h80M190 54l28 28-28 28" />
+        </g>
+      )
+    }
+    {
+      kind === 'yard' && (
+        <g fill="none" stroke="#c9d0d8" stroke-width="2">
+          <path d="M28 142h264M48 142V78h70v64M70 78V52h26v26M150 142V64h90v78M168 88h18M198 88h18M168 112h18M198 112h18" />
+          <path d="M250 64 286 40v102" stroke="#1a46c8" />
+        </g>
+      )
+    }
+    <rect class="slick" x="-80" y="0" width="90" height="180" fill="rgba(255,255,255,.28)" />
+  </svg>
+</div>
