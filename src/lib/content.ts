@@ -6,8 +6,46 @@ import clients from '../content/clients.json';
 import resources from '../content/resources.json';
 import processSteps from '../content/process.json';
 import pages from '../content/pages.json';
+import materials from '../content/materials.json';
 
-export { site, services, projects, plants, clients, resources, pages, processSteps as process };
+export { site, services, projects, plants, clients, resources, pages, materials, processSteps as process };
+
+export function materialBySlug(slug: string) {
+  return materials.find((item) => item.slug === slug);
+}
+
+export function materialsIn(category: string) {
+  const want = category.trim().toLowerCase();
+  if (!want) return [];
+  return materials.filter((item) =>
+    String(item.category || '')
+      .split(',')
+      .map((part) => part.trim().toLowerCase())
+      .includes(want),
+  );
+}
+
+export function materialsForProject(slug: string, tags: string) {
+  const named = materials.filter((item) =>
+    String(item.projects || '')
+      .split(',')
+      .map((part) => part.trim())
+      .includes(slug),
+  );
+  if (named.length) return named;
+  const tag = String(tags || '')
+    .split(',')
+    .map((part) => part.trim())
+    .find(Boolean);
+  return tag ? materialsIn(tag) : [];
+}
+
+export function linesOf(value: string) {
+  return String(value || '')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
 
 const waText = 'Hello Vakratund Construction. I have a site to discuss.';
 

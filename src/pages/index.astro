@@ -7,6 +7,7 @@ import ServiceCards from '../components/ServiceCards.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import ClientStrip from '../components/ClientStrip.astro';
+import MaterialPlates from '../components/MaterialPlates.astro';
 import { site, url } from '../lib/content';
 
 const description =
@@ -43,6 +44,27 @@ const jsonLd = {
     </div>
   </section>
 
+  <section class="section" id="firm">
+    <div class="wrap firm">
+      <div>
+        <p class="kicker">The firm</p>
+        <h2>Civil work, with the plant that places it</h2>
+        <p>
+          {site.name} is a {site.legalForm.toLowerCase()}. {site.proprietor} is the proprietor. The firm was
+          established in {site.established} and has taken government contracts since {site.governmentWorkSince}. The
+          work is for homes, factories, and public bodies.
+        </p>
+        <p>{site.promise}</p>
+        <p class="measure">{site.measure}</p>
+      </div>
+      <ul class="facts">
+        <li><div><strong>{site.established}</strong><span>Established</span></div></li>
+        <li><div><strong>{site.governmentWorkSince}</strong><span>Government contracts</span></div></li>
+        <li><div><strong>Chakan</strong><span>The Grand Centre</span></div></li>
+      </ul>
+    </div>
+  </section>
+
   <section class="section alt" id="work">
     <div class="wrap">
       <header class="row-head">
@@ -73,7 +95,39 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section defer" id="materials">
+    <div class="wrap">
+      <header class="row-head">
+        <h2>Materials</h2>
+        <a href={url('/materials')} aria-label="Further: Materials">Further</a>
+      </header>
+      <p class="intro">
+        Bitumen, concrete, gabion stone, epoxy, thermoplastic paint, and masonry. Open a material for the method and
+        the procedure.
+      </p>
+      <MaterialPlates />
+    </div>
+  </section>
+
+  <section class="section defer" id="method">
+    <div class="wrap firm">
+      <div>
+        <p class="kicker">Method</p>
+        <h2>One contact, then the material</h2>
+        <p>
+          One person stays with the job. The line is measured before a price is promised. A written budget sits inside
+          the time and the price agreed up front. The ready-mix plant, the mixers, the rollers, and the excavators are
+          on our own register, and the method uses that plant.
+        </p>
+        <p>“{site.safety}”</p>
+      </div>
+      <ol class="mission">
+        {site.mission.map((line) => <li>{line}</li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section alt defer">
     <div class="wrap">
       <header>
         <h2>Clients</h2>
@@ -83,7 +137,7 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section commission" id="catch">
+  <section class="section commission defer" id="catch">
     <div class="wrap">
       <h2><Icon name="sheet" />Start a job</h2>
       <p>

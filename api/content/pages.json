@@ -1,6 +1,7 @@
 [
   { "href": "/projects", "label": "Work" },
   { "href": "/services", "label": "Services" },
+  { "href": "/materials", "label": "Materials" },
   { "href": "/plant", "label": "Plant" },
   { "href": "/process", "label": "Process" },
   { "href": "/clients", "label": "Clients" },

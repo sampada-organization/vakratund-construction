@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const description = 'Edit Vakratund Construction copy, plant, clients, projects, and resources.';
+const description = 'Edit Vakratund Construction copy, plant, clients, projects, materials, and resources.';
 const lists = [
   ['pages', 'Menu pages'],
   ['services', 'Services'],
   ['projects', 'Projects'],
+  ['materials', 'Materials'],
   ['register', 'Plant register'],
   ['earlier', 'Other machines'],
   ['clients', 'Clients on the public list'],
@@ -19,8 +20,9 @@ const lists = [
     <div class="wrap">
       <h1>Edit the site</h1>
       <p class="intro">
-        Change the words, the phone, the plant counts, the client names, the projects, and the files. A booking still
-        comes from the forms, not from this page.
+        Change the words, the phone, the plant counts, the client names, the projects, the materials, and the files.
+        A material keeps its picture, its project category, the method, and the procedure. A booking still comes from
+        the forms, not from this page.
       </p>
       <form id="gate" class="desk-form">
         <label>Password <input name="password" type="password" autocomplete="current-password" required /></label>

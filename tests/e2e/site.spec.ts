@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const pages = ['/', '/projects', '/services', '/services/roads', '/plant', '/process', '/clients', '/profile', '/resources', '/identity', '/contact', '/onboard', '/meet', '/admin', '/legal/privacy'];
+const pages = ['/', '/projects', '/services', '/services/roads', '/materials', '/materials/bitumen', '/plant', '/process', '/clients', '/profile', '/resources', '/identity', '/contact', '/onboard', '/meet', '/admin', '/legal/privacy'];
 
 test('home states the work and the real phone', async ({ page }, testInfo) => {
   await page.goto('/');
@@ -12,6 +12,7 @@ test('home states the work and the real phone', async ({ page }, testInfo) => {
   await expect(page.getByRole('link', { name: /missed call/i })).toHaveCount(0);
   await expect(page.locator('body')).not.toContainText('9970099700');
   await expect(page.locator('body')).not.toContainText('VAKARTUND');
+  await expect(page.locator('body')).toContainText('vakrtundconstruction.com');
   await expect(page.locator('[data-stage] img.is-on')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Further: Since 2007' })).toBeVisible();
   await expect(page.locator('#tools').getByText('Transit mixer')).toBeVisible();
@@ -51,6 +52,17 @@ test('inner pages answer', async ({ page }) => {
   }
   const missing = await page.goto('/not-a-page');
   expect(missing?.status()).toBe(404);
+});
+
+test('a material keeps its method, procedure, and a lazy photograph', async ({ page }) => {
+  await page.goto('/materials');
+  await page.getByRole('link', { name: /Bitumen/ }).first().click();
+  await expect(page.getByRole('heading', { name: 'Method' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Procedure' })).toBeVisible();
+  await expect(page.locator('.photo-row img').first()).toHaveAttribute('loading', 'lazy');
+  await page.getByRole('link', { name: /Bitumen roads/ }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Bitumen roads');
+  await expect(page.getByRole('heading', { name: 'Method' })).toBeVisible();
 });
 
 test('work photograph is sized and lazy on the index', async ({ page }, testInfo) => {
@@ -110,6 +122,7 @@ test('the office editor opens with the password and lists services', async ({ pa
   await page.getByLabel('Password').fill('vakratund-dev');
   await page.getByRole('button', { name: 'Open', exact: true }).click();
   await expect(page.locator('[data-list="services"] input').first()).toHaveValue('roads');
+  await expect(page.locator('[data-list="materials"] input').first()).toHaveValue('bitumen');
   await expect(page.locator('[data-list="pages"] input').first()).toHaveValue('Work');
   await expect(page.getByRole('button', { name: 'Save', exact: true })).toBeVisible();
 });

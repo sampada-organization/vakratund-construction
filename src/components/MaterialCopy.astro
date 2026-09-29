@@ -1,0 +1,42 @@
+---
+import Icon from './Icon.astro';
+import { linesOf, materials, url } from '../lib/content';
+import { materialIcon } from '../lib/marks';
+
+interface Props {
+  items: typeof materials;
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <div class="material-copy">
+      {
+        items.map((item) => (
+          <section>
+            <p class="kicker">
+              <Icon name={materialIcon(item.category)} />
+              {item.category}
+            </p>
+            <h2>
+              <a href={url(`/materials/${item.slug}`)}>{item.title}</a>
+            </h2>
+            <h3>Method</h3>
+            <p>{item.method}</p>
+            <h3>Procedure</h3>
+            <ol class="steps">
+              {linesOf(item.procedure).map((line, index) => (
+                <li class="step">
+                  <span class="step-mark">{String(index + 1).padStart(2, '0')}</span>
+                  <p>{line}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))
+      }
+    </div>
+  )
+}

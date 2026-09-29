@@ -1,0 +1,38 @@
+---
+import Icon from './Icon.astro';
+import { materials, url } from '../lib/content';
+import { materialIcon } from '../lib/marks';
+
+interface Props {
+  items?: typeof materials;
+}
+
+const { items = materials } = Astro.props;
+---
+
+<ul class="material-plates">
+  {
+    items.map((item) => (
+      <li>
+        <a href={url(`/materials/${item.slug}`)}>
+          <img
+            src={url(item.image)}
+            width={item.width}
+            height={item.height}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+          <div>
+            <p class="kicker">
+              <Icon name={materialIcon(item.category)} />
+              {item.category}
+            </p>
+            <strong>{item.title}</strong>
+            <p>{item.summary}</p>
+          </div>
+        </a>
+      </li>
+    ))
+  }
+</ul>

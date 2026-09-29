@@ -10,7 +10,7 @@ const marks: Record<string, string> = {
   chat: '<path d="M5 6h14v9H10l-4 4v-4H5z"/>',
   mail: '<path d="M4 7h16v10H4zM4 7l8 6 8-6"/>',
   building: '<path d="M4 20h16M7 20V9l5-4 5 4v11M11 20v-4h2v4M9 12h1M14 12h1"/>',
-  road: '<path d="M8 20 11 5h2l3 15M12 8v2M12 13v2"/>',
+  road: '<path d="M6 4v16M18 4v16M12 6v2.5M12 11v2.5M12 16v2.5"/>',
   square: '<path d="M6 18V6h12M6 18 18 6"/>',
   rebar: '<path d="M6 6h12M6 12h12M6 18h12M6 6v12M12 6v12M18 6v12"/>',
   brick: '<path d="M4 8h16v4H4zM4 12h16v4H4zM10 8v4M14 12v4"/>',
@@ -35,6 +35,9 @@ const marks: Record<string, string> = {
   calendar: '<path d="M6 5h12v14H6zM6 9h12M9 3v4M15 3v4"/>',
   menu: '<path d="M5 7h14M5 12h14M5 17h14"/>',
   close: '<path d="M6 6l12 12M18 6 6 18"/>',
+  stone: '<path d="M4 16l4-8h3l2 4 3-2 4 6H4z"/>',
+  epoxy: '<path d="M4 16h16M7 16c.6-3 2.2-5 5-5s4.4 2 5 5M9 10l1.5-3M15 10 13.5 7"/>',
+  pour: '<path d="M8 4h8l-1 5H9zM6 11h12l-2 9H8z"/>',
 };
 
 const draw = marks[name] || marks.square;

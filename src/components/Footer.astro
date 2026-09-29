@@ -11,6 +11,7 @@ import { links, pages, site, url } from '../lib/content';
         {site.legalForm}. Proprietor {site.proprietor}.<br />
         {site.office.lines.join(', ')}
       </p>
+      <p>{site.domain}</p>
       <p class="foot-links">
         <a href={links.maps}><Icon name="pin" />Map</a>
         <a class="btn-call" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>

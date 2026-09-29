@@ -21,7 +21,18 @@ const description = 'How a Vakratund job runs: one contact, a measurement, a pre
         <Sheen kind="kit" />
       </div>
       <Steps heading="h2" />
-      <p>When the measure is done, <a href={url('/meet')}>book the visit</a> or <a href={url('/onboard')}>tell us who the client is</a>.</p>
+      <h2>What the firm set out to do</h2>
+      <ol class="mission">
+        {site.mission.map((line) => <li>{line}</li>)}
+      </ol>
+      <p>
+        The procedure for a material — bitumen, concrete, stone, epoxy, paint, or masonry — follows this same order:
+        one contact, a measure, a written budget, our own plant, a safe site, and a report while the work is moving.
+      </p>
+      <p>
+        When the measure is done, <a href={url('/meet')}>book the visit</a> or <a href={url('/onboard')}>tell us who the client is</a>.
+        The material records are on the <a href={url('/materials')}>materials</a> page.
+      </p>
     </div>
   </section>
 </Base>

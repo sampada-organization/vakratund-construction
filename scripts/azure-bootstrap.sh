@@ -64,7 +64,7 @@ az staticwebapp appsettings set \
     "ENQUIRY_GITHUB_TOKEN=${ENQUIRY_TOKEN}" \
     "GITHUB_REPO=${INBOX}" \
     "CMS_PASSWORD=${CMS_PASSWORD}" \
-    "ALLOWED_ORIGINS=https://${HOST},https://vakrtundconstruction.in,https://www.vakrtundconstruction.in" \
+    "ALLOWED_ORIGINS=https://${HOST},https://vakrtundconstruction.com,https://www.vakrtundconstruction.com,https://vakratundconstruction.in,https://www.vakratundconstruction.in" \
   >/dev/null
 
 if command -v gh >/dev/null; then

@@ -1,0 +1,93 @@
+[
+  {
+    "slug": "bitumen",
+    "title": "Bitumen",
+    "category": "road",
+    "projects": "bitumen-roads",
+    "image": "/media/work/bitumen.jpg",
+    "width": 434,
+    "height": 542,
+    "images": "/media/gallery/bitumen-2.jpg\n/media/gallery/bitumen-3.jpg",
+    "summary": "Bitumen for roads that are measured and laid for a smoother run.",
+    "method": "The line is set out before the mix arrives. Tippers on the register bring the material. The vibratory rollers finish the surface. The same crew lays bitumen and concrete.",
+    "procedure": "Measure the road. The scope comes before a promise.\nShape the run with the grader and the backhoe loaders.\nBring the bitumen with the tippers.\nLay the course on the measured line.\nRoll with the vibratory rollers.\nLeave a surface the next journey can use."
+  },
+  {
+    "slug": "pavement-concrete",
+    "title": "Pavement concrete",
+    "category": "road",
+    "projects": "concrete-roads",
+    "image": "/media/work/concrete-road.jpg",
+    "width": 481,
+    "height": 601,
+    "images": "/media/gallery/concrete-2.jpg\n/media/gallery/concrete-3.jpg",
+    "summary": "Concrete for roads in yards, plants, and public work.",
+    "method": "Concrete for a road comes from the ready-mix plant and the transit mixers. The line is measured, the slab is placed, and the finish is for a yard, a plant, or a public run.",
+    "procedure": "Set out the road.\nBatch at the ready-mix plant.\nCarry the concrete in the transit mixers.\nPlace the slab on the measured line.\nFinish the surface for the yard or the public run."
+  },
+  {
+    "slug": "foundation-concrete",
+    "title": "Foundation concrete",
+    "category": "foundation",
+    "projects": "machine-foundations, special-foundations, mass-concrete",
+    "image": "/media/work/foundation.jpg",
+    "width": 455,
+    "height": 569,
+    "images": "/media/work/special-foundation.jpg\n/media/work/mass-concrete.jpg\n/media/gallery/found-2.jpg",
+    "summary": "Concrete for machine foundations, special foundations, and mass pours.",
+    "method": "Foundations for plant and machinery, including the ones the ground or the machine asks for. Mass concrete sits with that work. Excavators and backhoe loaders open the ground. The ready-mix plant and the transit mixers supply the pour.",
+    "procedure": "Read the ground and the machine before a price is promised.\nOpen the excavation with the excavators and the backhoe loaders.\nSet the line.\nPour from the ready-mix plant through the transit mixers.\nLeave a base the machine can stand on."
+  },
+  {
+    "slug": "epoxy",
+    "title": "Epoxy",
+    "category": "floor",
+    "projects": "floor-epoxy",
+    "image": "/media/work/epoxy.jpg",
+    "width": 526,
+    "height": 657,
+    "images": "/media/gallery/epoxy-2.jpg\n/media/gallery/epoxy-3.jpg",
+    "summary": "A finish for factory floors, after the worn surface is repaired.",
+    "method": "A worn floor is repaired first. Epoxy goes on where the shed needs a surface that can take the work.",
+    "procedure": "Look at the floor that is already there.\nRepair what will not hold a finish.\nLay the epoxy on the repaired surface.\nHand the shed back as a working floor."
+  },
+  {
+    "slug": "gabion-stone",
+    "title": "Gabion stone",
+    "category": "wall",
+    "projects": "gabion-wall",
+    "image": "/media/work/gabion.jpg",
+    "width": 494,
+    "height": 618,
+    "images": "/media/gallery/gabion-2.jpg\n/media/gallery/gabion-3.jpg",
+    "summary": "Stone held in mesh, for slopes and channels.",
+    "method": "The stone stays in the mesh. The wall follows the slope or the channel. The line is set to the ground.",
+    "procedure": "Walk the slope or the channel.\nSet the mesh to that line.\nFill the mesh with stone.\nKeep the stone inside the mesh.\nLeave the wall following the ground."
+  },
+  {
+    "slug": "marking-paint",
+    "title": "Thermoplastic marking",
+    "category": "yard",
+    "projects": "parking",
+    "image": "/media/work/parking.jpg",
+    "width": 553,
+    "height": 691,
+    "images": "/media/gallery/park-2.jpg\n/media/gallery/park-3.jpg",
+    "summary": "Thermoplastic paint and signs for parking bays.",
+    "method": "A yard needs bays, lines, and signs before the machines move. Thermoplastic paint marks the bays. Plotting sets out a new site the same way: the line first.",
+    "procedure": "Plot the yard or the new site.\nMark the bays.\nLay the thermoplastic lines.\nFix the signs.\nLeave a yard the machines can circulate in."
+  },
+  {
+    "slug": "masonry",
+    "title": "Masonry and reinforced concrete",
+    "category": "building",
+    "projects": "",
+    "image": "/media/made/building.jpg",
+    "width": 1162,
+    "height": 674,
+    "images": "",
+    "summary": "Brick, masonry, and the reinforced concrete inside a building frame.",
+    "method": "Frames, brick, and masonry for a building. Reinforced concrete sits inside this work. The ready-mix plant supplies that concrete.",
+    "procedure": "Set out the building.\nRaise the frame.\nLay the brick and the masonry.\nPlace the reinforced concrete from the plant.\nFinish a building that can be used."
+  }
+]

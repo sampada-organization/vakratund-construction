@@ -2,7 +2,7 @@
 
 First version of the Chakan site. Static Astro pages, a small desk for the copy, and three intake forms. The host is the same shape as the Dinymeo site: Azure Static Web Apps, Free SKU only, GitHub Actions.
 
-The public name is **Vakratund**. The domain is `vakrtundconstruction.com`.
+The public name is **Vakratund**. The live domain is `vakrtundconstruction.com`.
 
 ## Run
 
@@ -25,7 +25,7 @@ The desk password on this machine is `vakratund-dev` (see `.env.example`).
 
 ## What is already on the site
 
-- Home, work, plant and tools, process, clients, resources, identity, contact, client onboarding, site-visit booking, privacy, desk.
+- Home, work, services, materials, plant and tools, process, clients, resources, identity, contact, client onboarding, site-visit booking, privacy, desk.
 - Mark and roads poster from the September 2026 files. Work photographs from the previous repository, recompressed.
 - Services, office, and phone from the 19 Sep 2026 note. History, plant counts, and clients from the company profile.
 
@@ -45,7 +45,7 @@ https://vakrtundconstruction.com
 
 Wix only keeps the domain registration. It does not host the site, and it does not need a plugin. DNS notes are in [docs/wix.md](docs/wix.md).
 
-The desk (`/admin`) edits words, plant counts, clients, projects, and files. It does not receive bookings. Bookings are the public forms. Save works only on a computer running `npm run dev:full`. GitHub Pages shows the last published build and cannot save from the browser.
+The desk (`/admin`) edits words, plant counts, clients, projects, materials, and files. It does not receive bookings. Bookings are the public forms. Save works only on a computer running `npm run dev:full`. GitHub Pages shows the last published build and cannot save from the browser.
 
 ## Next files
 

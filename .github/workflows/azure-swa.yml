@@ -29,7 +29,7 @@ jobs:
           skip_app_build: false
           app_build_command: 'npm ci && npm run build'
         env:
-          PUBLIC_SITE_URL: https://vakrtundconstruction.in
+          PUBLIC_SITE_URL: https://vakrtundconstruction.com
       - name: Token missing
         if: env.SWA_TOKEN == ''
         run: |

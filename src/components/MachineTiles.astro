@@ -19,7 +19,7 @@ const { linked = false, showCount = false } = Astro.props;
               width={item.width}
               height={item.height}
               alt=""
-              loading="eager"
+              loading={linked ? 'lazy' : 'eager'}
               decoding="async"
             />
           ) : (

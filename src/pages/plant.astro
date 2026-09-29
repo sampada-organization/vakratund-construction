@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import MachineTiles from '../components/MachineTiles.astro';
-import { plants } from '../lib/content';
+import { plants, url } from '../lib/content';
 
 const description = 'Plant and tools on the Vakratund Construction register: mixers, rollers, excavators, tippers, and tractors.';
 ---
@@ -10,8 +10,15 @@ const description = 'Plant and tools on the Vakratund Construction register: mix
   <section class="section">
     <div class="wrap">
       <h1>Plant and tools</h1>
-      <p class="intro">{plants.intro}</p>
+      <p class="intro">{plants.intro} The counts are the company profile’s counts.</p>
       <MachineTiles />
+      <h2>Where the machines sit in the method</h2>
+      <p>
+        The ready-mix plant and the mixers on the register carry concrete for roads, foundations, mass pours, and
+        the reinforced concrete inside a building. Rollers finish a bitumen run. The grader, the backhoe loaders, and
+        the excavators open and shape the ground. Tippers move material. Tractors and trolleys stay with the yard.
+      </p>
+      <p><a href={url('/materials')}>See the materials this plant places</a></p>
     </div>
   </section>
 </Base>

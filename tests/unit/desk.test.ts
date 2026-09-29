@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import clients from '../../src/content/clients.json';
 import plants from '../../src/content/plants.json';
 import projects from '../../src/content/projects.json';
+import materials from '../../src/content/materials.json';
 import services from '../../src/content/services.json';
 import site from '../../src/content/site.json';
 
@@ -19,6 +20,7 @@ function invoke(handler: Function, req: object) {
 
 describe('published facts', () => {
   it('keeps the office identity that was actually supplied', () => {
+    expect(site.domain).toBe('vakrtundconstruction.com');
     expect(site.established).toBe(2007);
     expect(site.governmentWorkSince).toBe(2016);
     expect(site.phoneTel).toBe('+919960532729');
@@ -31,6 +33,8 @@ describe('published facts', () => {
     expect(clients.every((client) => client.logo.startsWith('/media/clients/'))).toBe(true);
     expect(plants.register.find((item) => item.name === 'Transit mixer')?.count).toBe(5);
     expect(projects).toHaveLength(8);
+    expect(materials.map((item) => item.slug)).toContain('bitumen');
+    expect(materials.every((item) => item.method && item.procedure && item.category)).toBe(true);
   });
 
   it('mirrors content into the API package', () => {
@@ -125,6 +129,7 @@ describe('cms API', () => {
     });
     expect(opened.status).toBe(200);
     expect(JSON.parse(opened.body).services.length).toBe(6);
+    expect(JSON.parse(opened.body).materials.length).toBeGreaterThan(0);
     expect(JSON.parse(opened.body).pages.length).toBeGreaterThan(0);
     process.env.WEBSITE_HOSTNAME = 'vakratund.azurestaticapps.net';
     try {

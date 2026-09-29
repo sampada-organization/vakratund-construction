@@ -32,3 +32,14 @@ export function plantIcon(name: string) {
 export function resourceIcon(kind: string) {
   return kind.toLowerCase().includes('image') ? 'frame' : 'sheet';
 }
+
+export function materialIcon(category: string) {
+  const label = category.toLowerCase();
+  if (label.includes('road')) return 'road';
+  if (label.includes('foundation')) return 'pour';
+  if (label.includes('floor')) return 'epoxy';
+  if (label.includes('wall')) return 'stone';
+  if (label.includes('yard')) return 'plot';
+  if (label.includes('building')) return 'brick';
+  return 'square';
+}

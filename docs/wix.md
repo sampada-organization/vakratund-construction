@@ -1,8 +1,8 @@
 # Domain at Wix, site on GitHub Pages
 
-Wix cannot host this site, and no Wix plugin is required. Wix only holds the domain `vakrtundconstruction.com`. The site itself is GitHub Pages. DNS for that name already points at GitHub. Do not install a GitHub or Pages plugin inside Wix.
+Wix cannot host this site, and no Wix plugin is required. Wix holds the domain registration. The site itself is GitHub Pages. Do not install a GitHub or Pages plugin inside Wix.
 
-The live address is https://vakrtundconstruction.com. `public/CNAME` contains that name. GitHub Pages was returning “There isn't a GitHub Pages site here” until this file was published.
+The live address is https://vakrtundconstruction.com. `public/CNAME` contains that name, because that is the name whose DNS already points at GitHub. GitHub Pages serves one custom domain from that file.
 
 ## Records in Wix
 

@@ -11,6 +11,7 @@ const FILES = {
   clients: 'clients.json',
   resources: 'resources.json',
   process: 'process.json',
+  materials: 'materials.json',
 };
 
 const PRIMARY = path.join(__dirname, '..', 'content');
@@ -37,6 +38,8 @@ function bundleOk(body) {
   if (!body.plants || !Array.isArray(body.plants.register) || !Array.isArray(body.plants.earlier)) return false;
   if (!body.site || typeof body.site !== 'object' || Array.isArray(body.site)) return false;
   if (!body.projects.every((item) => item && item.slug && item.title)) return false;
+  if (!Array.isArray(body.materials)) return false;
+  if (!body.materials.every((item) => item && item.slug && item.title)) return false;
   return true;
 }
 

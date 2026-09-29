@@ -21,6 +21,7 @@ function allowOrigin(req) {
   if (!origin) return '';
   if (ALLOWED_ORIGINS.includes(origin)) return origin;
   if (/^https:\/\/[a-z0-9-]+\.azurestaticapps\.net$/i.test(origin)) return origin;
+  if (/^https:\/\/([a-z0-9-]+\.)?vakratundconstruction\.in$/i.test(origin)) return origin;
   if (/^https:\/\/([a-z0-9-]+\.)?vakrtundconstruction\.in$/i.test(origin)) return origin;
   if (/^http:\/\/(127\.0\.0\.1|localhost):4322$/i.test(origin)) return origin;
   return '';

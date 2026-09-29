@@ -24,6 +24,7 @@ interface Bundle {
   clients: Row[];
   resources: Row[];
   process: Row[];
+  materials: Row[];
 }
 
 interface Field {
@@ -78,6 +79,19 @@ const FIELDS: Record<string, Field[]> = {
   process: [
     { key: 'title', label: 'Title' },
     { key: 'text', label: 'Text', area: true },
+  ],
+  materials: [
+    { key: 'slug', label: 'Slug' },
+    { key: 'title', label: 'Title' },
+    { key: 'category', label: 'Project category' },
+    { key: 'projects', label: 'Project slugs, comma separated' },
+    { key: 'summary', label: 'Summary', area: true },
+    { key: 'method', label: 'Method', area: true },
+    { key: 'procedure', label: 'Procedure, one step per line', area: true },
+    { key: 'image', label: 'Image path' },
+    { key: 'width', label: 'Width', number: true },
+    { key: 'height', label: 'Height', number: true },
+    { key: 'images', label: 'More image paths, one per line', area: true },
   ],
 };
 
@@ -170,6 +184,7 @@ function paint(next: Bundle) {
   paintList('clients', next.clients);
   paintList('resources', next.resources);
   paintList('process', next.process);
+  paintList('materials', next.materials || []);
 }
 
 function collectList(list: string): Row[] {
@@ -217,6 +232,7 @@ function collect(): Bundle | null {
   });
   next.resources = collectList('resources');
   next.process = collectList('process');
+  next.materials = collectList('materials');
   return next;
 }
 
@@ -250,6 +266,10 @@ async function save() {
   if (!next) return;
   if (next.projects.some((project) => !project.slug || !project.title)) {
     say('Every project needs a slug and a title.');
+    return;
+  }
+  if (next.materials.some((item) => !item.slug || !item.title)) {
+    say('Every material needs a slug and a title.');
     return;
   }
   const response = await fetch('/api/cms', {

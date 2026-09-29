@@ -12,3 +12,5 @@ Do not add a claim that is not in one of these.
 Plant counts are the profile’s counts when the two sources disagree. The page says so.
 
 Client logos from the old site are not copied. Names from the profile are set in type.
+
+Materials pages restate those work types, the office-note service list, and the plant register. A method or a procedure on those pages is that sequence. Mix designs, thicknesses, rates, and certificates are not added.

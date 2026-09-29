@@ -17,6 +17,12 @@ const description = `${site.name}, ${site.legalForm.toLowerCase()} in Chakan sin
         Civil work for homes, factories, and government bodies since {site.governmentWorkSince}.
         {site.promise}
       </p>
+      <p>
+        The firm was established in {site.established}. From then it carried work for residential and industrial
+        clients, and from {site.governmentWorkSince} for government bodies. The company profile gives the earlier
+        office as {site.profileOffice}. The office now is {site.office.lines.join(', ')}.
+      </p>
+      <p>The public address of this site is {site.domain}.</p>
       <p class="action-row">
         <a class="btn-call" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
         <a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>

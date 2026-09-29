@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import MaterialPlates from '../../components/MaterialPlates.astro';
+import { site } from '../../lib/content';
+
+const description = `Materials ${site.name} places: bitumen, concrete, stone, epoxy, marking paint, and masonry. Each one carries a method and a procedure.`;
+---
+
+<Base title="Materials" description={description}>
+  <section class="section">
+    <div class="wrap">
+      <p class="kicker">What the crew places</p>
+      <h1>Materials</h1>
+      <p class="intro">
+        The trades follow the job. The material is what actually goes into the ground, the road, the floor, or the
+        wall. Each record keeps a photograph, the project category, the method, and the procedure the crew follows.
+      </p>
+      <p>
+        Bitumen and concrete roads, foundations and mass concrete, epoxy floors, gabion stone, thermoplastic lines,
+        and the brick and reinforced concrete inside a building. The ready-mix plant, the mixers, the rollers, and the
+        excavators on the register are what move that material.
+      </p>
+      <MaterialPlates />
+    </div>
+  </section>
+</Base>
