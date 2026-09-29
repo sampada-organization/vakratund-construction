@@ -22,7 +22,8 @@ const related = materialsForProject(project.slug, String(project.tags || ''));
       <p class="kicker" style="color: var(--blue)">Work</p>
       <h1>{project.title}</h1>
       <p class="intro">{project.summary}</p>
-      <p>Used for {project.use.toLowerCase()}. The photographs in the company profile for this kind of work were taken of jobs executed in 2021.</p>
+      <p>Used for {project.use.toLowerCase()}.</p>
+      <p>These photographs are of jobs done in 2021.</p>
       <Gallery title={project.title} frames={project.gallery} />
       <MaterialCopy items={related} />
       {
@@ -34,7 +35,7 @@ const related = materialsForProject(project.slug, String(project.tags || ''));
         )
       }
       <p><a class="visit" href={`${url('/meet')}?topic=${encodeURIComponent(project.title)}`}>Book a visit about this work</a></p>
-      <Continue href="/services" label="services" text="The trade this job belongs to is written with the" />
+      <Continue href="/services" label="Services" text="The kind of work this job belongs to." />
     </div>
   </article>
 </Base>

@@ -13,10 +13,10 @@ const description = `Office of Vakratund Construction at The Grand Centre, Chaka
     <div class="wrap">
       <h1>The office</h1>
       <p class="intro">{site.office.lines.join(', ')}. {site.hours}.</p>
-      <p>
-        One person answers. A name, a phone, and the kind of work are enough to start. The measure comes before a
-        price. Write here, or call {site.phoneDisplay}.
-      </p>
+      <p>One person answers.</p>
+      <p>Send a name, a phone number, and the kind of work.</p>
+      <p>We measure the site before we give a price.</p>
+      <p>Or call {site.phoneDisplay}.</p>
       <p>{site.domain}</p>
       <p class="action-row">
         <a class="btn-call" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
@@ -29,7 +29,7 @@ const description = `Office of Vakratund Construction at The Grand Centre, Chaka
       
       <h2>Write</h2>
       <LeadForm kind="enquiry" />
-      <Continue href="/projects" label="work" text="The jobs already placed are listed with the" />
+      <Continue href="/projects" label="Work" text="Jobs already done, with the 2021 photographs." />
     </div>
   </section>
 </Base>

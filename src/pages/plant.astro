@@ -2,24 +2,23 @@
 import Base from '../layouts/Base.astro';
 import Continue from '../components/Continue.astro';
 import MachineTiles from '../components/MachineTiles.astro';
-import { plants } from '../lib/content';
 
-const description = 'Plant and tools on the Vakratund Construction register: mixers, rollers, excavators, tippers, and tractors.';
+const description = 'Machines Vakratund Construction owns: mixers, rollers, excavators, tippers, and tractors.';
 ---
 
 <Base title="Plant and tools" description={description}>
   <section class="section">
     <div class="wrap">
       <h1>Plant and tools</h1>
-      <p class="intro">{plants.intro} The counts are the company profile’s counts.</p>
+      <p class="intro">Machines we own. The numbers are from the company profile.</p>
       <MachineTiles />
-      <h2>Where the machines sit in the method</h2>
-      <p>
-        The ready-mix plant and the mixers on the register carry concrete for roads, foundations, mass pours, and
-        the reinforced concrete inside a building. Rollers finish a bitumen run. The grader, the backhoe loaders, and
-        the excavators open and shape the ground. Tippers move material. Tractors and trolleys stay with the yard.
-      </p>
-      <Continue href="/process" label="process" text="How a job runs, from the first call to the report, is the" />
+      <h2>What each machine does</h2>
+      <p>The ready-mix plant and the mixers carry concrete. They serve roads, foundations, mass pours, and the concrete inside a building.</p>
+      <p>Rollers finish a bitumen road.</p>
+      <p>The grader, the backhoe loaders, and the excavators shape the ground.</p>
+      <p>Tippers move material.</p>
+      <p>Tractors and trolleys stay in the yard.</p>
+      <Continue href="/process" label="Process" text="The order of a job, from the first call to the report." />
     </div>
   </section>
 </Base>

@@ -12,12 +12,11 @@ const description = 'Name, mark, colours, and contact channels for Vakratund Con
     <div class="wrap">
       <h1>Digital identity</h1>
       <p class="intro">
-        {site.name}. Proprietor {site.proprietor}. The mark is the supplied blue VC, with the gray plate lifted so the
-        letters sit on the page. The office is in Chakan. The domain is {site.domain}.
+        {site.name}. Proprietor {site.proprietor}. The mark is the blue VC, with a skyline cut into the C. The office is in Chakan. The domain is {site.domain}.
       </p>
       <figure class="figure">
         <img src={url('/brand/mark.png')} width="300" height="202" alt="VC mark, blue lettering with a skyline cut into the C" />
-        <figcaption>The supplied mark. The gray plate is removed. The letters, and the skyline cut into the C, are unchanged.</figcaption>
+        <figcaption>The blue VC. The skyline is cut into the C.</figcaption>
       </figure>
       <h2>Colour roles</h2>
       <p>
@@ -40,7 +39,7 @@ const description = 'Name, mark, colours, and contact channels for Vakratund Con
         <li><a href={links.proprietorEmail}>{site.proprietorEmail}</a> — {site.proprietor}</li>
       </ul>
       <p>There is no login for clients. A client identity is a name, a phone, a site, and the work, filed from the on-board page.</p>
-      <Continue href="/profile" label="profile" text="The person and the offices are written in the" />
+      <Continue href="/profile" label="Profile" text="The proprietor, the offices, and the years." />
     </div>
   </section>
 </Base>

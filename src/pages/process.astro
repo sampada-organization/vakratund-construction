@@ -5,7 +5,7 @@ import Sheen from '../components/Sheen.astro';
 import Steps from '../components/Steps.astro';
 import { site, url } from '../lib/content';
 
-const description = 'How a Vakratund job runs: one contact, a measurement, a prescribed budget, own plant, and a report.';
+const description = 'How a Vakratund job runs: one contact, a measurement, a written budget, our own machines, and a report.';
 ---
 
 <Base title="Process" description={description}>
@@ -14,10 +14,8 @@ const description = 'How a Vakratund job runs: one contact, a measurement, a pre
       <div class="split">
         <div>
           <h1>How a job runs</h1>
-          <p class="intro">
-            {site.promise} One contact, a written budget, and our own machines.
-            “{site.safety}”
-          </p>
+          <p class="intro">One person on the job. A measurement. A written budget. Our own machines.</p>
+          <p>“{site.safety}”</p>
         </div>
         <Sheen kind="kit" />
       </div>
@@ -26,15 +24,12 @@ const description = 'How a Vakratund job runs: one contact, a measurement, a pre
       <ol class="mission">
         {site.mission.map((line) => <li>{line}</li>)}
       </ol>
+      <p>Bitumen, concrete, stone, epoxy, paint, and masonry follow this same order.</p>
+      <p>One contact. A measurement. A written budget. Our own machines. A safe site. A report while the work is moving.</p>
       <p>
-        The procedure for a material — bitumen, concrete, stone, epoxy, paint, or masonry — follows this same order:
-        one contact, a measure, a written budget, our own plant, a safe site, and a report while the work is moving.
+        After the measurement, <a href={url('/meet')}>book the visit</a>. Or <a href={url('/onboard')}>send the client’s name</a>.
       </p>
-      <p>
-        When the measure is done, <a href={url('/meet')}>book the visit</a> or <a href={url('/onboard')}>tell us who the client is</a>.
-        The material records are on the <a href={url('/materials')}>materials</a> page.
-      </p>
-      <Continue href="/clients" label="clients" text="The manufacturers named in the company profile are listed as" />
+      <Continue href="/clients" label="Clients" text="The manufacturers in Chakan named in the company profile." />
     </div>
   </section>
 </Base>

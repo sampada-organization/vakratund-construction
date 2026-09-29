@@ -40,7 +40,7 @@ const description = `${item.title}. ${item.summary}`;
       <p class="intro">{item.summary}</p>
       {
         item.image.startsWith('/media/work/') && (
-          <p>The company profile dates photographs of this kind of work to jobs executed in 2021.</p>
+          <p>These photographs are of jobs done in 2021.</p>
         )
       }
       <figure class="plate-photo">
@@ -111,7 +111,7 @@ const description = `${item.title}. ${item.summary}`;
         <a class="visit" href={url(`/meet?topic=${encodeURIComponent(item.title)}`)}>Book a visit about this material</a>
         <a href={url('/materials')}>All materials</a>
       </p>
-      <Continue href="/plant" label="plant" text="The machines that move this material are on the" />
+      <Continue href="/plant" label="Plant" text="The machines that move this material." />
     </div>
   </article>
 </Base>

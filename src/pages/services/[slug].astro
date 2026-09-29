@@ -24,15 +24,14 @@ const related = projects.filter((project) =>
       <img src={url(service.image)} width="1162" height="674" alt="" fetchpriority="high" decoding="async" />
       <h1>{service.title}</h1>
       <p class="intro">{service.detail}</p>
-      <p>
-        One person stays on the job. The line is measured before the price is promised. The machines on the plant
-        register do the placing, and you hear how the work is going before it is finished.
-      </p>
+      <p>One person stays on the job.</p>
+      <p>We measure before we give a price.</p>
+      <p>Our own machines do the work. You hear how it is going before it is finished.</p>
       <MaterialCopy items={mats} />
       {
         related.length > 0 && (
           <>
-            <h2>Work in this trade</h2>
+            <h2>Jobs of this kind</h2>
             <ul class="work-grid">
               {related.map((project) => (
                 <li>
@@ -47,7 +46,7 @@ const related = projects.filter((project) =>
         )
       }
       <p><a class="visit" href={url(`/meet?topic=${encodeURIComponent(service.title)}`)}>Book a visit</a></p>
-      <Continue href="/materials" label="materials" text="The material this trade places, with its method, is kept under" />
+      <Continue href="/materials" label="Materials" text="What this work uses, and the steps for placing it." />
     </div>
   </section>
 </Base>

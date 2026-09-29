@@ -13,17 +13,11 @@ const description = `${site.name}, ${site.legalForm.toLowerCase()} in Chakan sin
     <div class="wrap">
       <p class="kicker" style="color: var(--blue)">Chakan · since {site.established}</p>
       <h1>Business profile</h1>
-      <p class="intro">
-        {site.name} is a {site.legalForm.toLowerCase()}. Proprietor {site.proprietor}.
-        Civil work for homes, factories, and government bodies since {site.governmentWorkSince}.
-        {site.promise}
-      </p>
-      <p>
-        The firm was established in {site.established}. From then it carried work for residential and industrial
-        clients, and from {site.governmentWorkSince} for government bodies. The company profile gives the earlier
-        office as {site.profileOffice}. The office now is {site.office.lines.join(', ')}.
-      </p>
-      <p>The public address of this site is {site.domain}.</p>
+      <p class="intro">{site.name} is a {site.legalForm.toLowerCase()}. {site.proprietor} is the proprietor.</p>
+      <p>Established in {site.established}. Government contracts since {site.governmentWorkSince}.</p>
+      <p>The earlier office was {site.profileOffice}. The office now is {site.office.lines.join(', ')}.</p>
+      <p>{site.promise}</p>
+      <p>This site is at {site.domain}.</p>
       <p class="action-row">
         <a class="btn-call" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
         <a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>
@@ -58,7 +52,7 @@ const description = `${site.name}, ${site.legalForm.toLowerCase()} in Chakan sin
       <p>“{site.safety}”</p>
       <h2>Clients</h2>
       <ClientStrip />
-      <Continue href="/contact" label="contact" text="The office address, and a way to write, sit with" />
+      <Continue href="/contact" label="Contact" text="The office address, the phone, and a form." />
     </div>
   </section>
 </Base>

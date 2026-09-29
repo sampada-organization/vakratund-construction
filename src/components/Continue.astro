@@ -12,5 +12,5 @@ const { href, label, text, name } = Astro.props;
 ---
 
 <p class="continue">
-  {text} <a href={url(href)} aria-label={name}>{label}</a>.
+  <a href={url(href)} aria-label={name}>{label}</a>. {text}
 </p>

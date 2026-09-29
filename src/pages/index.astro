@@ -41,7 +41,7 @@ const jsonLd = {
         <p class="kicker">Chakan · since {site.established}</p>
         <h1>{site.name}</h1>
         <p class="tagline">{site.tagline}</p>
-        <p>{site.promise}</p>
+        <p>Civil work in Chakan since {site.established}. Homes, factories, and government contracts. The machines are ours.</p>
         <p class="measure">{site.measure}</p>
       </div>
       <Study />
@@ -55,12 +55,10 @@ const jsonLd = {
     <div class="wrap firm">
       <div>
         <p class="kicker">The firm</p>
-        <h2>Civil work, with the plant that places it</h2>
-        <p>
-          {site.name} is a {site.legalForm.toLowerCase()}. {site.proprietor} is the proprietor. The firm was
-          established in {site.established} and has taken government contracts since {site.governmentWorkSince}. The
-          work is for homes, factories, and public bodies.
-        </p>
+        <h2>Who we are</h2>
+        <p>{site.name} is a {site.legalForm.toLowerCase()}.</p>
+        <p>{site.proprietor} is the proprietor.</p>
+        <p>The work is homes, factories, and public jobs.</p>
       </div>
       <ul class="facts">
         <li><div><strong>{site.established}</strong><span>Established</span></div></li>
@@ -73,10 +71,10 @@ const jsonLd = {
   <section class="section" id="work">
     <div class="wrap">
       <p class="kicker">Work</p>
-      <h2>Jobs the profile records</h2>
+      <h2>Work done</h2>
       <p class="intro">
-        Gabion walls, foundations, floors, roads, parking lines, and mass concrete. The profile dates these
-        photographs to jobs executed in 2021.
+        Gabion walls. Foundations. Floors. Roads. Parking lines. Mass concrete. The photographs are of jobs done in
+        2021.
       </p>
       <WorkGrid minimal ledger />
     </div>
@@ -85,8 +83,8 @@ const jsonLd = {
   <section class="section" id="services">
     <div class="wrap">
       <p class="kicker">Services</p>
-      <h2>The trades</h2>
-      <p class="intro">Roads, foundations, floors, walls, yards, and buildings. Each one places a material.</p>
+      <h2>What we take on</h2>
+      <p class="intro">Roads. Foundations. Floors. Walls. Yards. Buildings.</p>
       <ServiceCards ledger />
     </div>
   </section>
@@ -94,10 +92,9 @@ const jsonLd = {
   <section class="section" id="materials">
     <div class="wrap">
       <p class="kicker">Materials</p>
-      <h2>What the crew places</h2>
+      <h2>What goes into the job</h2>
       <p class="intro">
-        Bitumen, concrete, gabion stone, epoxy, thermoplastic paint, and masonry. A material page keeps the method
-        and the procedure.
+        Bitumen. Concrete. Gabion stone. Epoxy. Thermoplastic paint. Masonry. Open one for the method and the steps.
       </p>
       <ul class="index-list">
         {
@@ -118,14 +115,14 @@ const jsonLd = {
   <section class="section" id="tools">
     <div class="wrap">
       <p class="kicker">Plant</p>
-      <h2>Machines on the register</h2>
-      <p class="intro">Owned plant. The counts are the company profile’s counts.</p>
+      <h2>Our machines</h2>
+      <p class="intro">These machines are ours. The numbers are from the company profile.</p>
       <MachineTiles linked showCount ledger />
       <Continue
         href="/plant"
-        label="plant and tools"
+        label="Plant"
         name="Further: Plant and tools"
-        text="The counts and the machines are kept with the"
+        text="Every machine, and how many."
       />
     </div>
   </section>
@@ -134,12 +131,11 @@ const jsonLd = {
     <div class="wrap firm">
       <div>
         <p class="kicker">Method</p>
-        <h2>One contact, then the material</h2>
-        <p>
-          One person stays with the job. The line is measured before a price is promised. A written budget sits inside
-          the time and the price agreed up front. The ready-mix plant, the mixers, the rollers, and the excavators are
-          on our own register, and the method uses that plant.
-        </p>
+        <h2>How a job starts</h2>
+        <p>One person stays with the job.</p>
+        <p>We measure the line before we give a price.</p>
+        <p>The time and the price are written down.</p>
+        <p>The ready-mix plant, the mixers, the rollers, and the excavators are ours.</p>
         <p>“{site.safety}”</p>
       </div>
       <ol class="mission">
@@ -151,8 +147,8 @@ const jsonLd = {
   <section class="section defer">
     <div class="wrap">
       <p class="kicker">Clients</p>
-      <h2>Plants in Chakan</h2>
-      <p>Manufacturers named in the company profile. We build the civil work around their machines.</p>
+      <h2>Clients in Chakan</h2>
+      <p>Named in the company profile. Each runs a plant in Chakan. We do the civil work around their machines.</p>
       <p class="name-row">
         {clients.map((client) => <span>{client.name}</span>)}
       </p>
@@ -162,16 +158,14 @@ const jsonLd = {
   <section class="section commission defer" id="catch">
     <div class="wrap">
       <h2><Icon name="sheet" />Start a job</h2>
-      <p>
-        Name, phone, and the kind of work. That is enough to start. Or call {site.phoneDisplay}, or use WhatsApp or email above.
-      </p>
+      <p>Send your name, your phone number, and the kind of work. Or call {site.phoneDisplay}.</p>
       <LeadForm kind="enquiry" compact />
     </div>
   </section>
 
   <section class="section close">
     <div class="wrap">
-      <Continue href="/projects" label="work" name="Further: Work" text="The jobs already placed continue in the" />
+      <Continue href="/projects" label="Work" name="Further: Work" text="Jobs done in 2021, sorted by kind." />
     </div>
   </section>
 </Base>
