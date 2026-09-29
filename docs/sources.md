@@ -11,6 +11,8 @@ Do not add a claim that is not in one of these.
 
 Plant counts are the profile’s counts when the two sources disagree. The page says so.
 
+The grader photograph, `public/media/plant/grader.jpg`, is a type picture of a motor grader: Wikimedia Commons file Grader 2.jpg, CC0, Wikideas1, 2024. The profile gives the count and does not name a make.
+
 Client logos from the old site are not copied. Names from the profile are set in type.
 
 Materials pages restate those work types, the office-note service list, and the plant register. A method or a procedure on those pages is that sequence. Mix designs, thicknesses, rates, and certificates are not added.
