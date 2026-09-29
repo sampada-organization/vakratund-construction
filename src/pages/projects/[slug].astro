@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Continue from '../../components/Continue.astro';
 import Gallery from '../../components/Gallery.astro';
 import MaterialCopy from '../../components/MaterialCopy.astro';
 import { materialsForProject, projectBySlug, projects, url } from '../../lib/content';
@@ -33,6 +34,7 @@ const related = materialsForProject(project.slug, String(project.tags || ''));
         )
       }
       <p><a class="visit" href={`${url('/meet')}?topic=${encodeURIComponent(project.title)}`}>Book a visit about this work</a></p>
+      <Continue href="/services" label="services" text="The trade this job belongs to is written with the" />
     </div>
   </article>
 </Base>

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Continue from '../../components/Continue.astro';
 import MaterialPlates from '../../components/MaterialPlates.astro';
 import { site } from '../../lib/content';
 
@@ -21,6 +22,7 @@ const description = `Materials ${site.name} places: bitumen, concrete, stone, ep
         excavators on the register are what move that material.
       </p>
       <MaterialPlates />
+      <Continue href="/plant" label="plant" text="The machines that move these materials are on the" />
     </div>
   </section>
 </Base>

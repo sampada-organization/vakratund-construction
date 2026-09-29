@@ -1,8 +1,14 @@
 ---
 import { services, url } from '../lib/content';
+
+interface Props {
+  ledger?: boolean;
+}
+
+const { ledger = false } = Astro.props;
 ---
 
-<ul class="service-grid">
+<ul class:list={['service-grid', { 'is-ledger': ledger }]}>
   {
     services.map((service) => (
       <li>

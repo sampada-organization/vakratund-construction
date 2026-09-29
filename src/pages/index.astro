@@ -6,9 +6,9 @@ import MachineTiles from '../components/MachineTiles.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
-import ClientStrip from '../components/ClientStrip.astro';
-import MaterialPlates from '../components/MaterialPlates.astro';
-import { site, url } from '../lib/content';
+import Study from '../components/Study.astro';
+import Continue from '../components/Continue.astro';
+import { clients, materials, site, url } from '../lib/content';
 
 const description =
   'Vakratund Construction, Chakan. Civil works, roads, RCC, and government contracts since 2007. One proprietor and an owned plant.';
@@ -35,11 +35,18 @@ const jsonLd = {
 ---
 
 <Base title={site.name} description={description} jsonLd={jsonLd}>
-  <section class="hero hero-reel">
-    <div class="wrap">
-      <p class="kicker">Chakan · since {site.established}</p>
-      <h1>{site.name}</h1>
-      <p class="tagline">{site.tagline}</p>
+  <section class="hero hero-ledger">
+    <div class="wrap ledger-top">
+      <div>
+        <p class="kicker">Chakan · since {site.established}</p>
+        <h1>{site.name}</h1>
+        <p class="tagline">{site.tagline}</p>
+        <p>{site.promise}</p>
+        <p class="measure">{site.measure}</p>
+      </div>
+      <Study />
+    </div>
+    <div class="wrap strip">
       <HeroSlides />
     </div>
   </section>
@@ -54,8 +61,6 @@ const jsonLd = {
           established in {site.established} and has taken government contracts since {site.governmentWorkSince}. The
           work is for homes, factories, and public bodies.
         </p>
-        <p>{site.promise}</p>
-        <p class="measure">{site.measure}</p>
       </div>
       <ul class="facts">
         <li><div><strong>{site.established}</strong><span>Established</span></div></li>
@@ -65,47 +70,63 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section alt" id="work">
+  <section class="section" id="work">
     <div class="wrap">
-      <header class="row-head">
-        <h2>Work</h2>
-        <a href={url('/projects')} aria-label="Further: Work">Further</a>
-      </header>
-      <WorkGrid minimal />
-    </div>
-  </section>
-
-  <section class="section" id="tools">
-    <div class="wrap">
-      <header class="row-head">
-        <h2>Tools</h2>
-        <a href={url('/plant')} aria-label="Further: Plant and tools">Further</a>
-      </header>
-      <MachineTiles linked showCount />
+      <p class="kicker">Work</p>
+      <h2>Jobs the profile records</h2>
+      <p class="intro">
+        Gabion walls, foundations, floors, roads, parking lines, and mass concrete. The profile dates these
+        photographs to jobs executed in 2021.
+      </p>
+      <WorkGrid minimal ledger />
     </div>
   </section>
 
   <section class="section" id="services">
     <div class="wrap">
-      <header class="row-head">
-        <h2>Services</h2>
-        <a href={url('/services')} aria-label="Further: Services">Further</a>
-      </header>
-      <ServiceCards />
+      <p class="kicker">Services</p>
+      <h2>The trades</h2>
+      <p class="intro">Roads, foundations, floors, walls, yards, and buildings. Each one places a material.</p>
+      <ServiceCards ledger />
     </div>
   </section>
 
-  <section class="section defer" id="materials">
+  <section class="section" id="materials">
     <div class="wrap">
-      <header class="row-head">
-        <h2>Materials</h2>
-        <a href={url('/materials')} aria-label="Further: Materials">Further</a>
-      </header>
+      <p class="kicker">Materials</p>
+      <h2>What the crew places</h2>
       <p class="intro">
-        Bitumen, concrete, gabion stone, epoxy, thermoplastic paint, and masonry. Open a material for the method and
-        the procedure.
+        Bitumen, concrete, gabion stone, epoxy, thermoplastic paint, and masonry. A material page keeps the method
+        and the procedure.
       </p>
-      <MaterialPlates />
+      <ul class="index-list">
+        {
+          materials.map((item) => (
+            <li>
+              <a href={url(`/materials/${item.slug}`)}>
+                <small>{item.category}</small>
+                <strong>{item.title}</strong>
+                <span>{item.summary}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="wrap">
+      <p class="kicker">Plant</p>
+      <h2>Machines on the register</h2>
+      <p class="intro">Owned plant. The counts are the company profile’s counts.</p>
+      <MachineTiles linked showCount ledger />
+      <Continue
+        href="/plant"
+        label="plant and tools"
+        name="Further: Plant and tools"
+        text="The counts and the machines are kept with the"
+      />
     </div>
   </section>
 
@@ -127,13 +148,14 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section alt defer">
+  <section class="section defer">
     <div class="wrap">
-      <header>
-        <h2>Clients</h2>
-        <p>Manufacturers with plants in Chakan. We build the civil work around their machines.</p>
-      </header>
-      <ClientStrip />
+      <p class="kicker">Clients</p>
+      <h2>Plants in Chakan</h2>
+      <p>Manufacturers named in the company profile. We build the civil work around their machines.</p>
+      <p class="name-row">
+        {clients.map((client) => <span>{client.name}</span>)}
+      </p>
     </div>
   </section>
 
@@ -144,6 +166,12 @@ const jsonLd = {
         Name, phone, and the kind of work. That is enough to start. Or call {site.phoneDisplay}, or use WhatsApp or email above.
       </p>
       <LeadForm kind="enquiry" compact />
+    </div>
+  </section>
+
+  <section class="section close">
+    <div class="wrap">
+      <Continue href="/projects" label="work" name="Further: Work" text="The jobs already placed continue in the" />
     </div>
   </section>
 </Base>

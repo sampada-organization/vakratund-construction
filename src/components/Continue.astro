@@ -1,0 +1,16 @@
+---
+import { url } from '../lib/content';
+
+interface Props {
+  href: string;
+  label: string;
+  text: string;
+  name?: string;
+}
+
+const { href, label, text, name } = Astro.props;
+---
+
+<p class="continue">
+  {text} <a href={url(href)} aria-label={name}>{label}</a>.
+</p>

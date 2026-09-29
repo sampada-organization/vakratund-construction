@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Continue from '../components/Continue.astro';
 import Sheen from '../components/Sheen.astro';
 import Steps from '../components/Steps.astro';
 import { site, url } from '../lib/content';
@@ -33,6 +34,7 @@ const description = 'How a Vakratund job runs: one contact, a measurement, a pre
         When the measure is done, <a href={url('/meet')}>book the visit</a> or <a href={url('/onboard')}>tell us who the client is</a>.
         The material records are on the <a href={url('/materials')}>materials</a> page.
       </p>
+      <Continue href="/clients" label="clients" text="The manufacturers named in the company profile are listed as" />
     </div>
   </section>
 </Base>

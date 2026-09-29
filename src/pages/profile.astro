@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import Icon from '../components/Icon.astro';
 import ClientStrip from '../components/ClientStrip.astro';
+import Continue from '../components/Continue.astro';
+import Icon from '../components/Icon.astro';
 import { links, services, site, url } from '../lib/content';
 
 const description = `${site.name}, ${site.legalForm.toLowerCase()} in Chakan since ${site.established}. Proprietor ${site.proprietor}. Call ${site.phoneDisplay}.`;
@@ -57,6 +58,7 @@ const description = `${site.name}, ${site.legalForm.toLowerCase()} in Chakan sin
       <p>“{site.safety}”</p>
       <h2>Clients</h2>
       <ClientStrip />
+      <Continue href="/contact" label="contact" text="The office address, and a way to write, sit with" />
     </div>
   </section>
 </Base>

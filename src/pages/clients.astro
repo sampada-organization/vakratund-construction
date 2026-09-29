@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import ClientStrip from '../components/ClientStrip.astro';
+import Continue from '../components/Continue.astro';
 import { url } from '../lib/content';
 
 const description = 'Industrial clients of Vakratund Construction in Chakan.';
@@ -16,6 +17,7 @@ const description = 'Industrial clients of Vakratund Construction in Chakan.';
       </p>
       <ClientStrip />
       <p><a href={url('/onboard')}>Bring a new client on board</a></p>
+      <Continue href="/profile" label="profile" text="The firm that does this work is set out in the" />
     </div>
   </section>
 </Base>

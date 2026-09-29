@@ -4,11 +4,12 @@ import { plants, url } from '../lib/content';
 interface Props {
   linked?: boolean;
   showCount?: boolean;
+  ledger?: boolean;
 }
-const { linked = false, showCount = false } = Astro.props;
+const { linked = false, showCount = false, ledger = false } = Astro.props;
 ---
 
-<ul class="pictiles">
+<ul class:list={['pictiles', { 'is-ledger': ledger }]}>
   {
     plants.register.map((item) => {
       const body = (

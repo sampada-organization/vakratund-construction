@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Continue from '../components/Continue.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import { links, site, url } from '../lib/content';
@@ -28,6 +29,7 @@ const description = `Office of Vakratund Construction at The Grand Centre, Chaka
       
       <h2>Write</h2>
       <LeadForm kind="enquiry" />
+      <Continue href="/projects" label="work" text="The jobs already placed are listed with the" />
     </div>
   </section>
 </Base>

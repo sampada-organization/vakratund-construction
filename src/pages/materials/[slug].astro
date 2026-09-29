@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Continue from '../../components/Continue.astro';
 import Icon from '../../components/Icon.astro';
 import { linesOf, materialBySlug, materials, projects, url } from '../../lib/content';
 import { materialIcon } from '../../lib/marks';
@@ -110,6 +111,7 @@ const description = `${item.title}. ${item.summary}`;
         <a class="visit" href={url(`/meet?topic=${encodeURIComponent(item.title)}`)}>Book a visit about this material</a>
         <a href={url('/materials')}>All materials</a>
       </p>
+      <Continue href="/plant" label="plant" text="The machines that move this material are on the" />
     </div>
   </article>
 </Base>

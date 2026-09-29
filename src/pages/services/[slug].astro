@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Continue from '../../components/Continue.astro';
 import MaterialCopy from '../../components/MaterialCopy.astro';
 import { materialsIn, projects, services, url } from '../../lib/content';
 
@@ -46,6 +47,7 @@ const related = projects.filter((project) =>
         )
       }
       <p><a class="visit" href={url(`/meet?topic=${encodeURIComponent(service.title)}`)}>Book a visit</a></p>
+      <Continue href="/materials" label="materials" text="The material this trade places, with its method, is kept under" />
     </div>
   </section>
 </Base>

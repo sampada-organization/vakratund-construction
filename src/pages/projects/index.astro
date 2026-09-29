@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Continue from '../../components/Continue.astro';
 import WorkGrid from '../../components/WorkGrid.astro';
 
 const description = 'Gabion walls, foundations, floors, roads, and concrete by Vakratund Construction, Chakan.';
@@ -18,6 +19,7 @@ const description = 'Gabion walls, foundations, floors, roads, and concrete by V
         Filter by the kind of job. Open a picture for the set, then the material page for the method and the procedure.
       </p>
       <WorkGrid />
+      <Continue href="/services" label="services" text="The trades that place this work are written with the" />
     </div>
   </section>
 </Base>

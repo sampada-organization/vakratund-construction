@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Continue from '../components/Continue.astro';
 import Icon from '../components/Icon.astro';
 import { links, site, url } from '../lib/content';
 
@@ -11,12 +12,12 @@ const description = 'Name, mark, colours, and contact channels for Vakratund Con
     <div class="wrap">
       <h1>Digital identity</h1>
       <p class="intro">
-        {site.name}. Proprietor {site.proprietor}. The mark is the blue VC, chrome on charcoal. The office is in
-        Chakan. The domain is {site.domain}.
+        {site.name}. Proprietor {site.proprietor}. The mark is the supplied blue VC, with the gray plate lifted so the
+        letters sit on the page. The office is in Chakan. The domain is {site.domain}.
       </p>
       <figure class="figure">
-        <img src={url('/brand/mark.jpg')} width="319" height="262" alt="Supplied VC mark, blue lettering with a skyline cut into the C" />
-        <figcaption>The mark used on this site.</figcaption>
+        <img src={url('/brand/mark.png')} width="300" height="202" alt="VC mark, blue lettering with a skyline cut into the C" />
+        <figcaption>The supplied mark. The gray plate is removed. The letters, and the skyline cut into the C, are unchanged.</figcaption>
       </figure>
       <h2>Colour roles</h2>
       <p>
@@ -39,6 +40,7 @@ const description = 'Name, mark, colours, and contact channels for Vakratund Con
         <li><a href={links.proprietorEmail}>{site.proprietorEmail}</a> — {site.proprietor}</li>
       </ul>
       <p>There is no login for clients. A client identity is a name, a phone, a site, and the work, filed from the on-board page.</p>
+      <Continue href="/profile" label="profile" text="The person and the offices are written in the" />
     </div>
   </section>
 </Base>

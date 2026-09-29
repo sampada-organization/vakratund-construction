@@ -7,9 +7,10 @@
   "theme_color": "#10141c",
   "icons": [
     {
-      "src": "brand/mark.jpg",
-      "sizes": "319x262",
-      "type": "image/jpeg"
+      "src": "brand/mark.png",
+      "sizes": "300x202",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

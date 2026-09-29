@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Continue from '../components/Continue.astro';
 import LeadForm from '../components/LeadForm.astro';
 
 const description = 'Tell Vakratund Construction who you are, where the site is, and the work.';
@@ -14,6 +15,7 @@ const description = 'Tell Vakratund Construction who you are, where the site is,
         This is not a password and it does not open a private page.
       </p>
       <LeadForm kind="onboard" />
+      <Continue href="/contact" label="contact" text="The office that keeps this note is on" />
     </div>
   </section>
 </Base>
