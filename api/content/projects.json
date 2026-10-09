@@ -214,5 +214,66 @@
     ],
     "tags": "foundation",
     "use": "Mass concrete"
+  },
+  {
+    "slug": "bridge",
+    "title": "Bridge work",
+    "image": "/media/work/bridge/bridge-2.jpg",
+    "width": 1280,
+    "height": 960,
+    "summary": "Bridge and culvert photographs from site.",
+    "when": "Photographs from site.",
+    "gallery": [
+      { "src": "/media/work/bridge/bridge-1.jpg", "width": 960, "height": 1280 },
+      { "src": "/media/work/bridge/bridge-2.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/bridge/bridge-3.jpg", "width": 720, "height": 1280 },
+      { "src": "/media/work/bridge/bridge-4.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/bridge/bridge-5.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/bridge/bridge-6.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/bridge/bridge-7.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/bridge/bridge-8.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/bridge/bridge-9.jpg", "width": 1280, "height": 960 }
+    ],
+    "tags": "road",
+    "use": "Bridges and culverts"
+  },
+  {
+    "slug": "rmc-jd-infra",
+    "title": "RMC plant — JD Infra",
+    "image": "/media/work/rmc-jd-infra/rmc-1.jpg",
+    "width": 1280,
+    "height": 960,
+    "summary": "Plant civil work and ready-mix yard construction for JD Infra.",
+    "when": "Photographs from site.",
+    "gallery": [
+      { "src": "/media/work/rmc-jd-infra/rmc-1.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/rmc-jd-infra/rmc-2.jpg", "width": 720, "height": 1280 },
+      { "src": "/media/work/rmc-jd-infra/rmc-3.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/rmc-jd-infra/rmc-4.jpg", "width": 960, "height": 1280 },
+      { "src": "/media/work/rmc-jd-infra/rmc-5.jpg", "width": 960, "height": 1280 },
+      { "src": "/media/work/rmc-jd-infra/rmc-6.jpg", "width": 960, "height": 1280 }
+    ],
+    "tags": "yard",
+    "use": "A ready-mix yard"
+  },
+  {
+    "slug": "sany-site",
+    "title": "SANY, Chakan",
+    "image": "/media/work/sany-site/sany-1.jpg",
+    "width": 720,
+    "height": 1280,
+    "summary": "On-site civil work and ceremony photographs at the SANY plant.",
+    "when": "Photographs from site.",
+    "gallery": [
+      { "src": "/media/work/sany-site/sany-1.jpg", "width": 720, "height": 1280 },
+      { "src": "/media/work/sany-site/sany-2.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/sany-site/sany-3.jpg", "width": 960, "height": 1280 },
+      { "src": "/media/work/sany-site/sany-4.jpg", "width": 720, "height": 1280 },
+      { "src": "/media/work/sany-site/sany-5.jpg", "width": 974, "height": 1280 },
+      { "src": "/media/work/sany-site/sany-6.jpg", "width": 1280, "height": 960 },
+      { "src": "/media/work/sany-site/sany-7.jpg", "width": 1280, "height": 960 }
+    ],
+    "tags": "SANY",
+    "use": "The SANY plant in Chakan"
   }
 ]

@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro';
 
 const description = 'Edit Vakratund Construction copy, plant, clients, projects, materials, and resources.';
 const lists = [
+  ['heroSlides', 'Home hero slides'],
+  ['workCategories', 'Home work categories'],
   ['pages', 'Menu pages'],
   ['services', 'Services'],
   ['projects', 'Projects'],
@@ -36,6 +38,8 @@ const lists = [
         </div>
         <h2>Office lines</h2>
         <div class="desk-form">
+          <label>Public domain <input data-site="domain" /></label>
+          <label>Home lead <textarea data-site="home-lead"></textarea></label>
           <label>Tagline <input data-site="tagline" /></label>
           <label>Promise <input data-site="promise" /></label>
           <label>Measure <textarea data-site="measure"></textarea></label>

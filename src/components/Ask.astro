@@ -1,0 +1,17 @@
+---
+import Icon from './Icon.astro';
+import { links, site, url } from '../lib/content';
+
+interface Props {
+  topic?: string;
+}
+
+const { topic = '' } = Astro.props;
+const meet = topic ? `${url('/meet')}?topic=${encodeURIComponent(topic)}` : url('/meet');
+---
+
+<div class="action-row ask">
+  <a class="visit" href={meet}><Icon name="calendar" />Book a visit</a>
+  <a class="btn-call" href={links.tel}><Icon name="phone" />Call {site.phoneDisplay}</a>
+  <a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>
+</div>

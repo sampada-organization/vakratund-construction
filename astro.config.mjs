@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const site = process.env.PUBLIC_SITE_URL || 'https://vakrtundconstruction.com';
+const site = process.env.PUBLIC_SITE_URL || 'https://vakratundconstruction.in';
 const base = process.env.ASTRO_BASE || '/';
 
 export default defineConfig({

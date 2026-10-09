@@ -1,0 +1,104 @@
+---
+import { clients, url } from '../lib/content';
+---
+
+<section class="section clients-band" aria-label="Clients">
+  <div class="wrap">
+    <header class="row-head">
+      <div>
+        <p class="kicker">Clients</p>
+        <h2>Plants we serve in Chakan</h2>
+      </div>
+      <a href={url('/clients')} aria-label="Further: Clients">Further</a>
+    </header>
+    <p class="intro band-intro">
+      Named in our company profile. We carry out civil work around their manufacturing plants — foundations, yards, and
+      roads.
+    </p>
+    <div class="clients-reel" data-clients-reel>
+      <button type="button" class="reel-arrow reel-arrow-prev" data-prev aria-label="Previous clients">
+        <span aria-hidden="true">‹</span>
+      </button>
+      <div class="clients-view">
+        <ul class="clients-track">
+          {
+            clients.map((client) => (
+              <li>
+                <figure>
+                  <img
+                    src={url(client.logo)}
+                    width={client.width}
+                    height={client.height}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>
+                    <strong>{client.name}</strong>
+                    <span>{client.place}</span>
+                  </figcaption>
+                </figure>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <button type="button" class="reel-arrow reel-arrow-next" data-next aria-label="Next clients">
+        <span aria-hidden="true">›</span>
+      </button>
+      <div class="stage-dots" data-dots role="tablist" aria-label="Client slides"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-clients-reel]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('.clients-track');
+    const items = [...root.querySelectorAll<HTMLElement>('.clients-track > li')];
+    const dotsHost = root.querySelector<HTMLElement>('[data-dots]');
+    if (!track || items.length === 0 || !dotsHost) return;
+    let index = 0;
+    let timer = 0;
+    const per = () => (window.matchMedia('(min-width: 900px)').matches ? 3 : window.matchMedia('(min-width: 560px)').matches ? 2 : 1);
+    const pages = () => Math.max(1, Math.ceil(items.length / per()));
+    const paintDots = () => {
+      const count = pages();
+      dotsHost.replaceChildren(
+        ...Array.from({ length: count }, (_, i) => {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'stage-dot';
+          dot.setAttribute('role', 'tab');
+          dot.setAttribute('aria-label', `Client slide ${i + 1}`);
+          dot.setAttribute('aria-selected', String(i === index));
+          dot.addEventListener('click', () => go(i));
+          return dot;
+        }),
+      );
+    };
+    const go = (page: number) => {
+      const max = pages() - 1;
+      index = page > max ? 0 : page < 0 ? max : page;
+      track.style.transform = `translateX(-${(index * 100) / per()}%)`;
+      dotsHost.querySelectorAll<HTMLButtonElement>('.stage-dot').forEach((dot, i) => {
+        dot.setAttribute('aria-selected', String(i === index));
+      });
+    };
+    const stop = () => window.clearInterval(timer);
+    const start = () => {
+      stop();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      timer = window.setInterval(() => go(index + 1), 4800);
+    };
+    root.querySelector('[data-prev]')?.addEventListener('click', () => go(index - 1));
+    root.querySelector('[data-next]')?.addEventListener('click', () => go(index + 1));
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    window.addEventListener('resize', () => {
+      paintDots();
+      go(index);
+    });
+    paintDots();
+    start();
+  });
+</script>

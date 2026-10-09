@@ -10,5 +10,23 @@
     "kind": "Poster",
     "href": "/media/roads-poster.jpg",
     "note": "Precise planning, a strong foundation, and a better road."
+  },
+  {
+    "title": "Bridge work — photographs",
+    "kind": "Site photos",
+    "href": "/media/work/bridge/bridge-1.jpg",
+    "note": "Recent bridge and culvert jobs (full set in public/media/work/bridge)."
+  },
+  {
+    "title": "RMC plant — JD Infra",
+    "kind": "Site photos",
+    "href": "/media/work/rmc-jd-infra/rmc-1.jpg",
+    "note": "Ready-mix plant civil work for JD Infra."
+  },
+  {
+    "title": "SANY, Chakan — site photographs",
+    "kind": "Site photos",
+    "href": "/media/work/sany-site/sany-1.jpg",
+    "note": "Civil work and on-site photographs at the SANY plant."
   }
 ]

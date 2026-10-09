@@ -1,0 +1,86 @@
+---
+import WorkGrid from './WorkGrid.astro';
+import { home, url } from '../lib/content';
+
+const categories = home.workCategories || [];
+const initial = categories[0]?.slug || '';
+---
+
+<div class="home-work" data-home-work>
+  <div class="work-tabs" role="tablist" aria-label="Work categories">
+    {
+      categories.map((cat, i) => (
+        <button
+          type="button"
+          role="tab"
+          class:list={[{ 'is-on': i === 0 }]}
+          data-tab={cat.slug}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          id={`work-tab-${cat.slug}`}
+        >
+          {cat.title}
+        </button>
+      ))
+    }
+  </div>
+  {
+    categories.map((cat, i) => (
+      <div
+        class:list={['work-panel', { 'is-on': i === 0 }]}
+        role="tabpanel"
+        data-panel={cat.slug}
+        aria-labelledby={`work-tab-${cat.slug}`}
+        hidden={i !== 0}
+      >
+        <p class="work-tagline">{cat.tagline}</p>
+        {cat.mode === 'projects' ? (
+          <WorkGrid minimal ledger />
+        ) : (
+          <ul class="work-gallery">
+            {(cat.images || []).slice(0, 8).map((frame, index) => (
+              <li>
+                <a href={url(`/projects/${cat.slug}`)} aria-label={`${cat.title}, photograph ${index + 1}`}>
+                  <img
+                    src={url(frame.src)}
+                    width={frame.width}
+                    height={frame.height}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+        {cat.mode === 'gallery' ? (
+          <p class="continue">
+            <a href={url(`/projects/${cat.slug}`)}>Open {cat.title}</a>. All of these photographs, on one page.
+          </p>
+        ) : null}
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-home-work]').forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-panel]')];
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const slug = tab.dataset.tab || '';
+        tabs.forEach((peer) => {
+          const on = peer === tab;
+          peer.classList.toggle('is-on', on);
+          peer.setAttribute('aria-selected', String(on));
+        });
+        panels.forEach((panel) => {
+          const on = panel.dataset.panel === slug;
+          panel.classList.toggle('is-on', on);
+          panel.hidden = !on;
+        });
+      });
+    });
+  });
+</script>

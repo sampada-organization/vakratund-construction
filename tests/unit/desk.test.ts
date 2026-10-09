@@ -20,7 +20,7 @@ function invoke(handler: Function, req: object) {
 
 describe('published facts', () => {
   it('keeps the office identity that was actually supplied', () => {
-    expect(site.domain).toBe('vakrtundconstruction.com');
+    expect(site.domain).toBe('vakratundconstruction.in');
     expect(site.established).toBe(2007);
     expect(site.governmentWorkSince).toBe(2016);
     expect(site.phoneTel).toBe('+919960532729');
@@ -32,7 +32,10 @@ describe('published facts', () => {
     expect(clients.map((client) => client.name)).toContain('SANY');
     expect(clients.every((client) => client.logo.startsWith('/media/clients/'))).toBe(true);
     expect(plants.register.find((item) => item.name === 'Transit mixer')?.count).toBe(5);
-    expect(projects).toHaveLength(8);
+    expect(projects).toHaveLength(11);
+    expect(projects.map((project) => project.slug)).toEqual(
+      expect.arrayContaining(['bridge', 'rmc-jd-infra', 'sany-site']),
+    );
     expect(materials.map((item) => item.slug)).toContain('bitumen');
     expect(materials.every((item) => item.method && item.procedure && item.category)).toBe(true);
   });

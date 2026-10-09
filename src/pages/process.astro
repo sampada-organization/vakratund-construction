@@ -1,4 +1,5 @@
 ---
+import Ask from '../components/Ask.astro';
 import Base from '../layouts/Base.astro';
 import Continue from '../components/Continue.astro';
 import Sheen from '../components/Sheen.astro';
@@ -25,11 +26,9 @@ const description = 'How a Vakratund job runs: one contact, a measurement, a wri
         {site.mission.map((line) => <li>{line}</li>)}
       </ol>
       <p>Bitumen, concrete, stone, epoxy, paint, and masonry follow this same order.</p>
-      <p>One contact. A measurement. A written budget. Our own machines. A safe site. A report while the work is moving.</p>
-      <p>
-        After the measurement, <a href={url('/meet')}>book the visit</a>. Or <a href={url('/onboard')}>send the client’s name</a>.
-      </p>
-      <Continue href="/clients" label="Clients" text="The manufacturers in Chakan named in the company profile." />
+      <p>After the measurement, book the visit. Or <a href={url('/onboard')}>send the client’s name</a> if the firm is already agreed.</p>
+      <Ask />
+      <Continue href="/contact" label="Contact" text="The office address, the phone, and a note to the desk." />
     </div>
   </section>
 </Base>

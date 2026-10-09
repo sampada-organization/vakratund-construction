@@ -25,6 +25,26 @@ interface Bundle {
   resources: Row[];
   process: Row[];
   materials: Row[];
+  home: {
+    lead: string;
+    heroSlides: Row[];
+    workCategories: Row[];
+  };
+}
+
+function parseImageLines(text: string) {
+  return text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const parts = line.split(/\s+/);
+      const height = Number(parts.pop() || 0);
+      const width = Number(parts.pop() || 0);
+      const src = parts.join(' ');
+      return { src, width, height };
+    })
+    .filter((item) => item.src && item.width > 0 && item.height > 0);
 }
 
 interface Field {
@@ -93,6 +113,24 @@ const FIELDS: Record<string, Field[]> = {
     { key: 'height', label: 'Height', number: true },
     { key: 'images', label: 'More image paths, one per line', area: true },
   ],
+  heroSlides: [
+    { key: 'title', label: 'Headline' },
+    { key: 'line', label: 'Caption', area: true },
+    { key: 'src', label: 'Image path' },
+    { key: 'width', label: 'Width', number: true },
+    { key: 'height', label: 'Height', number: true },
+  ],
+  workCategories: [
+    { key: 'slug', label: 'Slug' },
+    { key: 'title', label: 'Title' },
+    { key: 'tagline', label: 'Tagline', area: true },
+    { key: 'mode', label: 'Mode (projects or gallery)' },
+    {
+      key: 'imagesText',
+      label: 'Gallery images: path width height, one per line',
+      area: true,
+    },
+  ],
 };
 
 let bundle: Bundle | null = null;
@@ -156,7 +194,20 @@ function makeRow(list: string, data: Row) {
 function paintList(list: string, rows: Row[]) {
   const host = document.querySelector<HTMLElement>(`[data-list="${list}"]`);
   if (!host) return;
-  host.replaceChildren(...rows.map((row) => makeRow(list, row)));
+  const prepared =
+    list === 'workCategories'
+      ? rows.map((row) => {
+          const images = Array.isArray(row.images) ? row.images : [];
+          const lines = images
+            .map((frame) => {
+              const item = frame as { src?: string; width?: number; height?: number };
+              return `${item.src || ''} ${item.width || 0} ${item.height || 0}`.trim();
+            })
+            .filter((line) => !line.endsWith('0 0'));
+          return { ...row, imagesText: lines.join('\n') };
+        })
+      : rows;
+  host.replaceChildren(...prepared.map((row) => makeRow(list, row)));
 }
 
 function paint(next: Bundle) {
@@ -176,6 +227,8 @@ function paint(next: Bundle) {
   writeValue('maps', next.site.office?.maps || '');
   writeValue('mission', (next.site.mission || []).join('\n'));
   writeValue('plants-intro', next.plants.intro);
+  writeValue('domain', String(next.site.domain || ''));
+  writeValue('home-lead', next.home?.lead || '');
   paintList('pages', next.pages || []);
   paintList('services', next.services);
   paintList('projects', next.projects);
@@ -185,6 +238,8 @@ function paint(next: Bundle) {
   paintList('resources', next.resources);
   paintList('process', next.process);
   paintList('materials', next.materials || []);
+  paintList('heroSlides', next.home?.heroSlides || []);
+  paintList('workCategories', next.home?.workCategories || []);
 }
 
 function collectList(list: string): Row[] {
@@ -218,6 +273,22 @@ function collect(): Bundle | null {
   next.site.office.maps = readValue('maps');
   next.site.mission = readValue('mission').split('\n').map((line) => line.trim()).filter(Boolean);
   next.plants.intro = readValue('plants-intro');
+  next.site.domain = readValue('domain');
+  next.home = {
+    lead: readValue('home-lead'),
+    heroSlides: collectList('heroSlides'),
+    workCategories: collectList('workCategories').map((row) => {
+      const mode = String(row.mode || 'gallery').trim();
+      const base = {
+        slug: String(row.slug || '').trim(),
+        title: String(row.title || '').trim(),
+        tagline: String(row.tagline || '').trim(),
+        mode,
+      };
+      if (mode === 'projects') return base;
+      return { ...base, images: parseImageLines(String(row.imagesText || '')) };
+    }),
+  };
   next.pages = collectList('pages');
   next.services = collectList('services');
   next.projects = collectList('projects').map((item) => {

@@ -12,15 +12,13 @@ const description = 'Book a Vakratund site visit and raise it by browser notific
     <div class="wrap">
       <h1>Book a site visit</h1>
       <p class="intro">
-        Choose a time. We keep the request, then you can send it on WhatsApp or email, or save it in your calendar.
+        Leave your name, phone, and a time. We measure the site before we give a price. Or call {site.phoneDisplay}.
       </p>
-      <ul>
-        <li><strong>Browser.</strong> This tab can show a notification now. A reminder fires only if the visit is inside two hours and the tab stays open.</li>
-        <li><strong>WhatsApp.</strong> Opens a message to {site.phoneDisplay} with the visit written out. You press send.</li>
-        <li><strong>Email.</strong> Opens a letter to {site.email}. You press send.</li>
-      </ul>
-      <p>A calendar file is offered as well. That reminder lives on the phone, not in this tab.</p>
       <LeadForm kind="meeting" />
+      <p>
+        After you book, this page offers WhatsApp to {site.phoneDisplay}, an email to {site.email}, and a calendar file.
+        You press send. A reminder in this tab fires only if the visit is inside two hours and the tab stays open.
+      </p>
       <Continue href="/contact" label="Contact" text="The office address and the phone." />
     </div>
   </section>

@@ -1,0 +1,189 @@
+{
+  "lead": "Civil work for manufacturing plants, housing, and public contracts in Chakan. Owned plant. One proprietor on every job.",
+  "heroSlides": [
+    {
+      "src": "/media/made/road.jpg",
+      "width": 1162,
+      "height": 674,
+      "title": "Since 2007",
+      "line": "Homes, factories, and government contracts from Chakan."
+    },
+    {
+      "src": "/media/work/sany-site/sany-2.jpg",
+      "width": 1280,
+      "height": 960,
+      "title": "Plant civil work",
+      "line": "Yards, foundations, and roads for names you know in Chakan."
+    },
+    {
+      "src": "/media/work/bridge/bridge-2.jpg",
+      "width": 1280,
+      "height": 960,
+      "title": "Bridge work",
+      "line": "Bridges and culverts, measured and built to stand."
+    },
+    {
+      "src": "/media/work/rmc-jd-infra/rmc-1.jpg",
+      "width": 1280,
+      "height": 960,
+      "title": "RMC plant",
+      "line": "Ready-mix plants and hardstanding for JD Infra and similar clients."
+    },
+    {
+      "src": "/media/made/yard.jpg",
+      "width": 1162,
+      "height": 674,
+      "title": "Proven methods",
+      "line": "Gabion walls, epoxy floors, bitumen and concrete roads."
+    },
+    {
+      "src": "/media/plant/concreteMixer.jpg",
+      "width": 1233,
+      "height": 626,
+      "title": "Our plant",
+      "line": "Mixers, rollers, excavators, and a ready-mix plant we own."
+    }
+  ],
+  "workCategories": [
+    {
+      "slug": "portfolio-2021",
+      "title": "Work by type",
+      "tagline": "Eight kinds of job from the 2021 portfolio \u2014 open any card for photographs and materials.",
+      "mode": "projects"
+    },
+    {
+      "slug": "bridge",
+      "title": "Bridge work",
+      "tagline": "Recent bridge and culvert photographs from site.",
+      "mode": "gallery",
+      "images": [
+        {
+          "src": "/media/work/bridge/bridge-1.jpg",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "src": "/media/work/bridge/bridge-2.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/bridge/bridge-3.jpg",
+          "width": 720,
+          "height": 1280
+        },
+        {
+          "src": "/media/work/bridge/bridge-4.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/bridge/bridge-5.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/bridge/bridge-6.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/bridge/bridge-7.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/bridge/bridge-8.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/bridge/bridge-9.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      ]
+    },
+    {
+      "slug": "rmc-jd-infra",
+      "title": "RMC plant \u2014 JD Infra",
+      "tagline": "Plant civil work and ready-mix yard construction.",
+      "mode": "gallery",
+      "images": [
+        {
+          "src": "/media/work/rmc-jd-infra/rmc-1.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/rmc-jd-infra/rmc-2.jpg",
+          "width": 720,
+          "height": 1280
+        },
+        {
+          "src": "/media/work/rmc-jd-infra/rmc-3.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/rmc-jd-infra/rmc-4.jpg",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "src": "/media/work/rmc-jd-infra/rmc-5.jpg",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "src": "/media/work/rmc-jd-infra/rmc-6.jpg",
+          "width": 960,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "slug": "sany-site",
+      "title": "SANY, Chakan",
+      "tagline": "On-site civil work and ceremony photographs at the SANY plant.",
+      "mode": "gallery",
+      "images": [
+        {
+          "src": "/media/work/sany-site/sany-1.jpg",
+          "width": 720,
+          "height": 1280
+        },
+        {
+          "src": "/media/work/sany-site/sany-2.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/sany-site/sany-3.jpg",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "src": "/media/work/sany-site/sany-4.jpg",
+          "width": 720,
+          "height": 1280
+        },
+        {
+          "src": "/media/work/sany-site/sany-5.jpg",
+          "width": 974,
+          "height": 1280
+        },
+        {
+          "src": "/media/work/sany-site/sany-6.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "src": "/media/work/sany-site/sany-7.jpg",
+          "width": 1280,
+          "height": 960
+        }
+      ]
+    }
+  ]
+}

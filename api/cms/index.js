@@ -12,6 +12,7 @@ const FILES = {
   resources: 'resources.json',
   process: 'process.json',
   materials: 'materials.json',
+  home: 'home.json',
 };
 
 const PRIMARY = path.join(__dirname, '..', 'content');
@@ -40,6 +41,15 @@ function bundleOk(body) {
   if (!body.projects.every((item) => item && item.slug && item.title)) return false;
   if (!Array.isArray(body.materials)) return false;
   if (!body.materials.every((item) => item && item.slug && item.title)) return false;
+  if (!body.home || typeof body.home !== 'object' || Array.isArray(body.home)) return false;
+  if (!Array.isArray(body.home.heroSlides) || !Array.isArray(body.home.workCategories)) return false;
+  if (!body.home.heroSlides.every((item) => item && item.src && item.title)) return false;
+  if (
+    !body.home.workCategories.every(
+      (item) => item && item.slug && item.title && (item.mode === 'projects' || item.mode === 'gallery'),
+    )
+  )
+    return false;
   return true;
 }
 

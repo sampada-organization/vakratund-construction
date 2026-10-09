@@ -8,6 +8,7 @@ Do not add a claim that is not in one of these.
 | Office note, 19 Sep 2026 (`resources/note.txt`) | Service list, including plotting. Current office: Shop 113, The Grand Centre, Gat 1638, Chakan 410501. Email vakratundconstructionchakan@gmail.com. Same phone. |
 | Previous site, `dnyand33p/vakrtundConstruction` | Tagline and the “strong, durable, safe, economical, facilitating” line. Tool names that are not counts: rock hammer, mixers, and a few brand names. Work photographs, recompressed into `public/media/work`. The old phone 9970099700 is retired. |
 | Roads poster and VC mark, Sep 2026 | The mark file. The poster’s measure line. The poster’s spelling of the name is wrong and is not used as the wordmark. |
+| Site photographs, 2 Oct 2026 (`resources/work/`) | Bridge and culvert photographs. JD Infra RMC plant photographs. SANY ceremony photographs. No contract value, area, or date of completion is stated. |
 
 Plant counts are the profile’s counts when the two sources disagree. The page says so.
 

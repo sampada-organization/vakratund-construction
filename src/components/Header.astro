@@ -18,6 +18,7 @@ const here = raw === base || raw === '' ? '/' : raw.slice(base.length) || '/';
       </span>
     </a>
     <Channels />
+    <a class="visit book" href={url('/meet')}>Book a visit</a>
     <button class="menu" type="button" aria-expanded="false" aria-controls="primary" aria-haspopup="true">
       <Icon name="menu" />
       <Icon name="close" />
@@ -26,6 +27,7 @@ const here = raw === base || raw === '' ? '/' : raw.slice(base.length) || '/';
   </div>
   <div class="navrow" id="primary">
     <nav class="primary" aria-label="Primary">
+      <a class="visit nav-visit" href={url('/meet')} aria-current={here === '/meet' ? 'page' : undefined}>Book a visit</a>
       {
         pages.map((page) => (
           <a href={url(page.href)} aria-current={here === page.href || here.startsWith(`${page.href}/`) ? 'page' : undefined}>

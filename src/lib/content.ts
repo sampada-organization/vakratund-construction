@@ -7,8 +7,9 @@ import resources from '../content/resources.json';
 import processSteps from '../content/process.json';
 import pages from '../content/pages.json';
 import materials from '../content/materials.json';
+import home from '../content/home.json';
 
-export { site, services, projects, plants, clients, resources, pages, materials, processSteps as process };
+export { site, services, projects, plants, clients, resources, pages, materials, home, processSteps as process };
 
 export function materialBySlug(slug: string) {
   return materials.find((item) => item.slug === slug);

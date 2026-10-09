@@ -1,27 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
 import HeroSlides from '../components/HeroSlides.astro';
-import WorkGrid from '../components/WorkGrid.astro';
+import HomeWork from '../components/HomeWork.astro';
 import MachineTiles from '../components/MachineTiles.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
-import Study from '../components/Study.astro';
+import Ask from '../components/Ask.astro';
 import Continue from '../components/Continue.astro';
-import { clients, materials, site, url } from '../lib/content';
+import StatsBar from '../components/StatsBar.astro';
+import ClientsBand from '../components/ClientsBand.astro';
+import { home, site, url } from '../lib/content';
 
+const siteUrl = site.domain.startsWith('http') ? site.domain : `https://${site.domain}`;
 const description =
   'Vakratund Construction, Chakan. Civil works, roads, RCC, and government contracts since 2007. One proprietor and an owned plant.';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'GeneralContractor',
   name: site.name,
-  url: new URL(import.meta.env.BASE_URL, Astro.site ?? 'https://vakrtundconstruction.com').href,
+  url: new URL(import.meta.env.BASE_URL, Astro.site ?? siteUrl).href,
   telephone: site.phoneTel,
   email: site.email,
   foundingDate: String(site.established),
   founder: { '@type': 'Person', name: site.proprietor },
-  image: new URL(url('/brand/mark.jpg'), Astro.site ?? 'https://vakrtundconstruction.com').href,
+  image: new URL(url('/brand/mark.jpg'), Astro.site ?? siteUrl).href,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Shop No. 113, 1st floor, The Grand Centre, Gat No. 1638',
@@ -35,21 +38,15 @@ const jsonLd = {
 ---
 
 <Base title={site.name} description={description} jsonLd={jsonLd}>
-  <section class="hero hero-ledger">
-    <div class="wrap ledger-top">
-      <div>
-        <p class="kicker">Chakan · since {site.established}</p>
-        <h1>{site.name}</h1>
-        <p class="tagline">{site.tagline}</p>
-        <p>Civil work in Chakan since {site.established}. Homes, factories, and government contracts. The machines are ours.</p>
-        <p class="measure">{site.measure}</p>
-      </div>
-      <Study />
-    </div>
-    <div class="wrap strip">
-      <HeroSlides />
-    </div>
-  </section>
+  <HeroSlides
+    kicker={`Chakan · since ${site.established}`}
+    title={site.name}
+    tagline={site.tagline}
+    lead={home.lead}
+    measure={site.measure}
+  />
+
+  <StatsBar />
 
   <section class="section" id="firm">
     <div class="wrap firm">
@@ -57,8 +54,8 @@ const jsonLd = {
         <p class="kicker">The firm</p>
         <h2>Who we are</h2>
         <p>{site.name} is a {site.legalForm.toLowerCase()}.</p>
-        <p>{site.proprietor} is the proprietor.</p>
-        <p>The work is homes, factories, and public jobs.</p>
+        <p>{site.proprietor} is the proprietor and stays close to each job.</p>
+        <p>We work for manufacturing plants, housing, and public departments around Chakan.</p>
       </div>
       <ul class="facts">
         <li><div><strong>{site.established}</strong><span>Established</span></div></li>
@@ -73,50 +70,31 @@ const jsonLd = {
       <p class="kicker">Work</p>
       <h2>Work done</h2>
       <p class="intro">
-        Gabion walls. Foundations. Floors. Roads. Parking lines. Mass concrete. The photographs are of jobs done in
-        2021.
+        Browse by category — the 2021 portfolio, recent bridge jobs, an RMC plant for JD Infra, and civil work at SANY.
       </p>
-      <WorkGrid minimal ledger />
+      <HomeWork />
+      <Ask />
+      <Continue href="/projects" label="Work" name="Further: All work" text="Every project type with photographs and materials." />
     </div>
   </section>
+
+  <ClientsBand />
 
   <section class="section" id="services">
     <div class="wrap">
       <p class="kicker">Services</p>
       <h2>What we take on</h2>
-      <p class="intro">Roads. Foundations. Floors. Walls. Yards. Buildings.</p>
+      <p class="intro">Roads, foundations, floors, walls, yards, and buildings — scoped and priced before we mobilise.</p>
       <ServiceCards ledger />
+      <Continue href="/materials" label="Materials" name="Further: Materials and methods" text="Bitumen, concrete, gabion, epoxy, paint, and masonry — with steps." />
     </div>
   </section>
 
-  <section class="section" id="materials">
-    <div class="wrap">
-      <p class="kicker">Materials</p>
-      <h2>What goes into the job</h2>
-      <p class="intro">
-        Bitumen. Concrete. Gabion stone. Epoxy. Thermoplastic paint. Masonry. Open one for the method and the steps.
-      </p>
-      <ul class="index-list">
-        {
-          materials.map((item) => (
-            <li>
-              <a href={url(`/materials/${item.slug}`)}>
-                <small>{item.category}</small>
-                <strong>{item.title}</strong>
-                <span>{item.summary}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" id="tools">
+  <section class="section defer" id="tools">
     <div class="wrap">
       <p class="kicker">Plant</p>
       <h2>Our machines</h2>
-      <p class="intro">These machines are ours. The numbers are from the company profile.</p>
+      <p class="intro">Owned equipment from the company profile — not hired day to day.</p>
       <MachineTiles linked showCount ledger />
       <Continue
         href="/plant"
@@ -132,10 +110,10 @@ const jsonLd = {
       <div>
         <p class="kicker">Method</p>
         <h2>How a job starts</h2>
-        <p>One person stays with the job.</p>
-        <p>We measure the line before we give a price.</p>
-        <p>The time and the price are written down.</p>
-        <p>The ready-mix plant, the mixers, the rollers, and the excavators are ours.</p>
+        <p>One person stays with the job from estimate to handover.</p>
+        <p>We measure the line before we quote.</p>
+        <p>Time and price are agreed in writing.</p>
+        <p>The ready-mix plant, mixers, rollers, and excavators are ours.</p>
         <p>“{site.safety}”</p>
       </div>
       <ol class="mission">
@@ -144,28 +122,11 @@ const jsonLd = {
     </div>
   </section>
 
-  <section class="section defer">
-    <div class="wrap">
-      <p class="kicker">Clients</p>
-      <h2>Clients in Chakan</h2>
-      <p>Named in the company profile. Each runs a plant in Chakan. We do the civil work around their machines.</p>
-      <p class="name-row">
-        {clients.map((client) => <span>{client.name}</span>)}
-      </p>
-    </div>
-  </section>
-
   <section class="section commission defer" id="catch">
     <div class="wrap">
       <h2><Icon name="sheet" />Start a job</h2>
-      <p>Send your name, your phone number, and the kind of work. Or call {site.phoneDisplay}.</p>
+      <p>Send your name, phone number, and the kind of work. Or call {site.phoneDisplay}.</p>
       <LeadForm kind="enquiry" compact />
-    </div>
-  </section>
-
-  <section class="section close">
-    <div class="wrap">
-      <Continue href="/projects" label="Work" name="Further: Work" text="Jobs done in 2021, sorted by kind." />
     </div>
   </section>
 </Base>

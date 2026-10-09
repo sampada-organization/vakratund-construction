@@ -22,6 +22,7 @@ const description = `Office of Vakratund Construction at The Grand Centre, Chaka
         <a class="btn-call" href={links.tel}><Icon name="phone" />{site.phoneDisplay}</a>
         <a class="btn-wa" href={links.whatsapp}><Icon name="chat" />WhatsApp</a>
         <a class="btn-gmail" href={links.email}><Icon name="mail" />Gmail</a>
+        <a class="visit" href={url('/meet')}><Icon name="calendar" />Book a visit</a>
         <a class="visit" href={links.maps}><Icon name="pin" />Map</a>
         <a class="visit" href={url('/profile')}><Icon name="sheet" />Business profile</a>
       </p>
@@ -29,7 +30,7 @@ const description = `Office of Vakratund Construction at The Grand Centre, Chaka
       
       <h2>Write</h2>
       <LeadForm kind="enquiry" />
-      <Continue href="/projects" label="Work" text="Jobs already done, with the 2021 photographs." />
+      <Continue href="/meet" label="Book a visit" text="Pick a time. The site is measured before a price." />
     </div>
   </section>
 </Base>

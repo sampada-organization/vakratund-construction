@@ -1,35 +1,19 @@
 ---
-import { url } from '../lib/content';
+import { home, url } from '../lib/content';
 
-const frames = [
-  {
-    src: '/media/made/road.jpg',
-    width: 1162,
-    height: 674,
-    title: 'Since 2007',
-    line: 'Homes and factories since 2007. Government contracts since 2016.',
-    href: '/profile',
-  },
-  {
-    src: '/media/work/gabion.jpg',
-    width: 494,
-    height: 618,
-    title: 'Work executed',
-    line: 'Gabion walls. Foundations. Floors. Roads. Parking. Mass concrete.',
-    href: '/projects',
-  },
-  {
-    src: '/media/plant/concreteMixer.jpg',
-    width: 1233,
-    height: 626,
-    title: 'The plant',
-    line: 'Ready-mix plant. Mixers. Rollers. Tippers. A grader. Backhoes. Excavators. Tractors.',
-    href: '/plant',
-  },
-];
+interface Props {
+  kicker: string;
+  title: string;
+  tagline: string;
+  lead: string;
+  measure: string;
+}
+
+const { kicker, title, tagline, lead, measure } = Astro.props;
+const frames = home.heroSlides || [];
 ---
 
-<div class="stage" data-stage>
+<section class="hero-film" data-stage tabindex="0" aria-roledescription="carousel" aria-label="Vakratund Construction">
   {
     frames.map((frame, index) => (
       <img
@@ -38,86 +22,107 @@ const frames = [
         height={frame.height}
         alt=""
         class={index === 0 ? 'is-on' : ''}
-        loading={index === 0 ? 'eager' : 'lazy'}
-        fetchpriority={index === 0 ? 'high' : undefined}
+        loading="eager"
+        fetchpriority={index === 0 ? 'high' : 'low'}
         decoding="async"
+        data-slide={index}
       />
     ))
   }
-  <div class="stage-copy">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-layout">
+  <div class="hero-copy">
+    <p class="kicker">{kicker}</p>
+    <h1>{title}</h1>
+    <p class="tagline">{tagline}</p>
+    <p class="lede">{lead}</p>
+    <p class="measure">{measure}</p>
+  </div>
+  <div class="hero-caption">
     {
       frames.map((frame, index) => (
         <article class={index === 0 ? 'is-on' : ''} aria-hidden={index === 0 ? undefined : 'true'}>
           <h2>{frame.title}</h2>
           <p>{frame.line}</p>
-          <a href={url(frame.href)} tabindex={index === 0 ? 0 : -1} aria-label={`Further: ${frame.title}`}>
-            Further
-          </a>
         </article>
       ))
     }
   </div>
-  <div class="stage-controls">
-    <button type="button" data-prev aria-label="Previous pictures">Previous</button>
-    <button type="button" data-next aria-label="Next pictures">Next</button>
-    <button type="button" data-open aria-label="View full">View full</button>
   </div>
-  <dialog class="lightbox">
-    <img alt="" />
-    <div class="lightbox-bar">
-      <button type="button" class="lightbox-close" aria-label="Close">Close</button>
-      <button type="button" class="lightbox-prev" aria-label="Previous picture">Previous</button>
-      <button type="button" class="lightbox-next" aria-label="Next picture">Next</button>
-    </div>
-  </dialog>
-</div>
+  <p class="visually-hidden" data-live aria-live="polite"></p>
+  <div class="hero-meter" aria-hidden="true"><span data-meter></span></div>
+</section>
 
 <script>
+  const HOLD = 7600;
   document.querySelectorAll<HTMLElement>('[data-stage]').forEach((root) => {
-    const shots = [...root.querySelectorAll<HTMLImageElement>(':scope > img')];
-    const lines = [...root.querySelectorAll<HTMLElement>('.stage-copy article')];
-    const dialog = root.querySelector('dialog');
-    const view = dialog?.querySelector('img');
-    if (shots.length === 0 || !dialog || !view) return;
+    const shots = [...root.querySelectorAll<HTMLImageElement>(':scope > img[data-slide]')];
+    const lines = [...root.querySelectorAll<HTMLElement>('.hero-caption article')];
+    const meter = root.querySelector<HTMLElement>('[data-meter]');
+    const live = root.querySelector<HTMLElement>('[data-live]');
+    if (shots.length === 0) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let index = 0;
-    let cursor = 0;
     let timer = 0;
-    const show = (next: number) => {
-      index = (next + shots.length) % shots.length;
-      shots.forEach((shot, i) => shot.classList.toggle('is-on', i === index));
+    let startX = 0;
+    let ticket = 0;
+    const runMeter = () => {
+      if (!meter) return;
+      meter.classList.remove('is-run');
+      void meter.offsetWidth;
+      if (reduced) return;
+      meter.classList.add('is-run');
+    };
+    const paint = (incoming: number, previous: number) => {
+      index = incoming;
+      shots.forEach((shot, i) => {
+        shot.classList.toggle('is-on', i === incoming);
+        shot.classList.toggle('is-under', i === previous && previous !== incoming);
+      });
       lines.forEach((line, i) => {
-        const on = i === index;
+        const on = i === incoming;
         line.classList.toggle('is-on', on);
         line.toggleAttribute('aria-hidden', !on);
-        line.querySelector('a')?.setAttribute('tabindex', on ? '0' : '-1');
       });
+      const current = lines[incoming];
+      if (live && current) live.textContent = current.textContent?.replace(/\s+/g, ' ').trim() || '';
+      runMeter();
+    };
+    const show = (next: number) => {
+      const previous = index;
+      const incoming = (next + shots.length) % shots.length;
+      const mark = ++ticket;
+      const shot = shots[incoming];
+      const apply = () => {
+        if (mark !== ticket) return;
+        paint(incoming, previous);
+      };
+      if (!shot || shot.complete) apply();
+      else shot.decode().then(apply).catch(apply);
     };
     const stop = () => window.clearInterval(timer);
     const start = () => {
       stop();
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      timer = window.setInterval(() => show(index + 1), 5200);
+      if (reduced || shots.length < 2) return;
+      timer = window.setInterval(() => show(index + 1), HOLD);
     };
-    const open = (at: number) => {
-      stop();
-      cursor = (at + shots.length) % shots.length;
-      view.src = shots[cursor].currentSrc || shots[cursor].src;
-      if (!dialog.open) dialog.showModal();
-    };
-    root.querySelector('[data-prev]')?.addEventListener('click', () => show(index - 1));
-    root.querySelector('[data-next]')?.addEventListener('click', () => show(index + 1));
-    root.querySelector('[data-open]')?.addEventListener('click', () => open(index));
-    dialog.querySelector('.lightbox-close')?.addEventListener('click', () => dialog.close());
-    dialog.querySelector('.lightbox-prev')?.addEventListener('click', () => open(cursor - 1));
-    dialog.querySelector('.lightbox-next')?.addEventListener('click', () => open(cursor + 1));
-    dialog.addEventListener('close', () => start());
-    dialog.addEventListener('click', (event) => {
-      if (event.target === dialog) dialog.close();
+    root.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') show(index + 1);
+      if (event.key === 'ArrowLeft') show(index - 1);
     });
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', () => {
-      if (!dialog.open) start();
+    root.addEventListener('pointerdown', (event) => {
+      startX = event.clientX;
     });
+    root.addEventListener('pointerup', (event) => {
+      const distance = event.clientX - startX;
+      if (Math.abs(distance) < 56) return;
+      show(index + (distance < 0 ? 1 : -1));
+    });
+    root.addEventListener('pointerenter', stop);
+    root.addEventListener('pointerleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+    show(0);
     start();
   });
 </script>

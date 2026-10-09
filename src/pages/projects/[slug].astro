@@ -23,7 +23,7 @@ const related = materialsForProject(project.slug, String(project.tags || ''));
       <h1>{project.title}</h1>
       <p class="intro">{project.summary}</p>
       <p>Used for {project.use.toLowerCase()}.</p>
-      <p>These photographs are of jobs done in 2021.</p>
+      <p>{'when' in project && project.when ? project.when : 'These photographs are of jobs done in 2021.'}</p>
       <Gallery title={project.title} frames={project.gallery} />
       <MaterialCopy items={related} />
       {
