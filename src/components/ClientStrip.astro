@@ -10,10 +10,11 @@ import { clients, url } from '../lib/content';
           src={url(client.logo)}
           width={client.width}
           height={client.height}
-          alt={client.name}
+          alt=""
           loading="lazy"
           decoding="async"
         />
+        <strong>{client.name}</strong>
         <span>{client.place}</span>
       </li>
     ))

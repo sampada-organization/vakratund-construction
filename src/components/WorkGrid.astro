@@ -4,9 +4,10 @@ import { projects, url } from '../lib/content';
 interface Props {
   minimal?: boolean;
   ledger?: boolean;
+  large?: boolean;
 }
 
-const { minimal = false, ledger = false } = Astro.props;
+const { minimal = false, ledger = false, large = false } = Astro.props;
 const tags = [
   ...new Set(
     projects.flatMap((project) =>
@@ -33,7 +34,7 @@ const tags = [
     </div>
   )
 }
-<ul class:list={['work-grid', { 'is-ledger': ledger }]}>
+<ul class:list={['work-grid', { 'is-ledger': ledger, 'is-large': large }]}>
   {
     projects.map((project) => (
       <li data-tags={project.tags}>

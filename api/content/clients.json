@@ -14,18 +14,11 @@
     "height": 183
   },
   {
-    "name": "Stanley",
+    "name": "Stanley Black & Decker",
     "place": "Chakan",
     "logo": "/media/clients/stanley.png",
     "width": 322,
     "height": 157
-  },
-  {
-    "name": "Black+Decker",
-    "place": "Chakan",
-    "logo": "/media/clients/black-decker.png",
-    "width": 528,
-    "height": 267
   },
   {
     "name": "ARaymond",

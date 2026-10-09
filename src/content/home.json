@@ -1,47 +1,29 @@
 {
-  "lead": "Civil work for manufacturing plants, housing, and public contracts in Chakan. Owned plant. One proprietor on every job.",
+  "lead": "One proprietor stays on the job. The machines are ours.",
   "heroSlides": [
     {
-      "src": "/media/made/road.jpg",
-      "width": 1162,
-      "height": 674,
-      "title": "Since 2007",
-      "line": "Homes, factories, and government contracts from Chakan."
+      "src": "/media/work/sany-site/sany-7.jpg",
+      "width": 1280,
+      "height": 960,
+      "position": "center 42%",
+      "title": "SANY, Chakan",
+      "line": "Pooja at the plant, on the ground in front of the building."
     },
     {
       "src": "/media/work/sany-site/sany-2.jpg",
       "width": 1280,
       "height": 960,
-      "title": "Plant civil work",
-      "line": "Yards, foundations, and roads for names you know in Chakan."
+      "position": "center 62%",
+      "title": "The ground",
+      "line": "The marked square, the offerings, and a SANY crane behind them."
     },
     {
-      "src": "/media/work/bridge/bridge-2.jpg",
+      "src": "/media/work/sany-site/sany-6.jpg",
       "width": 1280,
       "height": 960,
-      "title": "Bridge work",
-      "line": "Bridges and culverts, measured and built to stand."
-    },
-    {
-      "src": "/media/work/rmc-jd-infra/rmc-1.jpg",
-      "width": 1280,
-      "height": 960,
-      "title": "RMC plant",
-      "line": "Ready-mix plants and hardstanding for JD Infra and similar clients."
-    },
-    {
-      "src": "/media/made/yard.jpg",
-      "width": 1162,
-      "height": 674,
-      "title": "Proven methods",
-      "line": "Gabion walls, epoxy floors, bitumen and concrete roads."
-    },
-    {
-      "src": "/media/plant/concreteMixer.jpg",
-      "width": 1233,
-      "height": 626,
-      "title": "Our plant",
-      "line": "Mixers, rollers, excavators, and a ready-mix plant we own."
+      "position": "center 48%",
+      "title": "The same morning",
+      "line": "The group outside the SANY building in Chakan."
     }
   ],
   "workCategories": [
@@ -107,7 +89,7 @@
     {
       "slug": "rmc-jd-infra",
       "title": "RMC plant \u2014 JD Infra",
-      "tagline": "Plant civil work and ready-mix yard construction.",
+      "tagline": "Ready-mix plant photographs for JD Infra.",
       "mode": "gallery",
       "images": [
         {
@@ -145,7 +127,7 @@
     {
       "slug": "sany-site",
       "title": "SANY, Chakan",
-      "tagline": "On-site civil work and ceremony photographs at the SANY plant.",
+      "tagline": "Pooja photographs at the SANY plant in Chakan.",
       "mode": "gallery",
       "images": [
         {

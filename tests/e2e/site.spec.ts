@@ -15,10 +15,17 @@ test('home states the work and the real phone', async ({ page }, testInfo) => {
   await expect(page.locator('body')).not.toContainText('VAKARTUND');
   await expect(page.locator('body')).toContainText('vakratundconstruction.in');
   await expect(page.locator('.hero-film img.is-on')).toBeVisible();
+  await expect(page.locator('.hero-film img.is-on')).toHaveAttribute('src', /sany-7\.jpg/);
+  await expect(page.getByRole('heading', { name: 'SANY, Chakan' })).toBeVisible();
   await expect(page.locator('.study')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Plant at a glance' })).toHaveCount(0);
   await expect(page.getByRole('button', { name: /view full/i })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Next slide' })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /previous clients/i })).toHaveCount(0);
   await expect(page.locator('dialog')).toHaveCount(0);
+  await expect(page.locator('#work .work-tabs')).toHaveCount(0);
+  await expect(page.locator('.beam')).toBeVisible();
+  await expect(page.getByText('The top shortens. The bottom stretches.')).toBeVisible();
   const caption = page.locator('.hero-caption .is-on p');
   const ratio = await caption.evaluate((el) => {
     const style = getComputedStyle(el);
@@ -26,18 +33,23 @@ test('home states the work and the real phone', async ({ page }, testInfo) => {
   });
   expect(ratio).toBeGreaterThan(1.4);
   await expect(page.locator('#tools').getByText('Transit mixer')).toBeVisible();
-  await expect(page.locator('#tools').getByText('5', { exact: true })).toBeVisible();
+  await expect(page.locator('#tools').getByText('5', { exact: true })).toHaveCount(0);
   await expect(page.locator('#tools a').first()).toHaveAttribute('href', /\/plant$/);
   await expect(page.getByRole('link', { name: 'Further: Plant and tools' }).first()).toHaveAttribute('href', /\/plant$/);
+  await expect(page.locator('#clients').getByText('Stanley Black & Decker', { exact: true })).toBeVisible();
+  await expect(page.locator('#clients').getByText('Black+Decker')).toHaveCount(0);
   await expect(page.locator('#work .filters')).toHaveCount(0);
   await expect(page.locator('#work .work-grid small').first()).toBeVisible();
   await expect(page.getByRole('link', { name: 'Further: All work' })).toHaveAttribute('href', /\/projects$/);
-  await expect(page.locator('.service-grid a').first()).toHaveAttribute('href', /\/services\//);
-  await expect(page.locator('.work-grid img').first()).toBeVisible();
+  await expect(page.locator('.service-grid')).toHaveCount(0);
+  const workImage = page.locator('#work .work-grid img').first();
+  await expect(workImage).toBeVisible();
+  const workHeight = await workImage.evaluate((el) => el.getBoundingClientRect().height);
+  expect(workHeight).toBeGreaterThan(180);
   await expect(page.locator('.yard-bits')).toHaveCount(0);
   await page.locator('.hero-film').focus();
   await page.keyboard.press('ArrowRight');
-  await expect(page.getByRole('heading', { name: 'Plant civil work' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The ground' })).toBeVisible();
   await expect(page.locator('.hero-film img.is-on')).toHaveAttribute('src', /sany-2\.jpg/);
   const film = page.locator('.hero-film');
   const sample = await film.evaluate((el) => {
@@ -59,8 +71,11 @@ test('home states the work and the real phone', async ({ page }, testInfo) => {
   });
   expect(sample.rgb[0] + sample.rgb[1] + sample.rgb[2]).toBeGreaterThan(40);
   await page.screenshot({ path: `test-results/home-${testInfo.project.name}.png`, fullPage: false });
-  await page.getByRole('tab', { name: 'Bridge work' }).click();
-  await page.getByRole('link', { name: 'Open Bridge work' }).click();
+  for (const id of ['work', 'bend', 'clients', 'tools']) {
+    await page.locator(`#${id}`).scrollIntoViewIfNeeded();
+    await page.screenshot({ path: `test-results/home-${id}-${testInfo.project.name}.png`, fullPage: false });
+  }
+  await page.getByRole('link', { name: 'Bridge work' }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Bridge work');
   await expect(page.getByRole('link', { name: 'Book a visit about this work' })).toHaveAttribute('href', /\/meet\?topic=/);
 });

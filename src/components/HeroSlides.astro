@@ -22,6 +22,7 @@ const frames = home.heroSlides || [];
         height={frame.height}
         alt=""
         class={index === 0 ? 'is-on' : ''}
+        style={frame.position ? `object-position: ${frame.position}` : undefined}
         loading="eager"
         fetchpriority={index === 0 ? 'high' : 'low'}
         decoding="async"

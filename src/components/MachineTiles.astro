@@ -5,11 +5,12 @@ interface Props {
   linked?: boolean;
   showCount?: boolean;
   ledger?: boolean;
+  roomy?: boolean;
 }
-const { linked = false, showCount = false, ledger = false } = Astro.props;
+const { linked = false, showCount = false, ledger = false, roomy = false } = Astro.props;
 ---
 
-<ul class:list={['pictiles', { 'is-ledger': ledger }]}>
+<ul class:list={['pictiles', { 'is-ledger': ledger, 'is-roomy': roomy }]}>
   {
     plants.register.map((item) => {
       const body = (
@@ -20,7 +21,7 @@ const { linked = false, showCount = false, ledger = false } = Astro.props;
               width={item.width}
               height={item.height}
               alt=""
-              loading={linked ? 'lazy' : 'eager'}
+              loading={roomy ? 'eager' : linked ? 'lazy' : 'eager'}
               decoding="async"
             />
           ) : (

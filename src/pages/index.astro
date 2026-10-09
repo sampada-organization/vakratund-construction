@@ -1,20 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import HeroSlides from '../components/HeroSlides.astro';
-import HomeWork from '../components/HomeWork.astro';
+import WorkGrid from '../components/WorkGrid.astro';
 import MachineTiles from '../components/MachineTiles.astro';
-import ServiceCards from '../components/ServiceCards.astro';
+import Beam from '../components/Beam.astro';
+import ClientStrip from '../components/ClientStrip.astro';
 import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import Ask from '../components/Ask.astro';
 import Continue from '../components/Continue.astro';
-import StatsBar from '../components/StatsBar.astro';
-import ClientsBand from '../components/ClientsBand.astro';
 import { home, site, url } from '../lib/content';
 
 const siteUrl = site.domain.startsWith('http') ? site.domain : `https://${site.domain}`;
 const description =
-  'Vakratund Construction, Chakan. Civil works, roads, RCC, and government contracts since 2007. One proprietor and an owned plant.';
+  'Vakratund Construction, Chakan. Roads, RCC, buildings, and government contracts since 2007. One proprietor and an owned plant.';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'GeneralContractor',
@@ -46,8 +45,6 @@ const jsonLd = {
     measure={site.measure}
   />
 
-  <StatsBar />
-
   <section class="section" id="firm">
     <div class="wrap firm">
       <div>
@@ -55,7 +52,7 @@ const jsonLd = {
         <h2>Who we are</h2>
         <p>{site.name} is a {site.legalForm.toLowerCase()}.</p>
         <p>{site.proprietor} is the proprietor and stays close to each job.</p>
-        <p>We work for manufacturing plants, housing, and public departments around Chakan.</p>
+        <p>The office is Shop 113, The Grand Centre, Chakan.</p>
       </div>
       <ul class="facts">
         <li><div><strong>{site.established}</strong><span>Established</span></div></li>
@@ -68,40 +65,41 @@ const jsonLd = {
   <section class="section" id="work">
     <div class="wrap">
       <p class="kicker">Work</p>
-      <h2>Work done</h2>
+      <h2>Types of work</h2>
       <p class="intro">
-        Browse by category — the 2021 portfolio, recent bridge jobs, an RMC plant for JD Infra, and civil work at SANY.
+        Eight kinds from the 2021 portfolio. Bridge photographs and the JD Infra ready-mix yard were taken later. The film above is the pooja at SANY, Chakan.
       </p>
-      <HomeWork />
+      <WorkGrid minimal large />
       <Ask />
-      <Continue href="/projects" label="Work" name="Further: All work" text="Every project type with photographs and materials." />
+      <Continue href="/projects" label="Work" name="Further: All work" text="Every type, with the photographs and the materials." />
     </div>
   </section>
 
-  <ClientsBand />
-
-  <section class="section" id="services">
+  <section class="section" id="bend">
     <div class="wrap">
-      <p class="kicker">Services</p>
-      <h2>What we take on</h2>
-      <p class="intro">Roads, foundations, floors, walls, yards, and buildings — scoped and priced before we mobilise.</p>
-      <ServiceCards ledger />
-      <Continue href="/materials" label="Materials" name="Further: Materials and methods" text="Bitumen, concrete, gabion, epoxy, paint, and masonry — with steps." />
+      <p class="kicker">Mechanics</p>
+      <h2>Why the steel sits low</h2>
+      <Beam />
+    </div>
+  </section>
+
+  <section class="section" id="clients">
+    <div class="wrap">
+      <p class="kicker">Clients</p>
+      <h2>Plants in Chakan</h2>
+      <p class="intro">Five names from the company profile.</p>
+      <ClientStrip />
+      <Continue href="/clients" label="Clients" name="Further: Clients" text="The same names, on their own page." />
     </div>
   </section>
 
   <section class="section defer" id="tools">
     <div class="wrap">
       <p class="kicker">Plant</p>
-      <h2>Our machines</h2>
-      <p class="intro">Owned equipment from the company profile — not hired day to day.</p>
-      <MachineTiles linked showCount ledger />
-      <Continue
-        href="/plant"
-        label="Plant"
-        name="Further: Plant and tools"
-        text="Every machine, and how many."
-      />
+      <h2>Machines</h2>
+      <p class="intro">The kinds we own. The count for each one is on the plant page.</p>
+      <MachineTiles linked roomy />
+      <Continue href="/plant" label="Plant" name="Further: Plant and tools" text="Each kind, and how many." />
     </div>
   </section>
 
@@ -113,7 +111,6 @@ const jsonLd = {
         <p>One person stays with the job from estimate to handover.</p>
         <p>We measure the line before we quote.</p>
         <p>Time and price are agreed in writing.</p>
-        <p>The ready-mix plant, mixers, rollers, and excavators are ours.</p>
         <p>“{site.safety}”</p>
       </div>
       <ol class="mission">
