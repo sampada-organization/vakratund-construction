@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import Continue from '../../components/Continue.astro';
+import Gallery from '../../components/Gallery.astro';
+import { clientBySlug, clients, projectsForClient, url } from '../../lib/content';
+
+export function getStaticPaths() {
+  return clients.map((client) => ({ params: { slug: client.slug } }));
+}
+
+const client = clientBySlug(Astro.params.slug || '');
+if (!client) throw new Error('Missing client');
+const work = projectsForClient(client.slug);
+const marks =
+  'marks' in client && Array.isArray(client.marks) && client.marks.length
+    ? client.marks
+    : [{ src: client.logo, width: client.width, height: client.height }];
+const description = `${client.name}, ${client.place}. Work filed by Vakratund Construction.`;
+---
+
+<Base title={client.name} description={description}>
+  <article class="section">
+    <div class="wrap">
+      <p class="kicker">Clients</p>
+      <h1>{client.name}</h1>
+      <p class="intro">{client.place}. Named in the company profile.</p>
+      <ul class="client-marks">
+        {
+          marks.map((mark) => (
+            <li>
+              <img src={url(mark.src)} width={mark.width} height={mark.height} alt="" />
+            </li>
+          ))
+        }
+      </ul>
+      {
+        work.length ? (
+          work.map((project) => (
+            <section>
+              <h2>{project.title}</h2>
+              <p>{project.summary}</p>
+              <p>{'when' in project && project.when ? project.when : 'These photographs are of jobs done in 2021.'}</p>
+              <Gallery title={project.title} frames={project.gallery} />
+              <p>
+                <a href={url(`/projects/${project.slug}`)}>Open {project.title}</a>. The same photographs, on the work page.
+              </p>
+            </section>
+          ))
+        ) : (
+          <p>Photographs of work at this plant are not on the site yet.</p>
+        )
+      }
+      <Continue href="/clients" label="Clients" text="The other plants named in the profile." />
+    </div>
+  </article>
+</Base>

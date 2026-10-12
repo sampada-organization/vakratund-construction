@@ -55,8 +55,17 @@ export const links = {
   whatsapp: `https://wa.me/${site.phoneWa}?text=${encodeURIComponent(waText)}`,
   email: `mailto:${site.email}`,
   proprietorEmail: `mailto:${site.proprietorEmail}`,
+  linkedin: site.linkedin,
   maps: site.office.maps,
 };
+
+export function clientBySlug(slug: string) {
+  return clients.find((item) => item.slug === slug);
+}
+
+export function projectsForClient(slug: string) {
+  return projects.filter((item) => 'client' in item && item.client === slug);
+}
 
 export function projectBySlug(slug: string) {
   return projects.find((item) => item.slug === slug);

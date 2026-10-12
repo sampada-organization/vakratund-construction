@@ -52,6 +52,7 @@ interface Field {
   label: string;
   area?: boolean;
   number?: boolean;
+  rows?: number;
 }
 
 const FIELDS: Record<string, Field[]> = {
@@ -70,25 +71,31 @@ const FIELDS: Record<string, Field[]> = {
   projects: [
     { key: 'slug', label: 'Slug' },
     { key: 'title', label: 'Title' },
+    { key: 'client', label: 'Client slug, or blank' },
     { key: 'summary', label: 'Summary', area: true },
-    { key: 'tags', label: 'Tags, comma separated' },
+    { key: 'when', label: 'When, or blank for the 2021 line' },
+    { key: 'tags', label: 'Category tags, comma separated' },
     { key: 'use', label: 'Use case' },
-    { key: 'image', label: 'Image path' },
-    { key: 'width', label: 'Width', number: true },
-    { key: 'height', label: 'Height', number: true },
+    { key: 'image', label: 'Cover image path' },
+    { key: 'width', label: 'Cover width', number: true },
+    { key: 'height', label: 'Cover height', number: true },
+    { key: 'video', label: 'Video path, or blank' },
+    { key: 'galleryText', label: 'Photographs: path width height, one per line', area: true, rows: 8 },
   ],
   register: [
-    { key: 'name', label: 'Name' },
-    { key: 'count', label: 'Count', number: true },
+    { key: 'name', label: 'Kind of machine' },
     { key: 'note', label: 'Note', area: true },
+    { key: 'image', label: 'Image path' },
   ],
   earlier: [
     { key: 'name', label: 'Name' },
     { key: 'note', label: 'Note', area: true },
   ],
   clients: [
+    { key: 'slug', label: 'Slug' },
     { key: 'name', label: 'Name' },
     { key: 'place', label: 'Place' },
+    { key: 'logo', label: 'Mark path' },
   ],
   resources: [
     { key: 'title', label: 'Title' },
@@ -129,6 +136,7 @@ const FIELDS: Record<string, Field[]> = {
       key: 'imagesText',
       label: 'Gallery images: path width height, one per line',
       area: true,
+      rows: 8,
     },
   ],
 };
@@ -169,6 +177,7 @@ function makeRow(list: string, data: Row) {
       (input as HTMLInputElement).min = '0';
       input.dataset.type = 'number';
     }
+    if (field.area && field.rows) (input as HTMLTextAreaElement).rows = field.rows;
     input.value = data[field.key] == null ? '' : String(data[field.key]);
     label.append(input);
     wrap.append(label);
@@ -191,22 +200,25 @@ function makeRow(list: string, data: Row) {
   return wrap;
 }
 
+function galleryLines(value: unknown) {
+  const images = Array.isArray(value) ? value : [];
+  return images
+    .map((frame) => {
+      const item = frame as { src?: string; width?: number; height?: number };
+      return `${item.src || ''} ${item.width || 0} ${item.height || 0}`.trim();
+    })
+    .filter((line) => line && !line.endsWith('0 0'))
+    .join('\n');
+}
+
 function paintList(list: string, rows: Row[]) {
   const host = document.querySelector<HTMLElement>(`[data-list="${list}"]`);
   if (!host) return;
-  const prepared =
-    list === 'workCategories'
-      ? rows.map((row) => {
-          const images = Array.isArray(row.images) ? row.images : [];
-          const lines = images
-            .map((frame) => {
-              const item = frame as { src?: string; width?: number; height?: number };
-              return `${item.src || ''} ${item.width || 0} ${item.height || 0}`.trim();
-            })
-            .filter((line) => !line.endsWith('0 0'));
-          return { ...row, imagesText: lines.join('\n') };
-        })
-      : rows;
+  const prepared = rows.map((row) => {
+    if (list === 'workCategories') return { ...row, imagesText: galleryLines(row.images) };
+    if (list === 'projects') return { ...row, galleryText: galleryLines(row.gallery) };
+    return row;
+  });
   host.replaceChildren(...prepared.map((row) => makeRow(list, row)));
 }
 
@@ -293,12 +305,19 @@ function collect(): Bundle | null {
   next.services = collectList('services');
   next.projects = collectList('projects').map((item) => {
     const previous = bundle.projects.find((project) => project.slug === item.slug);
+    const galleryText = String(item.galleryText || '');
+    delete item.galleryText;
+    return { ...(previous || {}), ...item, gallery: parseImageLines(galleryText) };
+  });
+  next.plants.register = collectList('register').map((item) => {
+    const previous = bundle.plants.register.find((row) => row.name === item.name);
     return { ...(previous || {}), ...item };
   });
-  next.plants.register = collectList('register');
   next.plants.earlier = collectList('earlier');
   next.clients = collectList('clients').map((item) => {
-    const previous = bundle.clients.find((client) => client.name === item.name);
+    const previous =
+      bundle.clients.find((client) => client.slug === item.slug) ||
+      bundle.clients.find((client) => client.name === item.name);
     return { ...(previous || {}), ...item };
   });
   next.resources = collectList('resources');

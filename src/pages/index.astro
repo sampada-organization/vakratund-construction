@@ -9,7 +9,7 @@ import Icon from '../components/Icon.astro';
 import LeadForm from '../components/LeadForm.astro';
 import Ask from '../components/Ask.astro';
 import Continue from '../components/Continue.astro';
-import { home, site, url } from '../lib/content';
+import { home, links, site, url } from '../lib/content';
 
 const siteUrl = site.domain.startsWith('http') ? site.domain : `https://${site.domain}`;
 const description =
@@ -51,7 +51,7 @@ const jsonLd = {
         <p class="kicker">The firm</p>
         <h2>Who we are</h2>
         <p>{site.name} is a {site.legalForm.toLowerCase()}.</p>
-        <p>{site.proprietor} is the proprietor and stays close to each job.</p>
+        <p><a href={links.linkedin}>{site.proprietor}</a> is the proprietor and stays close to each job.</p>
         <p>The office is Shop 113, The Grand Centre, Chakan.</p>
       </div>
       <ul class="facts">
@@ -97,9 +97,9 @@ const jsonLd = {
     <div class="wrap">
       <p class="kicker">Plant</p>
       <h2>Machines</h2>
-      <p class="intro">The kinds we own. The count for each one is on the plant page.</p>
+      <p class="intro">The kinds of machine we own.</p>
       <MachineTiles linked roomy />
-      <Continue href="/plant" label="Plant" name="Further: Plant and tools" text="Each kind, and how many." />
+      <Continue href="/plant" label="Plant" name="Further: Plant and tools" text="Each kind of machine, and what it does." />
     </div>
   </section>
 

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const pages = ['/', '/projects', '/services', '/services/roads', '/materials', '/materials/bitumen', '/plant', '/process', '/clients', '/profile', '/resources', '/identity', '/contact', '/onboard', '/meet', '/admin', '/legal/privacy'];
+const pages = ['/', '/projects', '/services', '/services/roads', '/materials', '/materials/bitumen', '/plant', '/process', '/clients', '/clients/sany', '/clients/stanley-black-decker', '/profile', '/resources', '/guide', '/identity', '/contact', '/onboard', '/meet', '/admin', '/legal/privacy'];
 
 test('home states the work and the real phone', async ({ page }, testInfo) => {
   await page.goto('/');
@@ -87,6 +87,7 @@ test('mobile menu reaches the plant', async ({ page }, testInfo) => {
   await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Plant' }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Plant and tools');
   await expect(page.getByText('Transit mixer')).toBeVisible();
+  await expect(page.getByText('5', { exact: true })).toHaveCount(0);
   await page.screenshot({ path: `test-results/plant-${testInfo.project.name}.png`, fullPage: false });
 });
 
@@ -147,6 +148,29 @@ test('a visit opens WhatsApp, email, and a calendar file', async ({ page }, test
   await expect(result.getByRole('link', { name: 'Give a missed call' })).toHaveCount(0);
   await expect(result.getByRole('link', { name: 'Add to calendar' })).toHaveAttribute('href', /^blob:/);
   await page.screenshot({ path: `test-results/meet-${testInfo.project.name}.png`, fullPage: false });
+});
+
+test('a client page shows the work filed for that plant', async ({ page }) => {
+  await page.goto('/clients');
+  await page.getByRole('link', { name: 'SANY' }).click();
+  await expect(page).toHaveURL(/\/clients\/sany$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('SANY');
+  await expect(page.locator('img[src*="sany-7.jpg"]')).toBeVisible();
+  await page.goto('/clients/stanley-black-decker');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Stanley Black & Decker');
+  await expect(page.getByText('Photographs of work at this plant are not on the site yet.')).toBeVisible();
+  await expect(page.locator('img[src*="black-decker.png"]')).toBeVisible();
+  await page.goto('/profile');
+  await expect(page.getByRole('link', { name: 'Prajot Vikas Dhadge' })).toHaveAttribute(
+    'href',
+    'https://www.linkedin.com/in/prajot-dhadge-190301100/',
+  );
+  await page.goto('/guide');
+  const figures = page.locator('.guide-fig img');
+  await expect(figures).toHaveCount(5);
+  await expect
+    .poll(() => figures.evaluateAll((imgs) => imgs.every((img) => img.complete && img.naturalWidth > 0)))
+    .toBe(true);
 });
 
 test('a client can come on board', async ({ page }) => {

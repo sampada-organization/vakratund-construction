@@ -6,16 +6,18 @@ import { clients, url } from '../lib/content';
   {
     clients.map((client) => (
       <li>
-        <img
-          src={url(client.logo)}
-          width={client.width}
-          height={client.height}
-          alt=""
-          loading="lazy"
-          decoding="async"
-        />
-        <strong>{client.name}</strong>
-        <span>{client.place}</span>
+        <a href={url(`/clients/${client.slug}`)}>
+          <img
+            src={url(client.logo)}
+            width={client.width}
+            height={client.height}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+          <strong>{client.name}</strong>
+          <span>{client.place}</span>
+        </a>
       </li>
     ))
   }

@@ -9,6 +9,7 @@ Do not add a claim that is not in one of these.
 | Previous site, `dnyand33p/vakrtundConstruction` | Tagline and the “strong, durable, safe, economical, facilitating” line. Tool names that are not counts: rock hammer, mixers, and a few brand names. Work photographs, recompressed into `public/media/work`. The old phone 9970099700 is retired. |
 | Roads poster and VC mark, Sep 2026 | The mark file. The poster’s measure line. The poster’s spelling of the name is wrong and is not used as the wordmark. |
 | Site photographs, 2 Oct 2026 (`resources/work/`) | Bridge and culvert photographs. JD Infra RMC plant photographs. SANY ceremony photographs. No contract value, area, or date of completion is stated. |
+| Proprietor, 12 Oct 2026 | LinkedIn https://www.linkedin.com/in/prajot-dhadge-190301100/ for Prajot Vikas Dhadge. |
 
 Plant counts are the profile’s counts when the two sources disagree. The page says so.
 

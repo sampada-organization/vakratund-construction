@@ -1,5 +1,6 @@
 [
   {
+    "slug": "ge-india-industrial",
     "name": "GE India Industrial",
     "place": "Chakan",
     "logo": "/media/clients/ge.png",
@@ -7,6 +8,7 @@
     "height": 200
   },
   {
+    "slug": "sany",
     "name": "SANY",
     "place": "Chakan",
     "logo": "/media/clients/sany.png",
@@ -14,13 +16,19 @@
     "height": 183
   },
   {
+    "slug": "stanley-black-decker",
     "name": "Stanley Black & Decker",
     "place": "Chakan",
     "logo": "/media/clients/stanley.png",
     "width": 322,
-    "height": 157
+    "height": 157,
+    "marks": [
+      { "src": "/media/clients/stanley.png", "width": 322, "height": 157 },
+      { "src": "/media/clients/black-decker.png", "width": 528, "height": 267 }
+    ]
   },
   {
+    "slug": "araymond",
     "name": "ARaymond",
     "place": "Chakan",
     "logo": "/media/clients/araymond.png",
@@ -28,6 +36,7 @@
     "height": 99
   },
   {
+    "slug": "bajaj-electricals",
     "name": "Bajaj Electricals",
     "place": "Chakan",
     "logo": "/media/clients/bajaj.png",

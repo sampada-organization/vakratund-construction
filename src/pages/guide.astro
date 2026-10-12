@@ -1,0 +1,139 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/content';
+
+const description = 'How to file photographs, videos, client work, and new pages for Vakratund Construction.';
+---
+
+<Base title="How the pages are edited" description={description}>
+  <article class="section">
+    <div class="wrap">
+      <p class="kicker">Desk</p>
+      <h1>How the pages are edited</h1>
+      <p class="intro">
+        The public pages read JSON in <code>src/content</code>. The desk at <code>/admin</code> edits that JSON on a computer running the site. The published site shows the last build. It does not save from the browser.
+      </p>
+
+      <h2>How a change reaches the site</h2>
+      <div class="flow" aria-hidden="true">
+        <svg viewBox="0 0 760 120">
+          <rect x="8" y="36" width="150" height="48" />
+          <text x="83" y="66" text-anchor="middle">File</text>
+          <rect x="206" y="36" width="150" height="48" />
+          <text x="281" y="66" text-anchor="middle">public/media</text>
+          <rect x="404" y="36" width="150" height="48" />
+          <text x="479" y="66" text-anchor="middle">src/content</text>
+          <rect x="602" y="36" width="150" height="48" />
+          <text x="677" y="66" text-anchor="middle">Public page</text>
+          <path d="M158 60 H206 M356 60 H404 M554 60 H602" stroke="#7eb0ff" stroke-width="1.4" />
+        </svg>
+      </div>
+      <p>Put the file in <code>public/media</code> first. Then name that path in the desk. Then publish a new build.</p>
+
+      <h2>Where each file goes</h2>
+      <ul class="guide-where">
+        <li>
+          <a href={url('/')}>Home film</a>
+          <p><code>public/media/work/sany-site/</code>. Desk list: Home hero slides. One line is a path, a width, and a height.</p>
+        </li>
+        <li>
+          <a href={url('/clients/sany')}>A client's work</a>
+          <p><code>public/media/work/&lt;client&gt;/</code>. Desk list: Projects. Set Client slug to the client's slug, and put each photograph on its own line as <code>path width height</code>.</p>
+        </li>
+        <li>
+          <a href={url('/clients')}>A client mark</a>
+          <p><code>public/media/clients/</code>. Desk list: Clients. Mark path is the logo file.</p>
+        </li>
+        <li>
+          <a href={url('/projects')}>A type of work</a>
+          <p>Cover in <code>public/media/made/</code> or <code>public/media/work/</code>. Category tags are road, foundation, floor, wall, yard, or building.</p>
+        </li>
+        <li>
+          <a href={url('/plant')}>A kind of machine</a>
+          <p><code>public/media/plant/</code>. Desk list: Plant register. The page names the kind. It does not show a count.</p>
+        </li>
+        <li>
+          <a href={url('/materials')}>A material</a>
+          <p>Cover path, then more paths, one per line.</p>
+        </li>
+        <li>
+          <a href={url('/services')}>A service card</a>
+          <p>One image path on the service.</p>
+        </li>
+        <li>
+          <p>A video. <code>public/media/video/name.mp4</code>. On the project, Video path. Leave it blank when there is no video. The work page shows the player only when a path is set.</p>
+        </li>
+      </ul>
+
+      <h2>Categories</h2>
+      <div class="flow" aria-hidden="true">
+        <svg viewBox="0 0 760 168">
+          <rect x="280" y="8" width="200" height="44" />
+          <text x="380" y="36" text-anchor="middle">Category tag</text>
+          <rect x="40" y="108" width="180" height="44" />
+          <text x="130" y="136" text-anchor="middle">Work page</text>
+          <rect x="290" y="108" width="180" height="44" />
+          <text x="380" y="136" text-anchor="middle">Service page</text>
+          <rect x="540" y="108" width="180" height="44" />
+          <text x="630" y="136" text-anchor="middle">Material page</text>
+          <path d="M380 52 V80 H130 V108 M380 80 H380 V108 M380 80 H630 V108" fill="none" stroke="#7eb0ff" stroke-width="1.4" />
+        </svg>
+      </div>
+      <p>The same word joins the three pages. A road project, the roads service, and the bitumen material all use <code>road</code>. A client page uses a different field, Client slug, and does not use that tag.</p>
+
+      <h2>SANY, and Stanley Black &amp; Decker</h2>
+      <p>
+        <a href={url('/clients/sany')}>SANY</a> has a client slug <code>sany</code>. The pooja photographs are a project whose Client slug is <code>sany</code>, so the client page shows them.
+      </p>
+      <p>
+        <a href={url('/clients/stanley-black-decker')}>Stanley Black &amp; Decker</a> is one name in the company profile. Both marks are on that page. No photographs of work at that plant are filed yet. To add them, put the files in <code>public/media/work/stanley-black-decker/</code>, add a project, set Client slug to <code>stanley-black-decker</code>, and list each file as <code>path width height</code>.
+      </p>
+      <figure class="guide-fig">
+        <img src={url('/media/guide/client-sany.jpg')} width="1280" height="800" alt="The SANY client page, with the pooja photographs" />
+        <figcaption>SANY opens onto the photographs filed for that plant.</figcaption>
+      </figure>
+      <figure class="guide-fig">
+        <img src={url('/media/guide/client-stanley.jpg')} width="1280" height="800" alt="The Stanley Black and Decker client page, with both marks and no photographs yet" />
+        <figcaption>Stanley Black &amp; Decker is ready for photographs. None are filed yet.</figcaption>
+      </figure>
+
+      <h2>The desk</h2>
+      <p>Open <a href={url('/admin')}>/admin</a> on the computer that runs the site. The password is not printed here. Save writes <code>src/content</code> and <code>api/content</code> together. On the published site the same page refuses the save.</p>
+      <figure class="guide-fig">
+        <img src={url('/media/guide/desk-projects.jpg')} width="1280" height="1600" alt="The desk project list, with client slug and photograph lines" />
+        <figcaption>A project row carries the client slug, the category, the cover, and one photograph per line.</figcaption>
+      </figure>
+      <figure class="guide-fig">
+        <img src={url('/media/guide/desk-clients.jpg')} width="1280" height="1600" alt="The desk client list, with slug, name, place, and mark path" />
+        <figcaption>A client row is a slug, a name, a place, and a mark. The slug is what a project points at.</figcaption>
+      </figure>
+      <figure class="guide-fig">
+        <img src={url('/media/guide/desk-plant.jpg')} width="1280" height="1600" alt="The desk plant list, naming each kind of machine without a count" />
+        <figcaption>The plant list names the kind of machine and its picture. It does not ask for a count.</figcaption>
+      </figure>
+
+      <h2>A new demand</h2>
+      <div class="flow" aria-hidden="true">
+        <svg viewBox="0 0 760 210">
+          <rect x="270" y="8" width="220" height="44" />
+          <text x="380" y="36" text-anchor="middle">New demand</text>
+          <rect x="20" y="150" width="160" height="48" />
+          <text x="100" y="178" text-anchor="middle">New client</text>
+          <rect x="206" y="150" width="160" height="48" />
+          <text x="286" y="178" text-anchor="middle">New work type</text>
+          <rect x="392" y="150" width="160" height="48" />
+          <text x="472" y="178" text-anchor="middle">New machine</text>
+          <rect x="578" y="150" width="160" height="48" />
+          <text x="658" y="178" text-anchor="middle">New material</text>
+          <path d="M380 52 V100 H100 V150 M380 100 H286 V150 M380 100 H472 V150 M380 100 H658 V150" fill="none" stroke="#7eb0ff" stroke-width="1.4" />
+        </svg>
+      </div>
+      <p>A new client is a new row: slug, name, place, mark. Then a project whose Client slug matches. The client page appears on the next build.</p>
+      <p>A new type of work is a project with a category tag, a cover, and photograph lines. Leave Client slug blank when the photographs are the 2021 portfolio and no plant is named.</p>
+      <p>A new kind of machine is one row in the plant register: the name and the picture. Do not add a count to the page.</p>
+      <p>A new material is a row with a category that matches a work tag, a method, a procedure, and image paths.</p>
+      <p>A new sentence still needs a source. Do not add a certificate, a turnover, a staff count, a rate, or a project value that is not in the company profile, the office note, or a labelled photograph.</p>
+      <p>The same notes, with the diagram source, are in <code>docs/cms.md</code> in the site files.</p>
+    </div>
+  </article>
+</Base>

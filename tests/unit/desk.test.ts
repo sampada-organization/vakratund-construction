@@ -26,6 +26,7 @@ describe('published facts', () => {
     expect(site.phoneTel).toBe('+919960532729');
     expect(site.email).toBe('vakratundconstructionchakan@gmail.com');
     expect(site.proprietor).toBe('Prajot Vikas Dhadge');
+    expect(site.linkedin).toBe('https://www.linkedin.com/in/prajot-dhadge-190301100/');
     expect(site.office.lines.join(' ')).toContain('Grand Centre');
     expect(JSON.stringify(site)).not.toContain('9970099700');
     expect(services).toHaveLength(6);
@@ -42,6 +43,14 @@ describe('published facts', () => {
     expect(projects.map((project) => project.slug)).toEqual(
       expect.arrayContaining(['bridge', 'rmc-jd-infra', 'sany-site']),
     );
+    expect(projects.find((project) => project.slug === 'sany-site')?.client).toBe('sany');
+    expect(clients.map((client) => client.slug)).toEqual([
+      'ge-india-industrial',
+      'sany',
+      'stanley-black-decker',
+      'araymond',
+      'bajaj-electricals',
+    ]);
     expect(materials.map((item) => item.slug)).toContain('bitumen');
     expect(materials.every((item) => item.method && item.procedure && item.category)).toBe(true);
   });

@@ -274,6 +274,7 @@
       { "src": "/media/work/sany-site/sany-7.jpg", "width": 1280, "height": 960 }
     ],
     "tags": "SANY",
+    "client": "sany",
     "use": "The SANY plant in Chakan"
   }
 ]

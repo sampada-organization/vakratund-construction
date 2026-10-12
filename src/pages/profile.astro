@@ -13,7 +13,9 @@ const description = `${site.name}, ${site.legalForm.toLowerCase()} in Chakan sin
     <div class="wrap">
       <p class="kicker" style="color: var(--blue)">Chakan · since {site.established}</p>
       <h1>Business profile</h1>
-      <p class="intro">{site.name} is a {site.legalForm.toLowerCase()}. {site.proprietor} is the proprietor.</p>
+      <p class="intro">
+        {site.name} is a {site.legalForm.toLowerCase()}. <a href={links.linkedin}>{site.proprietor}</a> is the proprietor.
+      </p>
       <p>Established in {site.established}. Government contracts since {site.governmentWorkSince}.</p>
       <p>The earlier office was {site.profileOffice}. The office now is {site.office.lines.join(', ')}.</p>
       <p>{site.promise}</p>

@@ -1,5 +1,11 @@
 [
   {
+    "title": "How the pages are edited",
+    "kind": "Guide",
+    "href": "/guide",
+    "note": "Where a photograph or a video goes, how a client page gets its work, and how a new demand is added."
+  },
+  {
     "title": "Company profile",
     "kind": "Presentation",
     "href": "/resources/vakratund-company-profile.pptx",
